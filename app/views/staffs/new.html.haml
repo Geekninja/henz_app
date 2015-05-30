@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Novo funcionário
+        = link_to 'Voltar', staffs_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

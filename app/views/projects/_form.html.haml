@@ -1,0 +1,27 @@
+= simple_form_for(@project) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-6
+      = f.association :project_category, prompt: 'selecione a categoria...'
+    .col-md-6
+      = f.input :priority
+  .row
+    .col-md-12
+      = f.input :name
+  .row
+    .col-md-12
+      = f.input :description
+  .row
+    .col-md-4
+      = f.input :local
+    .col-md-4
+      = f.input :geolocation
+    .col-md-4
+      = f.association :responsible
+  .row
+    .col-md-12
+      = f.input :observation
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

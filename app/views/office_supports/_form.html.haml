@@ -1,0 +1,21 @@
+= simple_form_for(@office_support) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+      = f.input :local
+      = f.association :responsible
+      = f.input :geolocation
+      = f.input :observation
+      = f.association :project
+      = f.association :office
+      = f.input :telphone
+      = f.input :telphone_optional
+      = f.input :city
+      = f.input :state
+      = f.input :email
+
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

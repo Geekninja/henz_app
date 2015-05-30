@@ -1,0 +1,55 @@
+%header.header.fixed-top.clearfix
+  / logo start
+  .brand
+    = link_to "<b>Henz</b>".html_safe, root_path, class: 'logo'
+  .horizontal-menu.navbar-collapse.collapse
+    %ul.nav.navbar-nav
+      %li
+        = link_to "início", root_path
+      %li.dropdown
+        %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
+          Obras
+          %b.fa.fa-angle-down
+        %ul.dropdown-menu
+          %li
+            = link_to "Gerenciar", projects_path
+          %li.divider
+          - @nav_projects.each do |p|
+            %li
+              = link_to p.name, project_path(p)
+
+      %li.dropdown
+        %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
+          Administração
+          %b.fa.fa-angle-down
+        %ul.dropdown-menu
+          %li
+            = link_to "funcionários", staffs_path
+          %li
+            = link_to "setores", sectors_path
+          %li
+            = link_to "cargos", jobs_path
+          %li.divider
+          %li
+            = link_to "fonecedores", suppliers_path
+          %li.divider
+          %li
+            = link_to "escritórios", offices_path
+          %li
+            = link_to "pontos de apoio", office_supports_path
+      %li.dropdown
+        %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
+          Configurações
+          %b.fa.fa-angle-down
+        %ul.dropdown-menu
+          %li
+            = link_to "Usuários", users_path
+  .horizontal-menu.navbar-collapse.collapse.pull-right
+    %ul.nav.navbar-nav
+      %li.dropdown
+        %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
+          Nome do usuário
+          %b.fa.fa-angle-down
+        %ul.dropdown-menu
+          %li
+            = link_to "Sair", users_path

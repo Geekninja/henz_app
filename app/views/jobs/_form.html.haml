@@ -1,0 +1,17 @@
+= simple_form_for(@job) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-6
+      = f.input :name
+    .col-md-4
+      = f.input :description
+    .col-md-2
+      = f.input :salary
+  .row
+    .col-md-12
+      = f.input :status
+  %br/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

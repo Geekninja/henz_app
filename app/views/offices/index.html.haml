@@ -1,0 +1,58 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Escritórios
+        = link_to 'Novo escritório', new_office_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Cep
+              %th.col-md-2
+                Responsible
+              %th.col-md-2
+                Geolocation
+              %th.col-md-2
+                City
+              %th.col-md-2
+                State
+              %th.col-md-2
+                Telphone
+              %th.col-md-2
+                Telphone optional
+              %th.col-md-2
+                Email
+              %th.col-md-2
+                Email optional
+              %th.col-md-2
+                Project
+          %tbody
+            %tr
+              - @offices.each do |office|
+
+                %td.col-md-8
+                  =office.cep
+                %td.col-md-8
+                  =office.responsible
+                %td.col-md-8
+                  =office.geolocation
+                %td.col-md-8
+                  =office.city
+                %td.col-md-8
+                  =office.state
+                %td.col-md-8
+                  =office.telphone
+                %td.col-md-8
+                  =office.telphone_optional
+                %td.col-md-8
+                  =office.email
+                %td.col-md-8
+                  =office.email_optional
+                %td.col-md-8
+                  =office.project
+                %td.col-md-1
+                  = link_to 'Editar', edit_office_path(office), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', office, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

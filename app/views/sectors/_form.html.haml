@@ -1,0 +1,14 @@
+= simple_form_for(@sector) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+      = f.input :description
+      = f.input :acron
+      = f.association :responsible
+      = f.input :status
+  %br/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

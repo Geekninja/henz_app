@@ -1,0 +1,60 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @staff.name
+%p
+  %b Code:
+  = @staff.code
+%p
+  %b Cpf:
+  = @staff.cpf
+%p
+  %b Job function:
+  = @staff.job_function
+%p
+  %b Job:
+  = @staff.job
+%p
+  %b Status:
+  = @staff.status
+%p
+  %b Sector:
+  = @staff.sector
+%p
+  %b City:
+  = @staff.city
+%p
+  %b State:
+  = @staff.state
+%p
+  %b Address:
+  = @staff.address
+%p
+  %b Telphone:
+  = @staff.telphone
+%p
+  %b Telphone optional:
+  = @staff.telphone_optional
+%p
+  %b Celphone:
+  = @staff.celphone
+%p
+  %b Project:
+  = @staff.project
+%p
+  %b Office:
+  = @staff.office
+%p
+  %b Office support:
+  = @staff.office_support
+%p
+  %b Born:
+  = @staff.born
+%p
+  %b Salary:
+  = @staff.salary
+
+= link_to 'Edit', edit_staff_path(@staff)
+\|
+= link_to 'Back', staffs_path

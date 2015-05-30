@@ -1,0 +1,11 @@
+pt-BR:
+ activerecord:
+  models:
+   job: 'Cargo'
+  attributes:
+   job:
+    name: "nome"
+    description: 'descrição'
+    salary: 'salário'
+    status: 'ativo?'
+

@@ -1,0 +1,14 @@
+= simple_form_for(@benefict) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+      = f.input :description
+      = f.input :default_value
+      = f.input :observation
+      = f.input :status
+
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

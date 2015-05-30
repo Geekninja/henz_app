@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Cep:
+  = @office.cep
+%p
+  %b Responsible:
+  = @office.responsible
+%p
+  %b Geolocation:
+  = @office.geolocation
+%p
+  %b City:
+  = @office.city
+%p
+  %b State:
+  = @office.state
+%p
+  %b Telphone:
+  = @office.telphone
+%p
+  %b Telphone optional:
+  = @office.telphone_optional
+%p
+  %b Email:
+  = @office.email
+%p
+  %b Email optional:
+  = @office.email_optional
+%p
+  %b Project:
+  = @office.project
+
+= link_to 'Edit', edit_office_path(@office)
+\|
+= link_to 'Back', offices_path

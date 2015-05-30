@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Editar benefict
+        = link_to 'Voltar', beneficts_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

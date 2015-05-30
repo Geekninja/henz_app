@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @office_support.name
+%p
+  %b Local:
+  = @office_support.local
+%p
+  %b Responsible:
+  = @office_support.responsible
+%p
+  %b Geolocation:
+  = @office_support.geolocation
+%p
+  %b Observation:
+  = @office_support.observation
+%p
+  %b Project:
+  = @office_support.project
+%p
+  %b Office:
+  = @office_support.office
+%p
+  %b Telphone:
+  = @office_support.telphone
+%p
+  %b Telphone optional:
+  = @office_support.telphone_optional
+%p
+  %b City:
+  = @office_support.city
+%p
+  %b State:
+  = @office_support.state
+%p
+  %b Email:
+  = @office_support.email
+
+= link_to 'Edit', edit_office_support_path(@office_support)
+\|
+= link_to 'Back', office_supports_path

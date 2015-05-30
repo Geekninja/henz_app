@@ -1,0 +1,25 @@
+pt-BR:
+ activerecord:
+  models:
+   staff: 'Funcionário'
+  attributes:
+   staff:
+     name: "nome"
+     code: "matrícula"
+     cpf: "CPF"
+     job: "cargo"
+     job_function: "função"
+     sector: 'setor'
+     city: 'cidade'
+     state: 'estado'
+     address: 'endereço'
+     telphone: 'telefone'
+     telphone_optional: 'telefone secundário'
+     celphone: 'celular'
+     project: 'projeto'
+     office: 'escritório'
+     office_support: 'escritório de apoio'
+     born: 'nascimento'
+     salary: 'salário'
+     status: 'ativo?'
+    

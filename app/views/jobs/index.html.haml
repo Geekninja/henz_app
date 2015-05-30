@@ -1,0 +1,37 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Cargos
+        = link_to 'Novo Cargo', new_job_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                nome
+              %th.col-md-2
+                descrição
+              %th.col-md-2
+                salário
+              %th.col-md-2
+                status
+              %th.col-md-2
+                ações
+          %tbody
+            - @jobs.each do |job|
+              %tr
+
+                %td.col-md-3
+                  =job.name
+                %td.col-md-3
+                  =job.description
+                %td.col-md-2
+                  R$ 
+                  =job.salary
+                %td.col-md-2
+                  = status_helper(job.status)
+                %td.col-md-2
+                  = link_to 'Editar', edit_job_path(job), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', job, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

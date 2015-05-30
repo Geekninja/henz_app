@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @sector.name
+%p
+  %b Description:
+  = @sector.description
+%p
+  %b Acron:
+  = @sector.acron
+%p
+  %b Responsible:
+  = @sector.responsible
+%p
+  %b Status:
+  = @sector.status
+
+= link_to 'Edit', edit_sector_path(@sector)
+\|
+= link_to 'Back', sectors_path

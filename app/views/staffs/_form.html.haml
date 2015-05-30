@@ -1,0 +1,52 @@
+= simple_form_for(@staff) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-8
+      = f.input :name
+    .col-md-2
+      = f.input :code
+    .col-md-2
+      = f.input :cpf
+  .row
+    .col-md-2
+      = f.association :job, prompt: 'selecione o cargo...'
+    .col-md-2
+      = f.input :job_function
+    .col-md-2
+      = f.association :sector, prompt: 'selecione o setor...'
+    .col-md-4
+      = f.input :city
+    .col-md-2
+      = f.input :state
+  .row
+    .col-md-12
+      = f.input :address
+  %hr/
+  .row
+    .col-md-2
+      = f.input :telphone
+    .col-md-2
+      = f.input :telphone_optional
+    .col-md-2
+      = f.input :celphone
+  %hr/
+  .row
+    .col-md-4
+      = f.association :project, prompt: 'selecione o projeto...'
+    .col-md-4
+      = f.association :office, prompt: 'selecione o escritório...'
+    .col-md-4
+      = f.association :office_support, prompt: 'selecione o ponto de apoio...'
+  .row
+    .col-md-2
+      = f.input :born, as: 'string'
+    .col-md-2
+      = f.input :salary
+    .col-md-4
+      %br/
+      = f.input :status
+  %br/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

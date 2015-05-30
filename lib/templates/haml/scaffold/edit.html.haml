@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Editar <%= singular_table_name %>
+        = link_to 'Voltar', <%= index_helper %>_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

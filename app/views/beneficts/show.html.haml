@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @benefict.name
+%p
+  %b Description:
+  = @benefict.description
+%p
+  %b Default value:
+  = @benefict.default_value
+%p
+  %b Observation:
+  = @benefict.observation
+%p
+  %b Status:
+  = @benefict.status
+
+= link_to 'Edit', edit_benefict_path(@benefict)
+\|
+= link_to 'Back', beneficts_path

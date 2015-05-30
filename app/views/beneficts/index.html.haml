@@ -1,0 +1,38 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        beneficts
+        = link_to 'Nova Benefict', new_benefict_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Name
+              %th.col-md-2
+                Description
+              %th.col-md-2
+                Default value
+              %th.col-md-2
+                Observation
+              %th.col-md-2
+                Status
+          %tbody
+            %tr
+              - @beneficts.each do |benefict|
+
+                %td.col-md-8
+                  =benefict.name
+                %td.col-md-8
+                  =benefict.description
+                %td.col-md-8
+                  =benefict.default_value
+                %td.col-md-8
+                  =benefict.observation
+                %td.col-md-8
+                  =benefict.status
+                %td.col-md-1
+                  = link_to 'Editar', edit_benefict_path(benefict), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', benefict, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

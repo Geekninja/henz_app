@@ -1,0 +1,26 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        <%= plural_table_name %>
+        = link_to 'Nova <%= human_name %>', new_<%= singular_table_name %>_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+<% for attribute in attributes -%>
+              %th.col-md-2
+                <%= attribute.human_name %>
+<% end -%>
+          %tbody
+            %tr
+              - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
+
+<% for attribute in attributes -%>
+                %td.col-md-8
+                  =<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+                %td.col-md-1
+                  = link_to 'Editar', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', <%= singular_table_name %>, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

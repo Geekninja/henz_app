@@ -1,0 +1,27 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Categorias de projeto
+        = link_to 'Nova categoria', new_project_category_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table
+          %thead
+            %tr
+              %th.col-md-8 nome
+              %th.col-md-2 status
+              %th.col-md-2 ações
+
+          %tbody
+            - @project_categories.each do |project_category|
+              %tr
+                %td.col-md-8
+                  = project_category.name
+                %td.col-md-2
+                  = status_helper(project_category.status)
+                %td.col-md-1
+                  = link_to 'Editar', edit_project_category_path(project_category), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_category, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+
+

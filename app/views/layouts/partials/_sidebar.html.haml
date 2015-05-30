@@ -1,0 +1,63 @@
+%aside
+  #sidebar.nav-collapse
+    / sidebar menu start
+    .leftside-navigation{:style => "overflow: hidden; outline: none;", :tabindex => "5000"}
+      %ul#nav-accordion.sidebar-menu
+        %li
+          %a.active{:href => "index.html"}
+            %i.fa.fa-dashboard
+            %span Dashboard
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-laptop
+            %span Contas
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "gerenciar"
+            %li= link_to "à pagar"
+            %li= link_to "à receber"
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-book
+            %span Cotações
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "gerenciar"
+            %li= link_to "cotações efetivadas"
+            %li= link_to "orçamentos"
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-th
+            %span Veículos
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "gerenciar"
+            %li= link_to "consumo"
+            %li.divider
+            %li= link_to "serviços"
+            %li= link_to "categorias"
+            %li= link_to "postos de abastecimento"
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-tasks
+            %span Funcionários
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "gerenciar"
+            %li.divider
+            %li= link_to "beneficios"
+            %li= link_to "gastos"
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-envelope
+            %span Arquivos
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "gerenciar"
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-glass
+            %span Relatórios
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "definir"

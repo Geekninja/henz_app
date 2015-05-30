@@ -1,0 +1,40 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        projects
+        = link_to 'Nova Project', new_project_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                nome
+              %th.col-md-2
+                categoria
+              %th.col-md-2
+                local
+              %th.col-md-2
+                responsável
+              %th.col-md-2
+                prioridade
+              %th.col-md-2
+                ações
+          %tbody
+            %tr
+              - @projects.each do |project|
+
+                %td.col-md-2
+                  =project.name
+                %td.col-md-2
+                  =project.project_category if project.project_category.present?
+                %td.col-md-2
+                  =project.local
+                %td.col-md-2
+                  =project.responsible
+                %td.col-md-2
+                  =project.priority
+                %td.col-md-2
+                  = link_to 'Editar', edit_project_path(project), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
