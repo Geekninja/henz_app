@@ -1,0 +1,37 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Arquivos do projeto
+        = link_to 'Novo arquivo', new_project_archive_path(@project), class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Nome
+              %th.col-md-2
+                Descrição
+              %th.col-md-2
+                Observação
+              %th.col-md-2
+                Link
+              %th.col-md-2
+                Ações
+
+          %tbody
+            %tr
+              - @archives.each do |archive|
+
+                %td.col-md-2
+                  =archive.name
+                %td.col-md-3
+                  =archive.description
+                %td.col-md-3
+                  =archive.observation
+                %td.col-md-2
+                  = link_to "baixar arquivo", archive.file_path.url
+                %td.col-md-3
+                  = link_to 'Editar', edit_project_archive_path(project_id: @project, id: archive), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_archive_path(project_id: @project, id: archive), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

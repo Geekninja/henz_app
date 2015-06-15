@@ -1,0 +1,40 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Postos de combustível
+        = link_to 'Novo Posto', new_project_gas_station_path(@project), class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Nome
+              %th.col-md-2
+                Localização
+              %th.col-md-2
+                Cidade/Estado
+              %th.col-md-2
+                Geolocalização
+              %th.col-md-2
+                Observação
+              %th.col-md-2
+                Ações
+          %tbody
+            - @gas_stations.each do |gas_station|
+              %tr
+
+                %td.col-md-2
+                  =gas_station.name
+                %td.col-md-2
+                  =gas_station.location
+                %td.col-md-2
+                  = "#{gas_station.city}/#{gas_station.state}"
+                %td.col-md-2
+                  =gas_station.geolocation
+                %td.col-md-2
+                  =gas_station.observation
+                %td.col-md-3
+                  = link_to 'Editar', edit_project_gas_station_path(project_id: @project, id: gas_station), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_gas_station_path(project_id: @project, id: gas_station), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

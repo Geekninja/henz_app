@@ -1,0 +1,21 @@
+= simple_form_for([@project, @gas_station]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-4
+      = f.input :name
+    .col-md-4
+      = f.input :location
+    .col-md-2
+      = f.input :city
+    .col-md-2
+      = f.input :state
+  .row
+    .col-md-3
+      = f.input :geolocation
+    .col-md-9
+      = f.input :observation
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

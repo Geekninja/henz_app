@@ -1,0 +1,41 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Veículos
+        = link_to 'Novo veículo', new_project_vehicle_path(@project), class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Nome
+              %th.col-md-2
+                Descrição
+              %th.col-md-2
+                Serviço
+              %th.col-md-2
+                Tipo
+              %th.col-md-2
+                Categoria
+              %th.col-md-2
+                Ações
+              
+          %tbody
+            %tr
+              - @vehicles.each do |vehicle|
+
+                %td.col-md-2
+                  =vehicle.name
+                %td.col-md-2
+                  =vehicle.description
+                %td.col-md-2
+                  =vehicle.vehicle_service.name if vehicle.vehicle_service.present?
+                %td.col-md-2
+                  =vehicle.vehicle_type
+                %td.col-md-2
+                  =vehicle.vehicle_category.name if vehicle.vehicle_category.present?
+                %td.col-md-3
+                  = link_to 'Editar', edit_project_vehicle_path(project_id: @project, id: vehicle), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_vehicle_path(project_id: @project, id: vehicle), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

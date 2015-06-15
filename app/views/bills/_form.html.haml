@@ -2,24 +2,26 @@
   = f.error_notification
 
   .row
+    .col-md-12
+      = f.input :name
+  .row
     .col-md-2
       = f.input :bill_type, as: 'select', collection: Bill.bill_types.keys.to_a, prompt: 'selecione...'
     .col-md-4
       = f.association :bill_category, prompt: 'selecione...'
-    .col-md-6
-      = f.association :project, prompt: 'selecione...'
-  .row
-    .col-md-6
-      = f.input :name
-    .col-md-6
-      = f.input :description
-  .row
+    .col-md-2
+      = f.input :deadline, as: 'string', input_html: { class: 'date'}
     .col-md-2
       = f.input :value
-    .col-md-4
-      = f.association :supplier, prompt: 'selecione...'
+  .row
+    .col-md-6
+      = f.input :description
     .col-md-6
       = f.input :observation
+  .row
+    .col-md-4
+      = f.association :supplier, prompt: 'selecione...'
+ 
   %hr/
   .row
     .col-md-12

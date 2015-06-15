@@ -1,0 +1,11 @@
+pt-BR:
+ activerecord:
+  models:
+   archive: 'Arquivo'
+  attributes:
+   archive:
+    name: "nome"
+    description: 'descrição'
+    observation: 'observação'
+    file_path: 'arquivo'
+  

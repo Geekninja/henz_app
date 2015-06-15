@@ -1,0 +1,11 @@
+= simple_form_for(@vehicle_category) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+      = f.input :status
+
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

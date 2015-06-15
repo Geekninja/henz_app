@@ -1,0 +1,28 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Serviços de veículo
+        = link_to 'Novo serviço', new_vehicle_service_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Nome
+              %th.col-md-2
+                Status
+              %th.col-md-2
+                Ações
+          %tbody
+            %tr
+              - @vehicle_services.each do |vehicle_service|
+
+                %td.col-md-3
+                  =vehicle_service.name
+                %td.col-md-3
+                  = status_helper vehicle_service.status
+                %td.col-md-5
+                  = link_to 'Editar', edit_vehicle_service_path(vehicle_service), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', vehicle_service, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

@@ -1,0 +1,16 @@
+pt-BR:
+ activerecord:
+  models:
+   vehicle: 'Veículo'
+  attributes:
+   vehicle:
+    name: "nome"
+    vehicle_service: 'serviço'
+    vehicle_type: 'tipo'
+    vehicle_category: 'categoria'
+    acquired: 'adquirido em'
+    state: 'estado'
+    fuel: 'tipo de combustível'
+    description: 'descrição'
+    observation: 'observação'
+

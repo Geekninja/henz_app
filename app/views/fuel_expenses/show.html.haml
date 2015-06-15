@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @fuel_expense.project
+%p
+  %b Vehicle:
+  = @fuel_expense.vehicle
+%p
+  %b Gas station:
+  = @fuel_expense.gas_station
+%p
+  %b Km start:
+  = @fuel_expense.km_start
+%p
+  %b Km end:
+  = @fuel_expense.km_end
+%p
+  %b Fuel price lt:
+  = @fuel_expense.fuel_price_lt
+%p
+  %b Date:
+  = @fuel_expense.date
+%p
+  %b Status:
+  = @fuel_expense.status
+%p
+  %b Observations:
+  = @fuel_expense.observations
+
+= link_to 'Edit', edit_fuel_expense_path(@fuel_expense)
+\|
+= link_to 'Back', fuel_expenses_path

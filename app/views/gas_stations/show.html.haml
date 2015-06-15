@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @gas_station.name
+%p
+  %b Location:
+  = @gas_station.location
+%p
+  %b City:
+  = @gas_station.city
+%p
+  %b State:
+  = @gas_station.state
+%p
+  %b Geolocation:
+  = @gas_station.geolocation
+%p
+  %b Observation:
+  = @gas_station.observation
+
+= link_to 'Edit', edit_gas_station_path(@gas_station)
+\|
+= link_to 'Back', gas_stations_path

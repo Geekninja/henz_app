@@ -10,6 +10,7 @@ class CreateBills < ActiveRecord::Migration
       t.string :value
       t.references :supplier, index: true, foreign_key: true
       t.text :observation
+      t.date :deadline
 
       t.timestamps null: false
     end

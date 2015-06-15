@@ -21,38 +21,26 @@
             %span Cotações
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar"
-            %li= link_to "cotações efetivadas"
-            %li= link_to "orçamentos"
+            %li= link_to "nova cotação", new_project_quotation_path(@project)
+            %li= link_to "gerenciar", project_quotations_path(@project)
+            %li= link_to "relatórios (definir)"
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-th
             %span Veículos
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar"
-            %li= link_to "consumo"
+            %li= link_to "gerenciar", project_vehicles_path(@project)
+            %li= link_to "consumo", project_fuel_expenses_path(@project)
             %li.divider
-            %li= link_to "serviços"
-            %li= link_to "categorias"
-            %li= link_to "postos de abastecimento"
-        %li.sub-menu.dcjq-parent-li
-          %a.dcjq-parent{:href => "javascript:;"}
-            %i.fa.fa-tasks
-            %span Funcionários
-            %span.dcjq-icon
-          %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar"
-            %li.divider
-            %li= link_to "beneficios"
-            %li= link_to "gastos"
+            %li= link_to "postos de abastecimento", project_gas_stations_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-envelope
             %span Arquivos
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar"
+            %li= link_to "gerenciar", project_archives_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-glass

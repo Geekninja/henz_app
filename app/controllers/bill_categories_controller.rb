@@ -1,9 +1,9 @@
 class BillCategoriesController < ApplicationController
   before_action :set_bill_category, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_project
   # GET /bill_categories
   def index
-    @bill_categories = BillCategory.all
+    @bill_categories = BillCategory.unscoped.all
   end
 
   # GET /bill_categories/1
@@ -24,7 +24,8 @@ class BillCategoriesController < ApplicationController
     @bill_category = BillCategory.new(bill_category_params)
 
     if @bill_category.save
-      redirect_to @bill_category, notice: 'Bill category was successfully created.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +34,8 @@ class BillCategoriesController < ApplicationController
   # PATCH/PUT /bill_categories/1
   def update
     if @bill_category.update(bill_category_params)
-      redirect_to @bill_category, notice: 'Bill category was successfully updated.'
+     flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -41,16 +43,21 @@ class BillCategoriesController < ApplicationController
 
   # DELETE /bill_categories/1
   def destroy
-    @bill_category.destroy
-    redirect_to bill_categories_url, notice: 'Bill category was successfully destroyed.'
+    if @bill_category.destroy
+      flash[:success] = t :success
+      redirect_to action: 'index'
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bill_category
-      @bill_category = BillCategory.find(params[:id])
+      @bill_category = BillCategory.unscoped.find(params[:id])
     end
 
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
     # Only allow a trusted parameter "white list" through.
     def bill_category_params
       params.require(:bill_category).permit(:name, :status)

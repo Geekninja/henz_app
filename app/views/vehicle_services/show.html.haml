@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @vehicle_service.name
+%p
+  %b Status:
+  = @vehicle_service.status
+
+= link_to 'Edit', edit_vehicle_service_path(@vehicle_service)
+\|
+= link_to 'Back', vehicle_services_path

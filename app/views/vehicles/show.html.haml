@@ -1,0 +1,36 @@
+%p#notice= notice
+
+%p
+  %b Project:
+  = @vehicle.project
+%p
+  %b Name:
+  = @vehicle.name
+%p
+  %b Description:
+  = @vehicle.description
+%p
+  %b Vservice:
+  = @vehicle.vservice
+%p
+  %b Vehicle type:
+  = @vehicle.vehicle_type
+%p
+  %b Vehicle category:
+  = @vehicle.vehicle_category
+%p
+  %b Observations:
+  = @vehicle.observations
+%p
+  %b Acquired:
+  = @vehicle.acquired
+%p
+  %b State:
+  = @vehicle.state
+%p
+  %b Fuel:
+  = @vehicle.fuel
+
+= link_to 'Edit', edit_vehicle_path(@vehicle)
+\|
+= link_to 'Back', vehicles_path

@@ -1,0 +1,16 @@
+pt-BR:
+ activerecord:
+  models:
+   bill: 'Conta'
+  attributes:
+   bill:
+    bill_type: "tipo"
+    bill_category: 'categoria'
+    project: 'projeto'
+    name: 'nome'
+    description: 'descrição'
+    value: 'valor'
+    supplier: 'fornecedor'
+    observation: 'observação'
+    deadline: 'vencimento'
+  

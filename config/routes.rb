@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  resources :suppliers
+
+
   devise_for :users, controllers: {
     sessions: 'sessions'
   }
@@ -11,15 +12,24 @@ Rails.application.routes.draw do
     root 'dashboard#index'
 
     resources :project_categories
+
     resources :projects, path: 'projetos' do 
       resources :vehicles
-      resources :budget_products
-      resources :budgets
-      resources :quotations
+      resources :archives
+      resources :fuel_expenses
+      resources :gas_stations
+      resources :quotations do 
+        resources :budgets do 
+          resources :budget_products
+        end
+      end
       resources :bill_categories
       resources :bills
     end
-
+    
+    resources :suppliers
+    resources :vehicle_services
+    resources :vehicle_categories
     resources :staffs
     resources :sectors
     resources :jobs

@@ -1,0 +1,28 @@
+= simple_form_for([@project,@vehicle]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-6
+      = f.input :name
+    .col-md-3
+      = f.association :vehicle_service, prompt: 'selecione...'
+    .col-md-3
+      = f.input :vehicle_type, as: 'select', collection: Vehicle.vehicle_types.keys.to_a, prompt: 'selecione...'
+  .row
+    .col-md-4
+      = f.association :vehicle_category, prompt: 'selecione...'
+    .col-md-2
+      = f.input :acquired, as: 'string',input_html: { class: 'date', value: (f.object.acquired.present?) ? localize(f.object.acquired) : nil }
+    .col-md-3
+      = f.input :state
+    .col-md-2
+      = f.input :fuel
+  .row
+    .col-md-6
+      = f.input :description
+    .col-md-6
+      = f.input :observations
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

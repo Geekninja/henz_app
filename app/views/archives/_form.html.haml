@@ -1,0 +1,17 @@
+= simple_form_for([@project, @archive]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-6
+      = f.input :name
+    .col-md-6
+      = f.input :file_path, as: 'file'
+  .row
+    .col-md-6
+      = f.input :description
+    .col-md-6
+      = f.input :observation
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

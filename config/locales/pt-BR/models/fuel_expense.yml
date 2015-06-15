@@ -1,0 +1,15 @@
+pt-BR:
+ activerecord:
+  models:
+   fuel_expense: 'Gasto com combustível'
+  attributes:
+   fuel_expense:
+    vehicle: "veículo"
+    gas_station: 'posto de combustível'
+    km_start: 'km início'
+    km_end: 'km fim'
+    fuel_price_lt: 'preço combustível lt'
+    date: 'data'
+    observations: 'observações'
+    status: 'efetivado'
+

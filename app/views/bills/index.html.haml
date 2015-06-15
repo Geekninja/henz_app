@@ -2,11 +2,11 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
-        bills
+        Contas
         = link_to 'Nova conta', new_project_bill_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.general-table.datatable
+        %table.table.table-hover.general-table.datatable.table-condensed
           %thead
             %tr
               %th.col-md-2
@@ -16,35 +16,29 @@
               %th.col-md-2
                 Nome
               %th.col-md-2
+                Vencimento
+              %th.col-md-2
                 Valor
               %th.col-md-2
-                Fornecedor
-              %th.col-md-2
                 Status
-              %th.col-md-2
+              %th.col-md-3
                 Ações
           %tbody
-            %tr
-              - @bills.each do |bill|
+            - @bills.each do |bill|
+              %tr
 
-                %td.col-md-8
-                  =bill.bill_type
-                %td.col-md-8
-                  =bill.bill_category
-                %td.col-md-8
-                  =bill.project
-                %td.col-md-8
-                  =bill.name
-                %td.col-md-8
-                  =bill.description
-                %td.col-md-8
-                  =bill.status
-                %td.col-md-8
-                  =bill.value
-                %td.col-md-8
-                  =bill.supplier
-                %td.col-md-8
-                  =bill.observation
                 %td.col-md-1
-                  = link_to 'Editar', edit_bill_path(bill), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', bill, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                  = bill_type bill.bill_type
+                %td.col-md-1
+                  =bill.bill_category.name if bill.bill_category.present?
+                %td.col-md-1
+                  =bill.name
+                %td.col-md-2
+                  =bill.deadline.strftime('%d/%m/%Y')
+                %td.col-md-2
+                  = "R$ #{bill.value}"
+                %td.col-md-2
+                  =bill.status
+                %td.col-md-3
+                  = link_to 'Editar', edit_project_bill_path(project_id: @project, id: bill), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_bill_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

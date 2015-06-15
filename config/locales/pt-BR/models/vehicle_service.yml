@@ -1,0 +1,8 @@
+pt-BR:
+ activerecord:
+  models:
+   vehicle_service: 'Serviço de Veículo'
+  attributes:
+   vehicle_service:
+    name: "nome"
+

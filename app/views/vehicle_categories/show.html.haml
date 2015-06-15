@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @vehicle_category.name
+%p
+  %b Status:
+  = @vehicle_category.status
+
+= link_to 'Edit', edit_vehicle_category_path(@vehicle_category)
+\|
+= link_to 'Back', vehicle_categories_path

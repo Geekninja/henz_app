@@ -1,0 +1,8 @@
+pt-BR:
+ activerecord:
+  models:
+   vehicle_category: 'Categorias de Veículo'
+  attributes:
+   vehicle_category:
+    name: "nome"
+

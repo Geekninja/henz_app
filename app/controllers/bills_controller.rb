@@ -1,9 +1,9 @@
 class BillsController < ApplicationController
-  before_action :set_bill, only: [:show, :edit, :update, :destroy]
   before_action :set_project
+  before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bills = Bill.all
+    @bills = @project.bills
   end
 
   # GET /bills/1
@@ -12,7 +12,7 @@ class BillsController < ApplicationController
 
   # GET /bills/new
   def new
-    @bill = Bill.new
+    @bill = @project.bills.new
   end
 
   # GET /bills/1/edit
@@ -21,10 +21,11 @@ class BillsController < ApplicationController
 
   # POST /bills
   def create
-    @bill = Bill.new(bill_params)
+    @bill = @project.bills.new(bill_params)
 
     if @bill.save
-      redirect_to @bill, notice: 'Bill was successfully created.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +34,8 @@ class BillsController < ApplicationController
   # PATCH/PUT /bills/1
   def update
     if @bill.update(bill_params)
-      redirect_to @bill, notice: 'Bill was successfully updated.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -41,17 +43,19 @@ class BillsController < ApplicationController
 
   # DELETE /bills/1
   def destroy
-    @bill.destroy
-    redirect_to bills_url, notice: 'Bill was successfully destroyed.'
+    if @bill.destroy
+      flash[:success] = t :success
+      redirect_to action: 'index'
+    end
   end
 
   private
     def set_bill
-      @bill = Bill.find(params[:id])
+      @bill =  @project.bills.find(params[:id])
     end
 
     def bill_params
-      params.require(:bill).permit(:bill_type, :bill_category_id, :project_id, :name, :description, :status, :value, :supplier_id, :observation)
+      params.require(:bill).permit(:bill_type, :deadline, :bill_category_id, :project_id, :name, :description, :status, :value, :supplier_id, :observation)
     end
 
     def set_project

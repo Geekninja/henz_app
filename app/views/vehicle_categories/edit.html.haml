@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Editar Categoria de Veículo
+        = link_to 'Voltar', vehicle_categories_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

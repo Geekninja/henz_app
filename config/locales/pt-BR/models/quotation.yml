@@ -1,0 +1,14 @@
+pt-BR:
+ activerecord:
+  models:
+   quotation: 'Cotação'
+  attributes:
+   quotation:
+    name: "nome"
+    description: 'descrição'
+    project: 'projeto'
+    responsible: 'responsável'
+    description: 'descrição'
+    date: 'data'
+    status: 'executada'
+  

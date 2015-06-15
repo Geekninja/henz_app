@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Editar serviço de veículo
+        = link_to 'Voltar', vehicle_services_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

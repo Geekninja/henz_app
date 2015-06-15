@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615004516) do
+ActiveRecord::Schema.define(version: 20150615031125) do
+
+  create_table "archives", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.string   "description"
+    t.string   "observation"
+    t.string   "file_path"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "archives", ["project_id"], name: "index_archives_on_project_id"
 
   create_table "beneficts", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150615004516) do
     t.string   "value"
     t.integer  "supplier_id"
     t.text     "observation"
+    t.date     "deadline"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -71,6 +84,38 @@ ActiveRecord::Schema.define(version: 20150615004516) do
 
   add_index "budgets", ["quotation_id"], name: "index_budgets_on_quotation_id"
   add_index "budgets", ["supplier_id"], name: "index_budgets_on_supplier_id"
+
+  create_table "fuel_expenses", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "vehicle_id"
+    t.integer  "gas_station_id"
+    t.integer  "km_start"
+    t.integer  "km_end"
+    t.float    "fuel_price_lt"
+    t.date     "date"
+    t.boolean  "status"
+    t.text     "observations"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "fuel_expenses", ["gas_station_id"], name: "index_fuel_expenses_on_gas_station_id"
+  add_index "fuel_expenses", ["project_id"], name: "index_fuel_expenses_on_project_id"
+  add_index "fuel_expenses", ["vehicle_id"], name: "index_fuel_expenses_on_vehicle_id"
+
+  create_table "gas_stations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "city"
+    t.string   "state"
+    t.string   "geolocation"
+    t.text     "observation"
+    t.integer  "project_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "gas_stations", ["project_id"], name: "index_gas_stations_on_project_id"
 
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
@@ -244,5 +289,38 @@ ActiveRecord::Schema.define(version: 20150615004516) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "vehicle_categories", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicle_services", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "name"
+    t.string   "description"
+    t.integer  "vehicle_service_id"
+    t.integer  "vehicle_type"
+    t.integer  "vehicle_category_id"
+    t.text     "observations"
+    t.date     "acquired"
+    t.string   "state"
+    t.string   "fuel"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "vehicles", ["project_id"], name: "index_vehicles_on_project_id"
+  add_index "vehicles", ["vehicle_category_id"], name: "index_vehicles_on_vehicle_category_id"
+  add_index "vehicles", ["vehicle_service_id"], name: "index_vehicles_on_vehicle_service_id"
 
 end

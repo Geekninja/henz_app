@@ -1,9 +1,10 @@
 class QuotationsController < ApplicationController
+  before_action :set_project
   before_action :set_quotation, only: [:show, :edit, :update, :destroy]
 
   # GET /quotations
   def index
-    @quotations = Quotation.all
+    @quotations = @project.quotations.all
   end
 
   # GET /quotations/1
@@ -12,7 +13,7 @@ class QuotationsController < ApplicationController
 
   # GET /quotations/new
   def new
-    @quotation = Quotation.new
+    @quotation = @project.quotations.new
   end
 
   # GET /quotations/1/edit
@@ -21,10 +22,11 @@ class QuotationsController < ApplicationController
 
   # POST /quotations
   def create
-    @quotation = Quotation.new(quotation_params)
+    @quotation = @project.quotations.new(quotation_params)
 
     if @quotation.save
-      redirect_to @quotation, notice: 'Quotation was successfully created.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +35,8 @@ class QuotationsController < ApplicationController
   # PATCH/PUT /quotations/1
   def update
     if @quotation.update(quotation_params)
-      redirect_to @quotation, notice: 'Quotation was successfully updated.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -41,14 +44,20 @@ class QuotationsController < ApplicationController
 
   # DELETE /quotations/1
   def destroy
-    @quotation.destroy
-    redirect_to quotations_url, notice: 'Quotation was successfully destroyed.'
+    if @quotation.destroy
+      flash[:success] = t :success
+      redirect_to action: 'index'
+    end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quotation
-      @quotation = Quotation.find(params[:id])
+      @quotation = @project.quotations.find(params[:id])
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     # Only allow a trusted parameter "white list" through.

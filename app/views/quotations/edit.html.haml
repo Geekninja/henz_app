@@ -2,7 +2,7 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
-        Editar quotation
-        = link_to 'Voltar', quotations_path, class: 'btn btn-default btn-xs pull-right'
+        editar cotação
+        = link_to 'Voltar', project_quotations_path(@project), class: 'btn btn-default btn-xs pull-right'
       .panel-body
         = render 'form'
