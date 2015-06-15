@@ -1,0 +1,30 @@
+= simple_form_for(@supplier) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+      = f.input :cnpj
+      = f.input :state_number
+      = f.input :city_number
+      = f.input :city
+      = f.input :state
+      = f.input :cep
+      = f.input :contact_name_1
+      = f.input :contact_name_2
+      = f.input :contact_name_3
+      = f.input :contact_telphone_2
+      = f.input :contact_telphone_2
+      = f.input :contact_telphone_3
+      = f.input :contact_email_1
+      = f.input :contact_email_2
+      = f.input :contact_email_3
+      = f.input :telphone
+      = f.input :telphone_optional
+      = f.input :email
+      = f.input :email_optional
+      = f.input :observations
+
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

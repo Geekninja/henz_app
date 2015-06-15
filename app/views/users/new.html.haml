@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Novo usuário
+        = link_to 'Voltar', users_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

@@ -40,7 +40,7 @@
       = f.association :office_support, prompt: 'selecione o ponto de apoio...'
   .row
     .col-md-2
-      = f.input :born, as: 'string'
+      = f.input :born, as: 'string', input_html: { class: 'date', value: (f.object.born.present?) ? localize(f.object.born) : nil }
     .col-md-2
       = f.input :salary
     .col-md-4

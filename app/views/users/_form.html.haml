@@ -1,0 +1,21 @@
+= simple_form_for @user do |f|
+  .row
+    .col-md-6
+      = f.input :name
+    .col-md-6
+      = f.input :email
+  - if @user.new_record?
+    .row
+      .col-md-6
+        = f.input :password
+      .col-md-6
+        = f.input :password_confirmation
+  .row
+    .col-md-3
+      = f.input :status
+    .col-md-3
+      = f.input :administrator
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

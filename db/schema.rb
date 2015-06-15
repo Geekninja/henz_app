@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150530140253) do
+ActiveRecord::Schema.define(version: 20150615004516) do
 
   create_table "beneficts", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,55 @@ ActiveRecord::Schema.define(version: 20150530140253) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
+
+  create_table "bill_categories", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bills", force: :cascade do |t|
+    t.integer  "bill_type"
+    t.integer  "bill_category_id"
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "status"
+    t.string   "value"
+    t.integer  "supplier_id"
+    t.text     "observation"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "bills", ["bill_category_id"], name: "index_bills_on_bill_category_id"
+  add_index "bills", ["project_id"], name: "index_bills_on_project_id"
+  add_index "bills", ["supplier_id"], name: "index_bills_on_supplier_id"
+
+  create_table "budget_products", force: :cascade do |t|
+    t.integer  "budget_id"
+    t.string   "name"
+    t.integer  "quantity"
+    t.string   "value"
+    t.text     "observation"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "budget_products", ["budget_id"], name: "index_budget_products_on_budget_id"
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer  "quotation_id"
+    t.integer  "supplier_id"
+    t.date     "date"
+    t.integer  "status"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "budgets", ["quotation_id"], name: "index_budgets_on_quotation_id"
+  add_index "budgets", ["supplier_id"], name: "index_budgets_on_supplier_id"
 
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
@@ -54,6 +103,7 @@ ActiveRecord::Schema.define(version: 20150530140253) do
   add_index "office_supports", ["responsible_id"], name: "index_office_supports_on_responsible_id"
 
   create_table "offices", force: :cascade do |t|
+    t.string   "name"
     t.string   "cep"
     t.integer  "responsible_id"
     t.string   "geolocation"
@@ -93,6 +143,20 @@ ActiveRecord::Schema.define(version: 20150530140253) do
 
   add_index "projects", ["project_category_id"], name: "index_projects_on_project_category_id"
   add_index "projects", ["responsible_id"], name: "index_projects_on_responsible_id"
+
+  create_table "quotations", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "date"
+    t.integer  "project_id"
+    t.integer  "responsible_id"
+    t.boolean  "status"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "quotations", ["project_id"], name: "index_quotations_on_project_id"
+  add_index "quotations", ["responsible_id"], name: "index_quotations_on_responsible_id"
 
   create_table "sectors", force: :cascade do |t|
     t.string   "name"
@@ -135,19 +199,47 @@ ActiveRecord::Schema.define(version: 20150530140253) do
   add_index "staffs", ["project_id"], name: "index_staffs_on_project_id"
   add_index "staffs", ["sector_id"], name: "index_staffs_on_sector_id"
 
+  create_table "suppliers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "cnpj"
+    t.string   "state_number"
+    t.string   "city_number"
+    t.string   "city"
+    t.string   "state"
+    t.string   "cep"
+    t.string   "contact_name_1"
+    t.string   "contact_name_2"
+    t.string   "contact_name_3"
+    t.string   "contact_telphone_2"
+    t.string   "contact_telphone_3"
+    t.string   "contact_email_1"
+    t.string   "contact_email_2"
+    t.string   "contact_email_3"
+    t.string   "telphone"
+    t.string   "telphone_optional"
+    t.string   "email"
+    t.string   "email_optional"
+    t.string   "observations"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.string   "name"
+    t.boolean  "status",                 default: true
+    t.boolean  "administrator",          default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

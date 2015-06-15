@@ -32,7 +32,7 @@
                 %td
                   =sector.acron
                 %td
-                  =sector.responsible
+                  =sector.responsible.name if sector.responsible.present?
                 %td
                   = status_helper sector.status
                 %td.col-md-2

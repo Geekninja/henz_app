@@ -5,7 +5,7 @@
     .col-md-6
       = f.association :project_category, prompt: 'selecione a categoria...'
     .col-md-6
-      = f.input :priority
+      = f.input :priority, as: 'select', collection: Project.priorities.keys.to_a, prompt: 'selecione...'
   .row
     .col-md-12
       = f.input :name
@@ -18,10 +18,11 @@
     .col-md-4
       = f.input :geolocation
     .col-md-4
-      = f.association :responsible
+      = f.association :responsible, prompt: 'selecione...'
   .row
     .col-md-12
       = f.input :observation
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

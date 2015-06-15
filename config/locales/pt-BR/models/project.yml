@@ -1,0 +1,14 @@
+pt-BR:
+ activerecord:
+  models:
+   project: 'Obra'
+  attributes:
+   project:
+    project_category: "categoria de projeto"
+    priority: 'prioridade'
+    description: 'descrição'
+    local: 'local'
+    geolocation: 'geolocalização'
+    responsible: 'responsável'
+    observation: 'observação'
+

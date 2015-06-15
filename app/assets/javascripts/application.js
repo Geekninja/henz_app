@@ -8,5 +8,6 @@
 //= require bucket/js/nicescroll/jquery.nicescroll
 //= require bucket/assets/skycons/skycons
 //= require bucket/assets/jquery.scrollTo/jquery.scrollTo
+//= require bucket/js/mask/jquery.mask.min
 //= require bucket/js/scripts
 

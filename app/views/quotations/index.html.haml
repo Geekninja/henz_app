@@ -1,0 +1,42 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        quotations
+        = link_to 'Nova Quotation', new_quotation_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Name
+              %th.col-md-2
+                Description
+              %th.col-md-2
+                Date
+              %th.col-md-2
+                Project
+              %th.col-md-2
+                Responsible
+              %th.col-md-2
+                Status
+          %tbody
+            %tr
+              - @quotations.each do |quotation|
+
+                %td.col-md-8
+                  =quotation.name
+                %td.col-md-8
+                  =quotation.description
+                %td.col-md-8
+                  =quotation.date
+                %td.col-md-8
+                  =quotation.project
+                %td.col-md-8
+                  =quotation.responsible
+                %td.col-md-8
+                  =quotation.status
+                %td.col-md-1
+                  = link_to 'Editar', edit_quotation_path(quotation), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', quotation, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

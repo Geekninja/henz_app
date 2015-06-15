@@ -3,7 +3,7 @@ class SectorsController < ApplicationController
 
   # GET /sectors
   def index
-    @sectors = Sector.all
+    @sectors = Sector.unscoped.all
   end
 
   # GET /sectors/1
@@ -52,7 +52,7 @@ class SectorsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_sector
-      @sector = Sector.find(params[:id])
+      @sector = Sector.unscoped.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

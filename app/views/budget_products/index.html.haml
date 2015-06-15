@@ -1,0 +1,38 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        budget_products
+        = link_to 'Nova Budget product', new_budget_product_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Budget
+              %th.col-md-2
+                Name
+              %th.col-md-2
+                Quantity
+              %th.col-md-2
+                Value
+              %th.col-md-2
+                Observation
+          %tbody
+            %tr
+              - @budget_products.each do |budget_product|
+
+                %td.col-md-8
+                  =budget_product.budget
+                %td.col-md-8
+                  =budget_product.name
+                %td.col-md-8
+                  =budget_product.quantity
+                %td.col-md-8
+                  =budget_product.value
+                %td.col-md-8
+                  =budget_product.observation
+                %td.col-md-1
+                  = link_to 'Editar', edit_budget_product_path(budget_product), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', budget_product, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

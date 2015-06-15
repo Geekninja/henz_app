@@ -24,7 +24,8 @@ class OfficesController < ApplicationController
     @office = Office.new(office_params)
 
     if @office.save
-      redirect_to @office, notice: 'Office was successfully created.'
+      flash[:sucess] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +34,8 @@ class OfficesController < ApplicationController
   # PATCH/PUT /offices/1
   def update
     if @office.update(office_params)
-      redirect_to @office, notice: 'Office was successfully updated.'
+     flash[:sucess] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -41,8 +43,10 @@ class OfficesController < ApplicationController
 
   # DELETE /offices/1
   def destroy
-    @office.destroy
-    redirect_to offices_url, notice: 'Office was successfully destroyed.'
+    if @office.destroy
+     flash[:sucess] = t :success
+      redirect_to action: 'index'
+    end
   end
 
   private
@@ -53,6 +57,6 @@ class OfficesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def office_params
-      params.require(:office).permit(:cep, :responsible_id, :geolocation, :city, :state, :telphone, :telphone_optional, :email, :email_optional, :project_id)
+      params.require(:office).permit(:name, :cep, :responsible_id, :geolocation, :city, :state, :telphone, :telphone_optional, :email, :email_optional, :project_id)
     end
 end

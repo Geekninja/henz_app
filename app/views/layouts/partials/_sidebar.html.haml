@@ -4,18 +4,17 @@
     .leftside-navigation{:style => "overflow: hidden; outline: none;", :tabindex => "5000"}
       %ul#nav-accordion.sidebar-menu
         %li
-          %a.active{:href => "index.html"}
-            %i.fa.fa-dashboard
-            %span Dashboard
+          = link_to "<i class='fa fa-dashboard'></i><span>Dashboard</span>".html_safe
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-laptop
             %span Contas
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar"
-            %li= link_to "à pagar"
-            %li= link_to "à receber"
+            %li= link_to "nova conta", new_project_bill_path(@project)
+            %li= link_to "gerenciar", project_bills_path(@project)
+            %li= link_to "categorias", project_bill_categories_path(@project)
+            %li= link_to "relatórios (definir)"
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-book

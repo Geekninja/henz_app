@@ -48,8 +48,8 @@
     %ul.nav.navbar-nav
       %li.dropdown
         %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
-          Nome do usuário
+          = current_user.email
           %b.fa.fa-angle-down
         %ul.dropdown-menu
           %li
-            = link_to "Sair", users_path
+            = link_to "Sair", destroy_user_session_path, method: :delete

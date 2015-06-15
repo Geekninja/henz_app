@@ -1,0 +1,13 @@
+= simple_form_for(@budget) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.association :quotation
+      = f.association :supplier
+      = f.input :date
+      = f.input :status
+
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

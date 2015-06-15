@@ -1,0 +1,26 @@
+= simple_form_for([@project, @bill]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-2
+      = f.input :bill_type, as: 'select', collection: Bill.bill_types.keys.to_a, prompt: 'selecione...'
+    .col-md-4
+      = f.association :bill_category, prompt: 'selecione...'
+    .col-md-6
+      = f.association :project, prompt: 'selecione...'
+  .row
+    .col-md-6
+      = f.input :name
+    .col-md-6
+      = f.input :description
+  .row
+    .col-md-2
+      = f.input :value
+    .col-md-4
+      = f.association :supplier, prompt: 'selecione...'
+    .col-md-6
+      = f.input :observation
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

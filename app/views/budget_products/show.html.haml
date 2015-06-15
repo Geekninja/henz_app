@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Budget:
+  = @budget_product.budget
+%p
+  %b Name:
+  = @budget_product.name
+%p
+  %b Quantity:
+  = @budget_product.quantity
+%p
+  %b Value:
+  = @budget_product.value
+%p
+  %b Observation:
+  = @budget_product.observation
+
+= link_to 'Edit', edit_budget_product_path(@budget_product)
+\|
+= link_to 'Back', budget_products_path

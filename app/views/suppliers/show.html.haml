@@ -1,0 +1,69 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @supplier.name
+%p
+  %b Cnpj:
+  = @supplier.cnpj
+%p
+  %b State number:
+  = @supplier.state_number
+%p
+  %b City number:
+  = @supplier.city_number
+%p
+  %b City:
+  = @supplier.city
+%p
+  %b State:
+  = @supplier.state
+%p
+  %b Cep:
+  = @supplier.cep
+%p
+  %b Contact name 1:
+  = @supplier.contact_name_1
+%p
+  %b Contact name 2:
+  = @supplier.contact_name_2
+%p
+  %b Contact name 3:
+  = @supplier.contact_name_3
+%p
+  %b Contact telphone 2:
+  = @supplier.contact_telphone_2
+%p
+  %b Contact telphone 2:
+  = @supplier.contact_telphone_2
+%p
+  %b Contact telphone 3:
+  = @supplier.contact_telphone_3
+%p
+  %b Contact email 1:
+  = @supplier.contact_email_1
+%p
+  %b Contact email 2:
+  = @supplier.contact_email_2
+%p
+  %b Contact email 3:
+  = @supplier.contact_email_3
+%p
+  %b Telphone:
+  = @supplier.telphone
+%p
+  %b Telphone optional:
+  = @supplier.telphone_optional
+%p
+  %b Email:
+  = @supplier.email
+%p
+  %b Email optional:
+  = @supplier.email_optional
+%p
+  %b Observations:
+  = @supplier.observations
+
+= link_to 'Edit', edit_supplier_path(@supplier)
+\|
+= link_to 'Back', suppliers_path

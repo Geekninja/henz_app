@@ -2,20 +2,35 @@
   = f.error_notification
 
   .row
-    .col-md-12
+    .col-md-8
       = f.input :name
-      = f.input :local
-      = f.association :responsible
-      = f.input :geolocation
-      = f.input :observation
-      = f.association :project
-      = f.association :office
-      = f.input :telphone
-      = f.input :telphone_optional
-      = f.input :city
-      = f.input :state
+    .col-md-4
       = f.input :email
-
+  .row
+    .col-md-3
+      = f.input :local
+    .col-md-3
+      = f.association :responsible
+    .col-md-2
+      = f.input :geolocation
+    .col-md-4
+      = f.association :project
+  .row
+    .col-md-4
+      = f.association :office
+    .col-md-2
+      = f.input :telphone
+    .col-md-2
+      = f.input :telphone_optional
+    .col-md-2
+      = f.input :city
+    .col-md-2
+      = f.input :state
+  .row
+    .col-md-12
+      = f.input :observation
+     
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

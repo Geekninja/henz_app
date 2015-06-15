@@ -1,0 +1,34 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        budgets
+        = link_to 'Nova Budget', new_budget_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Quotation
+              %th.col-md-2
+                Supplier
+              %th.col-md-2
+                Date
+              %th.col-md-2
+                Status
+          %tbody
+            %tr
+              - @budgets.each do |budget|
+
+                %td.col-md-8
+                  =budget.quotation
+                %td.col-md-8
+                  =budget.supplier
+                %td.col-md-8
+                  =budget.date
+                %td.col-md-8
+                  =budget.status
+                %td.col-md-1
+                  = link_to 'Editar', edit_budget_path(budget), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', budget, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

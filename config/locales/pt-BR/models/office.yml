@@ -1,0 +1,18 @@
+pt-BR:
+ activerecord:
+  models:
+   office: 'Escritório'
+  attributes:
+   office:
+    name: "nome"
+    cep: 'CEP'
+    responsible: 'responsável'
+    geolocation: 'geolocalização'
+    city: 'cidade'
+    state: 'estado'
+    telphone: 'telefone'
+    telphone_optional: 'telefone opcional'
+    email: 'e-mail'
+    email_optional: 'e-mail opcional'
+    project: 'projeto'
+

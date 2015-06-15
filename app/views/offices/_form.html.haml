@@ -3,17 +3,30 @@
 
   .row
     .col-md-12
+      = f.input :name
+  .row
+    .col-md-2
       = f.input :cep
-      = f.association :responsible
-      = f.input :geolocation
+    .col-md-4
+      = f.association :responsible, prompt: 'selecione o responsável...'
+    .col-md-2
+      = f.input :geolocation, input_html: { placeholder: 'x,y'}
+    .col-md-2
       = f.input :city
+    .col-md-2
       = f.input :state
+  .row
+    .col-md-2
       = f.input :telphone
+    .col-md-2
       = f.input :telphone_optional
+    .col-md-2
       = f.input :email
+    .col-md-2
       = f.input :email_optional
-      = f.association :project
-
+    .col-md-4
+      = f.association :project, prompt: 'selecione o projeto...'
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

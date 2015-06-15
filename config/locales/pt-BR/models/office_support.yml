@@ -1,0 +1,17 @@
+pt-BR:
+ activerecord:
+  models:
+   office_support: 'Escritório de apoio'
+  attributes:
+   office_support:
+    name: "nome"
+    responsible: 'responsável'
+    geolocation: 'geolocalização'
+    city: 'cidade'
+    state: 'estado'
+    telphone: 'telefone'
+    telphone_optional: 'telefone opcional'
+    email: 'e-mail'
+    project: 'projeto'
+    observation: 'observação'
+

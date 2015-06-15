@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @quotation.name
+%p
+  %b Description:
+  = @quotation.description
+%p
+  %b Date:
+  = @quotation.date
+%p
+  %b Project:
+  = @quotation.project
+%p
+  %b Responsible:
+  = @quotation.responsible
+%p
+  %b Status:
+  = @quotation.status
+
+= link_to 'Edit', edit_quotation_path(@quotation)
+\|
+= link_to 'Back', quotations_path

@@ -8,7 +8,7 @@
     = csrf_meta_tags
   %body
     %section#container
-      = render 'layouts/partials/nav'
+      = render 'layouts/partials/nav' if user_signed_in?
       = render 'layouts/partials/sidebar' if @project_context
       - if @project_context
         %section#main-content 

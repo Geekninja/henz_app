@@ -1,0 +1,37 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        usuários
+        = link_to 'Novo usuário', new_user_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-3
+                nome
+              %th.col-md-2
+                e-mail
+              %th.col-md-2
+                último acesso
+              %th.col-md-1
+                criação
+              %th.col-md-1
+                tipo
+              %th.col-md-1
+                status
+              %th.col-md-2
+                ações
+          %tbody
+          - @users.each do |u|
+            %tr
+              %td= u.name
+              %td= u.email
+              %td= u.last_sign_in_at.strftime('%d/%m/%Y às %H:%M') if u.last_sign_in_at.present?
+              %td= u.created_at.strftime('%d/%m/%Y')
+              %td= (u.administrator) ? "<span class='label label-info'>administrator</span>".html_safe : "<span class='label label-default'>normal</span>".html_safe
+              %td= status_helper u.status
+              %td 
+                = link_to 'editar', edit_user_path(u), class: 'btn btn-info btn-xs'
+                = link_to 'remover', u, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs' if current_user.id != u.id

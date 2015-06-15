@@ -3,7 +3,9 @@
     %section.panel
       %header.panel-heading
         projects
-        = link_to 'Nova Project', new_project_path, class: 'btn btn-success btn-xs pull-right'
+        .pull-right
+          = link_to 'Categorias', project_categories_path, class: 'btn btn-warning btn-xs'
+          = link_to 'Nova Obra', new_project_path, class: 'btn btn-success btn-xs'
       .panel-body
 
         %table.table.table-hover.general-table.datatable
@@ -28,11 +30,11 @@
                 %td.col-md-2
                   =project.name
                 %td.col-md-2
-                  =project.project_category if project.project_category.present?
+                  =project.project_category.name if project.project_category.present?
                 %td.col-md-2
                   =project.local
                 %td.col-md-2
-                  =project.responsible
+                  =project.responsible.name if project.responsible.present?
                 %td.col-md-2
                   =project.priority
                 %td.col-md-2

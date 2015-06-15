@@ -2,65 +2,39 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
-        office_supports
-        = link_to 'Nova Office support', new_office_support_path, class: 'btn btn-success btn-xs pull-right'
+        Escritórios de apoio
+        = link_to 'Novo Escritório de suporte', new_office_support_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
         %table.table.table-hover.general-table.datatable
           %thead
             %tr
               %th.col-md-2
-                Name
+                Nome
               %th.col-md-2
-                Local
+                Cidade/Estado
               %th.col-md-2
-                Responsible
+                Responsável
               %th.col-md-2
-                Geolocation
+                Telefone
               %th.col-md-2
-                Observation
+                E-mail
               %th.col-md-2
-                Project
-              %th.col-md-2
-                Office
-              %th.col-md-2
-                Telphone
-              %th.col-md-2
-                Telphone optional
-              %th.col-md-2
-                City
-              %th.col-md-2
-                State
-              %th.col-md-2
-                Email
+                Ações
           %tbody
             %tr
               - @office_supports.each do |office_support|
 
-                %td.col-md-8
+                %td.col-md-2
                   =office_support.name
-                %td.col-md-8
-                  =office_support.local
-                %td.col-md-8
-                  =office_support.responsible
-                %td.col-md-8
-                  =office_support.geolocation
-                %td.col-md-8
-                  =office_support.observation
-                %td.col-md-8
-                  =office_support.project
-                %td.col-md-8
-                  =office_support.office
-                %td.col-md-8
+                %td.col-md-2
+                  = "#{office_support.city}/#{office_support.state}"
+                %td.col-md-2
+                  =office_support.responsible.name if office_support.responsible.present?
+                %td.col-md-2
                   =office_support.telphone
-                %td.col-md-8
-                  =office_support.telphone_optional
-                %td.col-md-8
-                  =office_support.city
-                %td.col-md-8
-                  =office_support.state
-                %td.col-md-8
+                %td.col-md-2
                   =office_support.email
-                %td.col-md-1
+                %td.col-md-3
                   = link_to 'Editar', edit_office_support_path(office_support), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', office_support, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

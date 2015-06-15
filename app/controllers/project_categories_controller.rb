@@ -24,7 +24,8 @@ class ProjectCategoriesController < ApplicationController
     @project_category = ProjectCategory.new(project_category_params)
 
     if @project_category.save
-      redirect_to @project_category, notice: 'Project category was successfully created.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +34,8 @@ class ProjectCategoriesController < ApplicationController
   # PATCH/PUT /project_categories/1
   def update
     if @project_category.update(project_category_params)
-      redirect_to @project_category, notice: 'Project category was successfully updated.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -41,8 +43,10 @@ class ProjectCategoriesController < ApplicationController
 
   # DELETE /project_categories/1
   def destroy
-    @project_category.destroy
-    redirect_to project_categories_url, notice: 'Project category was successfully destroyed.'
+    if @project_category.destroy
+      flash[:success] = t :success
+      redirect_to action: 'index'
+    end
   end
 
   private

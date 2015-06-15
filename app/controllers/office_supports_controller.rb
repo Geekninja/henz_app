@@ -24,7 +24,8 @@ class OfficeSupportsController < ApplicationController
     @office_support = OfficeSupport.new(office_support_params)
 
     if @office_support.save
-      redirect_to @office_support, notice: 'Office support was successfully created.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +34,8 @@ class OfficeSupportsController < ApplicationController
   # PATCH/PUT /office_supports/1
   def update
     if @office_support.update(office_support_params)
-      redirect_to @office_support, notice: 'Office support was successfully updated.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -41,8 +43,10 @@ class OfficeSupportsController < ApplicationController
 
   # DELETE /office_supports/1
   def destroy
-    @office_support.destroy
-    redirect_to office_supports_url, notice: 'Office support was successfully destroyed.'
+    if @office_support.destroy
+      flash[:success] = t :success
+      redirect_to action: 'index'
+    end
   end
 
   private

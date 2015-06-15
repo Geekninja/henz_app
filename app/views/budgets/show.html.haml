@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Quotation:
+  = @budget.quotation
+%p
+  %b Supplier:
+  = @budget.supplier
+%p
+  %b Date:
+  = @budget.date
+%p
+  %b Status:
+  = @budget.status
+
+= link_to 'Edit', edit_budget_path(@budget)
+\|
+= link_to 'Back', budgets_path

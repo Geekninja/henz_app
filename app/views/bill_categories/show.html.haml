@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @bill_category.name
+%p
+  %b Status:
+  = @bill_category.status
+
+= link_to 'Edit', edit_bill_category_path(@bill_category)
+\|
+= link_to 'Back', bill_categories_path

@@ -1,0 +1,50 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        bills
+        = link_to 'Nova conta', new_project_bill_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Tipo
+              %th.col-md-2
+                Categoria
+              %th.col-md-2
+                Nome
+              %th.col-md-2
+                Valor
+              %th.col-md-2
+                Fornecedor
+              %th.col-md-2
+                Status
+              %th.col-md-2
+                Ações
+          %tbody
+            %tr
+              - @bills.each do |bill|
+
+                %td.col-md-8
+                  =bill.bill_type
+                %td.col-md-8
+                  =bill.bill_category
+                %td.col-md-8
+                  =bill.project
+                %td.col-md-8
+                  =bill.name
+                %td.col-md-8
+                  =bill.description
+                %td.col-md-8
+                  =bill.status
+                %td.col-md-8
+                  =bill.value
+                %td.col-md-8
+                  =bill.supplier
+                %td.col-md-8
+                  =bill.observation
+                %td.col-md-1
+                  = link_to 'Editar', edit_bill_path(bill), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', bill, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

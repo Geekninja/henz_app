@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Bill type:
+  = @bill.bill_type
+%p
+  %b Bill category:
+  = @bill.bill_category
+%p
+  %b Project:
+  = @bill.project
+%p
+  %b Name:
+  = @bill.name
+%p
+  %b Description:
+  = @bill.description
+%p
+  %b Status:
+  = @bill.status
+%p
+  %b Value:
+  = @bill.value
+%p
+  %b Supplier:
+  = @bill.supplier
+%p
+  %b Observation:
+  = @bill.observation
+
+= link_to 'Edit', edit_bill_path(@bill)
+\|
+= link_to 'Back', bills_path

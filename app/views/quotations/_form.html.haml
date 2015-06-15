@@ -1,0 +1,15 @@
+= simple_form_for(@quotation) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+      = f.input :description
+      = f.input :date
+      = f.association :project
+      = f.association :responsible
+      = f.input :status
+
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
