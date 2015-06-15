@@ -27,3 +27,7 @@ group :development, :test do
   gem 'guard-livereload'
 end
 
+group :production do 
+  gem 'unicorn'
+end
+
