@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
 
+  
   devise_for :users, controllers: {
     sessions: 'sessions'
   }
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     resources :project_categories
 
     resources :projects, path: 'projetos' do 
+      resources :project_funds
       resources :vehicles
       resources :archives
       resources :fuel_expenses

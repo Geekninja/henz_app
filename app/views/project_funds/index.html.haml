@@ -1,0 +1,54 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        project_funds
+        = link_to 'Nova Project fund', new_project_fund_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable
+          %thead
+            %tr
+              %th.col-md-2
+                Project
+              %th.col-md-2
+                Value
+              %th.col-md-2
+                Date
+              %th.col-md-2
+                Month
+              %th.col-md-2
+                Year
+              %th.col-md-2
+                Title
+              %th.col-md-2
+                Description
+              %th.col-md-2
+                Observations
+              %th.col-md-2
+                Status
+          %tbody
+            %tr
+              - @project_funds.each do |project_fund|
+
+                %td.col-md-8
+                  =project_fund.project
+                %td.col-md-8
+                  =project_fund.value
+                %td.col-md-8
+                  =project_fund.date
+                %td.col-md-8
+                  =project_fund.month
+                %td.col-md-8
+                  =project_fund.year
+                %td.col-md-8
+                  =project_fund.title
+                %td.col-md-8
+                  =project_fund.description
+                %td.col-md-8
+                  =project_fund.observations
+                %td.col-md-8
+                  =project_fund.status
+                %td.col-md-1
+                  = link_to 'Editar', edit_project_fund_path(project_fund), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_fund, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

@@ -21,8 +21,34 @@
   .row
     .col-md-4
       = f.association :supplier, prompt: 'selecione...'
- 
+  %hr/
+  #item
+    .row
+      .col-md-2
+        = select_tag :item_type, options_from_collection_for_select(%w(produto serviço))
+      .col-md-6
+        = text_field  :item_title, input_html: { name: "item_title[]"}
+      .col-md-2
+        = text_field :item_quantity, input_html: { name: "item_quantity[]"}
+      .col-md-2
+        = text_field  :item_value, input_html: { name: "item_value[]"}
+    .row
+      .col-md-2
+        = link_to "adicionar item", '#', {id: "add_item", class: 'btn btn-success btn-xs'}
+
   %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
+
+
+
+
+:javascript
+
+  $(document).ready(function(){
+    html = "#{render 'new_item'}"
+    $("#add_item").on('click', function(){
+      $("#item").append(html);
+    })
+  })
