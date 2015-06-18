@@ -13,4 +13,9 @@ pt-BR:
     supplier: 'fornecedor'
     observation: 'observação'
     deadline: 'vencimento'
+    item_type: "tipo do item"
+    item_title: "titulo do item"
+    item_quantity: "quantidade"
+    item_value: "valor"
+
   

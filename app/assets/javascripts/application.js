@@ -10,4 +10,5 @@
 //= require bucket/assets/jquery.scrollTo/jquery.scrollTo
 //= require bucket/js/mask/jquery.mask.min
 //= require bucket/js/scripts
+//= require custom
 

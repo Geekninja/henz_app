@@ -1,33 +1,75 @@
-%p#notice= notice
-
-%p
-  %b Bill type:
-  = @bill.bill_type
-%p
-  %b Bill category:
-  = @bill.bill_category
-%p
-  %b Project:
-  = @bill.project
-%p
-  %b Name:
-  = @bill.name
-%p
-  %b Description:
-  = @bill.description
-%p
-  %b Status:
-  = @bill.status
-%p
-  %b Value:
-  = @bill.value
-%p
-  %b Supplier:
-  = @bill.supplier
-%p
-  %b Observation:
-  = @bill.observation
-
-= link_to 'Edit', edit_bill_path(@bill)
-\|
-= link_to 'Back', bills_path
+.row
+  .col-sm-12
+    %section.panel
+      .panel-body.invoice
+        .row.invoice-to
+          .col-md-4.col-sm-4
+            %h4 Tipo de Conta:
+            %h2 
+              = @bill.bill_type
+            %p
+              = @bill.name
+              %br/
+              = @bill.bill_category.name if @bill.bill_category.present?
+              %br/
+              = @bill.description
+              %br/
+              = @bill.supplier
+          .col-md-4.col-sm-5.pull-right
+            .row
+              .col-md-4.col-sm-5
+                %h5
+                  Número
+                %h4.label.label-warning
+                  = "##{@bill.created_at.strftime('%Y')}#{@bill.id} "
+            %br/
+            .row
+              .col-md-4.col-sm-5 
+                %h5
+                  Data
+                %h4.label.label-info
+                  = @bill.deadline.strftime('%d/%m/%Y')
+              .col-md-8.col-sm-7
+            
+            .row
+              .col-md-12
+                %h3 TOTAL
+              .col-md-12
+                %h1.amnt-value
+                  %b
+                    = "R$ #{@bill.value}"
+        %br/
+        
+        %table.table.table-invoice
+          %thead
+            %tr
+              %th #
+              %th Descrição
+              %th.text-center Custo
+              %th.text-center Quantidade
+              %th.text-center Total
+          %tbody
+          - @bill.bill_products.each_with_index do |p, i|
+            %tr
+              %td= i + 1
+              %td
+                %h4= p.title
+                %p= p.description
+              %td.text-center
+                = p.value
+              %td.text-center
+                = p.quantity
+              %td.text-center
+                = p.value.to_i * p.quantity.to_i
+        .row
+          .col-md-9.payment-method
+            %h4 Metódo de pagamento
+            %p 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            %p 2. Pellentesque tincidunt pulvinar magna quis rhoncus.
+            %p 3. Cras rhoncus risus vitae congue commodo.
+            %br/
+          .col-md-3.invoice-block.pull-right
+            %ul.unstyled.amounts
+              %li Sub-Total: 
+              %li Disconto : 0%
+     

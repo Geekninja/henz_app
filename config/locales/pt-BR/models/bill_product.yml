@@ -1,0 +1,12 @@
+pt-BR:
+ activerecord:
+  models:
+   bill_product: 'Produtos de conta'
+  attributes:
+   bill_product:
+    title: "título"
+    type_product: 'tipo'
+    description: 'descrição'
+    quantity: 'quant.'
+    value: 'valor unitário'
+

@@ -3,11 +3,15 @@ class Bill < ActiveRecord::Base
   belongs_to :project
   belongs_to :supplier
 
-  attr_accessor :item_title, :item_quantity, :item_value, :item_type
+  has_many :bill_products
 
-  enum :bill_type => [:pagamento, :recebimento, :faturamento]
+  accepts_nested_attributes_for :bill_products, allow_destroy: true
 
-  validates_presence_of :bill_type, :bill_category, :name, :value, :deadline
+  enum :bill_type => [:pagamento, :compra,  :recebimento, :faturamento, :orçamento]
+
+  validates_presence_of :bill_type, :bill_category, :name, :deadline
+  validates :value, numericality: {only_float: true}, allow_blank: true
 
   validates_date :deadline
+
 end

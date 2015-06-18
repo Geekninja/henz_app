@@ -6,9 +6,5 @@
  *= require bucket/assets/jvector-map/jquery-jvectormap-1.2.2
  *= require bucket/css/style
  *= require bucket/css/style-responsive
+ *= require custom
  */
-
-
- input[type= 'text'], input[type= 'email'],input[type= 'tel'], select option, textarea {
-    color: black;
- }

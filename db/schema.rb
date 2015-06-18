@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618002912) do
+ActiveRecord::Schema.define(version: 20150618162809) do
 
   create_table "archives", force: :cascade do |t|
     t.integer  "project_id"
@@ -41,6 +41,19 @@ ActiveRecord::Schema.define(version: 20150618002912) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "bill_products", force: :cascade do |t|
+    t.integer  "bill_id"
+    t.string   "title"
+    t.integer  "type_product"
+    t.string   "description"
+    t.float    "value"
+    t.integer  "quantity"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id"
 
   create_table "bills", force: :cascade do |t|
     t.integer  "bill_type"

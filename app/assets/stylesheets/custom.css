@@ -1,0 +1,12 @@
+
+body {
+  background: url('henz_fundo.jpg')
+}
+
+.title {
+  color: gray
+}
+
+input[type= 'text'], input[type= 'email'],input[type= 'tel'], input[type='number'], select option, textarea:focus {
+  color: black;
+}

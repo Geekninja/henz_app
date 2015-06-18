@@ -2,26 +2,27 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
-        Contas
-        = link_to 'Nova conta', new_project_bill_path, class: 'btn btn-success btn-xs pull-right'
+        %b
+          Contas
+        = link_to '<b>Nova conta</b>'.html_safe, new_project_bill_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.general-table.datatable.table-condensed
+        %table.table.table-hover.table-striped.general-table.datatable.table-condensed
           %thead
             %tr
-              %th.col-md-2
+              %th
                 Tipo
-              %th.col-md-2
+              %th
                 Categoria
-              %th.col-md-2
+              %th
                 Nome
-              %th.col-md-2
+              %th
                 Vencimento
-              %th.col-md-2
+              %th
                 Valor
-              %th.col-md-2
+              %th
                 Status
-              %th.col-md-3
+              %th
                 Ações
           %tbody
             - @bills.each do |bill|
@@ -29,16 +30,19 @@
 
                 %td.col-md-1
                   = bill_type bill.bill_type
-                %td.col-md-1
-                  =bill.bill_category.name if bill.bill_category.present?
-                %td.col-md-1
-                  =bill.name
                 %td.col-md-2
-                  =bill.deadline.strftime('%d/%m/%Y')
-                %td.col-md-2
-                  = "R$ #{bill.value}"
+                  = bill.bill_category.name if bill.bill_category.present?
+                %td.col-md-3
+                  = bill.name
+                %td.col-md-1
+                  %span.label.label-info
+                    = bill.deadline.strftime('%d/%m/%Y')
+                %td.col-md-1
+                  %span.label.label-warning
+                    = "R$ #{bill.value}"
                 %td.col-md-2
                   =bill.status
                 %td.col-md-3
-                  = link_to 'Editar', edit_project_bill_path(project_id: @project, id: bill), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', project_bill_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                  = link_to '', project_bill_path(project_id: @project, id: bill), class: 'btn btn-success btn-sm fa-share-square-o fa'
+                  = link_to '', edit_project_bill_path(project_id: @project, id: bill), class: 'btn btn-info btn-sm fa-edit fa'
+                  = link_to '', project_bill_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'

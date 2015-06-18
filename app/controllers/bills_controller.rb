@@ -13,6 +13,7 @@ class BillsController < ApplicationController
   # GET /bills/new
   def new
     @bill = @project.bills.new
+    @bill.bill_products.build
   end
 
   # GET /bills/1/edit
@@ -55,7 +56,10 @@ class BillsController < ApplicationController
     end
 
     def bill_params
-      params.require(:bill).permit(:bill_type, :deadline, :bill_category_id, :project_id, :name, :description, :status, :value, :supplier_id, :observation)
+      params.require(:bill).permit(:bill_type, :deadline, :bill_category_id, 
+                                   :project_id, :name, :description,
+                                   :status, :value, :supplier_id, :observation,
+                                   :bill_products_attributes => [:type_product, :title, :description, :quantity, :value, :id, :_destroy])
     end
 
     def set_project

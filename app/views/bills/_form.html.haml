@@ -10,7 +10,7 @@
     .col-md-4
       = f.association :bill_category, prompt: 'selecione...'
     .col-md-2
-      = f.input :deadline, as: 'string', input_html: { class: 'date'}
+      = f.input :deadline, as: 'string', input_html: { class: 'date', :value => (@bill.deadline.nil?) ? nil : localize(f.object.deadline) }
     .col-md-2
       = f.input :value
   .row
@@ -21,34 +21,30 @@
   .row
     .col-md-4
       = f.association :supplier, prompt: 'selecione...'
-  %hr/
-  #item
+  #items{:style => (@bill.compra? || @bill.orçamento?) ? 'block' : 'none'}
+    %hr/
+    = f.simple_fields_for :bill_products do |builder| 
+      = render 'bill_product_fields', f: builder
     .row
-      .col-md-2
-        = select_tag :item_type, options_from_collection_for_select(%w(produto serviço))
-      .col-md-6
-        = text_field  :item_title, input_html: { name: "item_title[]"}
-      .col-md-2
-        = text_field :item_quantity, input_html: { name: "item_quantity[]"}
-      .col-md-2
-        = text_field  :item_value, input_html: { name: "item_value[]"}
-    .row
-      .col-md-2
-        = link_to "adicionar item", '#', {id: "add_item", class: 'btn btn-success btn-xs'}
-
-  %hr/
+      .col-md-12
+        = link_to_add_fields "novo item", f, :bill_products
+    %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
 
 
+:javascript 
 
-
-:javascript
-
-  $(document).ready(function(){
-    html = "#{render 'new_item'}"
-    $("#add_item").on('click', function(){
-      $("#item").append(html);
-    })
-  })
+  $(document).ready(function() {
+    
+    $("#bill_bill_type").on('change', function(){
+      if($(this).val() == "compra" || $(this).val() == "orçamento" ) {
+        $("#items").show()
+        $(".bill_value").hide()
+      } else {
+        $("#items").hide()
+        $(".bill_value").show()
+      }
+    });
+  });
