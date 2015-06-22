@@ -4,14 +4,12 @@
       %header.panel-heading
         %b
           Contas
-        = link_to '<b>Nova conta</b>'.html_safe, new_project_bill_path, class: 'btn btn-success btn-xs pull-right'
+        = link_to '<b>Nova conta</b>'.html_safe, new_project_pay_path(@project), class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
         %table.table.table-hover.table-striped.general-table.datatable.table-condensed
           %thead
             %tr
-              %th
-                Tipo
               %th
                 Categoria
               %th
@@ -23,13 +21,13 @@
               %th
                 Status
               %th
+                Nota
+              %th
                 Ações
           %tbody
-            - @bills.each do |bill|
+            - @pays.each do |bill|
               %tr
 
-                %td.col-md-1
-                  = bill_type bill.bill_type
                 %td.col-md-2
                   = bill.bill_category.name if bill.bill_category.present?
                 %td.col-md-3
@@ -42,7 +40,9 @@
                     = "R$ #{bill.value}"
                 %td.col-md-2
                   =bill.status
+                %td.col-md-2
+                  - if bill.archive.present?
+                    = link_to "<b>ARQUIVO</b>".html_safe, bill.archive.url, { target: '_blank'}
                 %td.col-md-3
-                  = link_to '', project_bill_path(project_id: @project, id: bill), class: 'btn btn-success btn-sm fa-share-square-o fa'
-                  = link_to '', edit_project_bill_path(project_id: @project, id: bill), class: 'btn btn-info btn-sm fa-edit fa'
-                  = link_to '', project_bill_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'
+                  = link_to '', edit_project_pay_path(project_id: @project, id: bill), class: 'btn btn-info btn-sm fa-edit fa'
+                  = link_to '', project_pay_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'

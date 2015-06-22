@@ -1,0 +1,28 @@
+= simple_form_for([@project_base, @project_finance]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-2
+      = f.input :finance_type, as: 'select', collection: ProjectFinance.finance_types.keys.to_a, prompt: 'selecione...'
+    .col-md-2
+      = f.input :month
+    .col-md-2
+      = f.input :year
+    .col-md-2
+      = f.input :status
+  .row
+    .col-md-6
+      = f.input :title
+    .col-md-6
+      = f.input :description
+  %hr/
+  .row
+    .col-md-2
+      = f.input :value
+    .col-md-2
+      = f.input :quantity
+
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

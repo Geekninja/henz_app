@@ -9,18 +9,15 @@
   %body
     %section#container
       = render 'layouts/partials/nav' if user_signed_in?
-      = render 'layouts/partials/sidebar' if @project_context
-      - if @project_context
+      = render 'layouts/partials/sidebar' if @project.present? && !@project.new_record?
+      - if @project.present? && !@project.new_record?
         %section#main-content 
           %section.wrapper
             .panel
               .panel-body
-                %h3
-                  Projeto 
-                  %hr/
+                %h1
                   %b.title
                     = @project.name 
-            %hr/
             = yield
       - else
         .container

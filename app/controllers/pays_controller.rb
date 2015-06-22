@@ -1,9 +1,9 @@
-class BillsController < ApplicationController
+class PaysController < ApplicationController
   before_action :set_project
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @bills = @project.bills
+    @pays = @project.pays
   end
 
   # GET /bills/1
@@ -12,8 +12,7 @@ class BillsController < ApplicationController
 
   # GET /bills/new
   def new
-    @bill = @project.bills.new
-    @bill.bill_products.build
+    @pay = @project.pays.new
   end
 
   # GET /bills/1/edit
@@ -22,9 +21,9 @@ class BillsController < ApplicationController
 
   # POST /bills
   def create
-    @bill = @project.bills.new(bill_params)
+    @pay = @project.pays.new(pay_params)
 
-    if @bill.save
+    if @pay.save
       flash[:success] = t :success
       redirect_to action: 'index'
     else
@@ -34,7 +33,7 @@ class BillsController < ApplicationController
 
   # PATCH/PUT /bills/1
   def update
-    if @bill.update(bill_params)
+    if @pay.update(pay_params)
       flash[:success] = t :success
       redirect_to action: 'index'
     else
@@ -44,7 +43,7 @@ class BillsController < ApplicationController
 
   # DELETE /bills/1
   def destroy
-    if @bill.destroy
+    if @pay.destroy
       flash[:success] = t :success
       redirect_to action: 'index'
     end
@@ -52,16 +51,14 @@ class BillsController < ApplicationController
 
   private
     def set_bill
-      @bill =  @project.bills.find(params[:id])
+      @pay =  @project.pays.find(params[:id])
     end
 
-    def bill_params
-      params.require(:bill).permit(:bill_type, :deadline, :bill_category_id, 
+    def pay_params
+      params.require(:pay).permit( :deadline, :bill_category_id, 
                                    :project_id, :name, :description,
-                                   :status, :value, :supplier_id, :observation,
-                                   :bill_products_attributes => [:type_product, :title, :description, :quantity, :value, :id, :_destroy])
+                                   :status, :value, :supplier_id, :observation, :archive)
     end
-
     def set_project
       @project = Project.find(params[:project_id])
     end

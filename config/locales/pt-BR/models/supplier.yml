@@ -1,0 +1,24 @@
+pt-BR:
+ activerecord:
+  models:
+   supplier: 'Fornecedor'
+  attributes:
+   supplier:
+     name: "nome"
+     cnpj: "CNPJ"
+     state_number: "inscrição estadual"
+     municipal_number: "inscriçaõ municipal"
+     city: 'cidade'
+     state: 'estado'
+     address: 'endereço'
+     telphone: 'telefone'
+     telphone_optional: 'telefone secundário'
+     email: 'e-mail'
+     email_optional: 'e-mail opcional'
+     contact_name: 'contato nome'
+     contact_telphone: 'contato telefone'
+     contact_email: 'contato e-mail'
+     observations: 'observações'
+     cep: "CEP"
+     supplier_importance: 'importância'
+     supplier_category: 'categoria'

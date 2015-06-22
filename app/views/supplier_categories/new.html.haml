@@ -1,0 +1,8 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Nova categoria de fornecedor
+        = link_to 'Voltar', supplier_categories_path, class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618162809) do
+ActiveRecord::Schema.define(version: 20150622160329) do
 
   create_table "archives", force: :cascade do |t|
     t.integer  "project_id"
@@ -54,25 +54,6 @@ ActiveRecord::Schema.define(version: 20150618162809) do
   end
 
   add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id"
-
-  create_table "bills", force: :cascade do |t|
-    t.integer  "bill_type"
-    t.integer  "bill_category_id"
-    t.integer  "project_id"
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "status"
-    t.string   "value"
-    t.integer  "supplier_id"
-    t.text     "observation"
-    t.date     "deadline"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
-
-  add_index "bills", ["bill_category_id"], name: "index_bills_on_bill_category_id"
-  add_index "bills", ["project_id"], name: "index_bills_on_project_id"
-  add_index "bills", ["supplier_id"], name: "index_bills_on_supplier_id"
 
   create_table "budget_products", force: :cascade do |t|
     t.integer  "budget_id"
@@ -179,12 +160,48 @@ ActiveRecord::Schema.define(version: 20150618162809) do
   add_index "offices", ["project_id"], name: "index_offices_on_project_id"
   add_index "offices", ["responsible_id"], name: "index_offices_on_responsible_id"
 
+  create_table "pays", force: :cascade do |t|
+    t.integer  "bill_category_id"
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "status"
+    t.string   "value"
+    t.integer  "supplier_id"
+    t.text     "observation"
+    t.date     "deadline"
+    t.string   "archive"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "pays", ["bill_category_id"], name: "index_pays_on_bill_category_id"
+  add_index "pays", ["project_id"], name: "index_pays_on_project_id"
+  add_index "pays", ["supplier_id"], name: "index_pays_on_supplier_id"
+
   create_table "project_categories", force: :cascade do |t|
     t.string   "name"
     t.boolean  "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "project_finances", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "finance_type"
+    t.float    "value"
+    t.boolean  "status"
+    t.string   "title"
+    t.string   "description"
+    t.string   "quantity"
+    t.integer  "month"
+    t.integer  "year"
+    t.date     "date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "project_finances", ["project_id"], name: "index_project_finances_on_project_id"
 
   create_table "project_funds", force: :cascade do |t|
     t.integer  "project_id"
@@ -258,20 +275,22 @@ ActiveRecord::Schema.define(version: 20150618162809) do
     t.string   "telphone"
     t.string   "telphone_optional"
     t.string   "celphone"
-    t.integer  "project_id"
-    t.integer  "office_id"
-    t.integer  "office_support_id"
     t.date     "born"
     t.decimal  "salary"
+    t.boolean  "driver"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
   add_index "staffs", ["job_id"], name: "index_staffs_on_job_id"
-  add_index "staffs", ["office_id"], name: "index_staffs_on_office_id"
-  add_index "staffs", ["office_support_id"], name: "index_staffs_on_office_support_id"
-  add_index "staffs", ["project_id"], name: "index_staffs_on_project_id"
   add_index "staffs", ["sector_id"], name: "index_staffs_on_sector_id"
+
+  create_table "supplier_categories", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "suppliers", force: :cascade do |t|
     t.string   "name"
@@ -281,22 +300,23 @@ ActiveRecord::Schema.define(version: 20150618162809) do
     t.string   "city"
     t.string   "state"
     t.string   "cep"
-    t.string   "contact_name_1"
-    t.string   "contact_name_2"
-    t.string   "contact_name_3"
-    t.string   "contact_telphone_2"
-    t.string   "contact_telphone_3"
-    t.string   "contact_email_1"
-    t.string   "contact_email_2"
-    t.string   "contact_email_3"
+    t.string   "contact_name"
+    t.string   "contact_telphone"
+    t.string   "contact_email"
     t.string   "telphone"
     t.string   "telphone_optional"
     t.string   "email"
     t.string   "email_optional"
-    t.string   "observations"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.text     "observations"
+    t.integer  "supplier_category_id"
+    t.integer  "supplier_importance"
+    t.integer  "project_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
+
+  add_index "suppliers", ["project_id"], name: "index_suppliers_on_project_id"
+  add_index "suppliers", ["supplier_category_id"], name: "index_suppliers_on_supplier_category_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false

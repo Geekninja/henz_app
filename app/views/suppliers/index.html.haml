@@ -2,101 +2,37 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
-        suppliers
-        = link_to 'Nova Supplier', new_supplier_path, class: 'btn btn-success btn-xs pull-right'
+        Fornecedores
+        = link_to '<b>Novo Fornecedor</b>'.html_safe, new_project_supplier_path(@project), class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
         %table.table.table-hover.general-table.datatable
           %thead
             %tr
               %th.col-md-2
-                Name
+                Nome
               %th.col-md-2
-                Cnpj
+                CNPJ
               %th.col-md-2
-                State number
+                Local
               %th.col-md-2
-                City number
+                Contato
               %th.col-md-2
-                City
-              %th.col-md-2
-                State
-              %th.col-md-2
-                Cep
-              %th.col-md-2
-                Contact name 1
-              %th.col-md-2
-                Contact name 2
-              %th.col-md-2
-                Contact name 3
-              %th.col-md-2
-                Contact telphone 2
-              %th.col-md-2
-                Contact telphone 2
-              %th.col-md-2
-                Contact telphone 3
-              %th.col-md-2
-                Contact email 1
-              %th.col-md-2
-                Contact email 2
-              %th.col-md-2
-                Contact email 3
-              %th.col-md-2
-                Telphone
-              %th.col-md-2
-                Telphone optional
+                Telefones
               %th.col-md-2
                 Email
               %th.col-md-2
-                Email optional
-              %th.col-md-2
-                Observations
+                Ações
           %tbody
             %tr
               - @suppliers.each do |supplier|
-
-                %td.col-md-8
-                  =supplier.name
-                %td.col-md-8
-                  =supplier.cnpj
-                %td.col-md-8
-                  =supplier.state_number
-                %td.col-md-8
-                  =supplier.city_number
-                %td.col-md-8
-                  =supplier.city
-                %td.col-md-8
-                  =supplier.state
-                %td.col-md-8
-                  =supplier.cep
-                %td.col-md-8
-                  =supplier.contact_name_1
-                %td.col-md-8
-                  =supplier.contact_name_2
-                %td.col-md-8
-                  =supplier.contact_name_3
-                %td.col-md-8
-                  =supplier.contact_telphone_2
-                %td.col-md-8
-                  =supplier.contact_telphone_2
-                %td.col-md-8
-                  =supplier.contact_telphone_3
-                %td.col-md-8
-                  =supplier.contact_email_1
-                %td.col-md-8
-                  =supplier.contact_email_2
-                %td.col-md-8
-                  =supplier.contact_email_3
-                %td.col-md-8
-                  =supplier.telphone
-                %td.col-md-8
-                  =supplier.telphone_optional
-                %td.col-md-8
-                  =supplier.email
-                %td.col-md-8
-                  =supplier.email_optional
-                %td.col-md-8
-                  =supplier.observations
-                %td.col-md-1
-                  = link_to 'Editar', edit_supplier_path(supplier), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', supplier, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                %tr
+                  %td= supplier.name
+                  %td= supplier.cnpj
+                  %td= "#{supplier.city}/#{supplier.state}"
+                  %td= supplier.contact_name
+                  %td= "#{supplier.telphone} / #{supplier.telphone_optional}"
+                  %td= supplier.email
+                  %td.col-md-3
+                    = link_to 'Editar', edit_project_supplier_path(project_id: @project, id: supplier), class: '  btn btn-info btn-xs'
+                    = link_to 'Remover', project_supplier_path(project_id: @project, id: supplier), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

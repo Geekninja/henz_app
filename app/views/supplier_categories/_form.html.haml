@@ -1,0 +1,14 @@
+= simple_form_for(@supplier_category) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+  .row
+    .col-md-12
+      = f.input :status
+
+  %br/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

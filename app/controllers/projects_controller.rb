@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 
   # POST /projects
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(set_params)
 
     if @project.save
       redirect_to action: 'index'
@@ -33,7 +33,7 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1
   def update
-    if @project.update(project_params)
+    if @project.update(set_params)
       flash[:success] = t :success
       redirect_to action: 'index'
     else
@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
     end
 
     # Only allow a trusted parameter "white list" through.
-    def project_params
+    def set_params
       params.require(:project).permit(:project_category_id, :name, :local, :responsible_id, :geolocation, :description, :observation, :priority)
     end
 end

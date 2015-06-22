@@ -4,47 +4,70 @@
     .leftside-navigation{:style => "overflow: hidden; outline: none;", :tabindex => "5000"}
       %ul#nav-accordion.sidebar-menu
         %li
-          = link_to "<i class='fa fa-dashboard'></i><span>Dashboard</span>".html_safe
-        %li.sub-menu.dcjq-parent-li
-          %a.dcjq-parent{:href => "javascript:;"}
-            %i.fa.fa-laptop
-            %span Contas
-            %span.dcjq-icon
-          %ul.sub{:style => "display: none;"}
-            %li= link_to "nova conta", new_project_bill_path(@project)
-            %li= link_to "gerenciar", project_bills_path(@project)
-            %li= link_to "categorias", project_bill_categories_path(@project)
-            %li= link_to "relatórios (definir)"
+          %b
+            = link_to "<i class='fa fa-dashboard'></i><span>Dashboard</span>".html_safe, project_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-book
-            %span Cotações
+            %span
+              %b Caixa
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "nova cotação", new_project_quotation_path(@project)
-            %li= link_to "gerenciar", project_quotations_path(@project)
-            %li= link_to "relatórios (definir)"
+            %li= link_to "Novo Gasto", project_quotations_path(@project)
+            %li= link_to "Caixa da obra", new_project_quotation_path(@project)
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-laptop
+            %span
+              %b Contas
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "Contas à Pagar", new_project_pay_path(@project)
+            %li= link_to "Contas à Receber", new_project_receipt_path(@project)
+            %li= link_to "Categorias", project_bill_categories_path(@project)
+            %li= link_to "Relatórios (definir)"
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-briefcase
+            %span
+              %b Fornecedores
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "Novo fornecedor", new_project_supplier_path(@project)
+            %li= link_to "Gerenciar", project_suppliers_path(@project)
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-book
+            %span 
+              %b Cotações
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            %li= link_to "Nova cotação", new_project_quotation_path(@project)
+            %li= link_to "Gerenciar", project_quotations_path(@project)
+            %li= link_to "Relatórios (definir)"
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-th
-            %span Veículos
+            %span
+              %b Veículos
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar", project_vehicles_path(@project)
-            %li= link_to "consumo", project_fuel_expenses_path(@project)
-            %li.divider
-            %li= link_to "postos de abastecimento", project_gas_stations_path(@project)
+            %li= link_to "Gerenciar", project_vehicles_path(@project)
+            %li= link_to "Consumo", project_fuel_expenses_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-envelope
-            %span Arquivos
+            %span
+              %b Arquivos
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "gerenciar", project_archives_path(@project)
+            %li= link_to "Novo upload", project_archives_path(@project)
+            %li= link_to "Gerenciar", project_archives_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-glass
-            %span Relatórios
+            %span
+              %b Relatórios
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "definir"
+            %li= link_to "Geral"

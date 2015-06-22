@@ -1,30 +1,50 @@
-= simple_form_for(@supplier) do |f|
+= simple_form_for([@project, @supplier]) do |f|
   = f.error_notification
 
   .row
-    .col-md-12
+    .col-md-6
+      = f.association :supplier_category, prompt: 'selecione...'
+      = f.hint link_to "gerenciar categorias", supplier_categories_path, class: 'btn btn-info btn-xs'
+  %hr/
+  .row
+    .col-md-6
       = f.input :name
+    .col-md-2
       = f.input :cnpj
+    .col-md-2
       = f.input :state_number
+    .col-md-2
       = f.input :city_number
+  .row
+    .col-md-4
       = f.input :city
+    .col-md-2
       = f.input :state
+    .col-md-2
       = f.input :cep
-      = f.input :contact_name_1
-      = f.input :contact_name_2
-      = f.input :contact_name_3
-      = f.input :contact_telphone_2
-      = f.input :contact_telphone_2
-      = f.input :contact_telphone_3
-      = f.input :contact_email_1
-      = f.input :contact_email_2
-      = f.input :contact_email_3
+    .col-md-4
+      = f.input :supplier_importance, as: 'select', collection: Supplier.supplier_importances.keys.to_a, prompt: 'selecione...'
+  %hr/
+  .row
+    .col-md-3
       = f.input :telphone
+    .col-md-3
       = f.input :telphone_optional
+    .col-md-3
       = f.input :email
+    .col-md-3
       = f.input :email_optional
+  .row
+    .col-md-3
+      = f.input :contact_name
+    .col-md-3
+      = f.input :contact_telphone
+    .col-md-3
+      = f.input :contact_email
+  .row
+    .col-md-12
       = f.input :observations
-
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

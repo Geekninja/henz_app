@@ -1,10 +1,9 @@
 pt-BR:
  activerecord:
   models:
-   bill: 'Conta'
+   pay: 'Conta à pagar'
   attributes:
-   bill:
-    bill_type: "tipo"
+   pay:
     bill_category: 'categoria'
     project: 'projeto'
     name: 'nome'
@@ -13,9 +12,4 @@ pt-BR:
     supplier: 'fornecedor'
     observation: 'observação'
     deadline: 'vencimento'
-    item_type: "tipo do item"
-    item_title: "titulo do item"
-    item_quantity: "quantidade"
-    item_value: "valor"
-
-  
+    archive: "Arquivo para upload"  

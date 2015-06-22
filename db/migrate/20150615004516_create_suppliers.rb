@@ -8,20 +8,17 @@ class CreateSuppliers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.string :cep
-      t.string :contact_name_1
-      t.string :contact_name_2
-      t.string :contact_name_3
-      t.string :contact_telphone_2
-      t.string :contact_telphone_2
-      t.string :contact_telphone_3
-      t.string :contact_email_1
-      t.string :contact_email_2
-      t.string :contact_email_3
+      t.string :contact_name
+      t.string :contact_telphone
+      t.string :contact_email
       t.string :telphone
       t.string :telphone_optional
       t.string :email
       t.string :email_optional
-      t.string :observations
+      t.text :observations
+      t.references :supplier_category, index: true
+      t.integer :supplier_importance
+      t.references :project, index: true
 
       t.timestamps null: false
     end

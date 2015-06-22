@@ -1,0 +1,29 @@
+= simple_form_for([@project, @pay]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+  .row
+    .col-md-4
+      = f.association :bill_category, prompt: 'selecione...'
+    .col-md-2
+      = f.input :deadline, as: 'string', input_html: { class: 'date', :value => (@pay.deadline.nil?) ? nil : localize(f.object.deadline) }
+    .col-md-2
+      = f.input :value
+  .row
+    .col-md-6
+      = f.input :description
+    .col-md-6
+      = f.input :observation
+  .row
+    .col-md-6
+      = f.association :supplier, prompt: 'selecione...'
+    .col-md-4
+      = link_to "<b>ARQUIVO DE UPLOAD ATUAL - Clique aqui</b><br/>".html_safe, @pay.archive.url, { target: '_blank'} if @pay.archive.present?
+      = f.input :archive, as: 'file'
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'
+

@@ -1,0 +1,24 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Categorias de fornecedores
+        = link_to '<b>Nova categoria</b>'.html_safe, new_supplier_category_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table
+          %thead
+            %tr
+              %th.col-md-8 nome
+              %th.col-md-2 status
+              %th.col-md-2 ações
+
+          %tbody
+            - @supplier_categories.each do |s|
+              %tr
+                %td= s.name
+                %td= status_helper s.status
+                %td
+                  = link_to 'Editar', edit_supplier_category_path(s), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', s, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+            

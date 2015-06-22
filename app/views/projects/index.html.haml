@@ -1,42 +1,24 @@
 .row
-  .col-sm-12
-    %section.panel
-      %header.panel-heading
-        Projetos
-        .pull-right
-          = link_to 'Categorias', project_categories_path, class: 'btn btn-warning btn-xs'
-          = link_to 'Nova Obra', new_project_path, class: 'btn btn-success btn-xs'
-      .panel-body
+  - @projects.each do |project|
+    .col-md-3
+      / progress bar start
+      %section.panel
+        %header.panel-heading
+          %b= project.project_category.name if project.project_category.present?
+          %span.tools.pull-right
+            = link_to "", edit_project_path(project), class: 'btn-xs fa fa-cog'
+            = link_to "", project_path(project),method: :delete,  class: 'btn-xs fa fa-times'
 
-        %table.table.table-hover.general-table.datatable
-          %thead
-            %tr
-              %th.col-md-2
-                nome
-              %th.col-md-2
-                categoria
-              %th.col-md-2
-                local
-              %th.col-md-2
-                responsável
-              %th.col-md-2
-                prioridade
-              %th.col-md-2
-                ações
-          %tbody
-            %tr
-              - @projects.each do |project|
-
-                %td.col-md-2
-                  =project.name
-                %td.col-md-2
-                  =project.project_category.name if project.project_category.present?
-                %td.col-md-2
-                  =project.local
-                %td.col-md-2
-                  =project.responsible.name if project.responsible.present?
-                %td.col-md-2
-                  =project.priority
-                %td.col-md-2
-                  = link_to 'Editar', edit_project_path(project), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', project, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+        .panel-body
+          .row
+            .col-md-12
+              %h1
+                %b= project.name
+              %h5
+                = project.description
+          %hr/
+          .row
+            .col-md-12
+              %b= link_to "Gerênciar Obra", project_path(project), class: 'btn btn-success btn-sm'
+              %b= link_to "Gerênciar Caixa", project_project_finances_path(project), class: 'btn btn-warning btn-sm'
+      

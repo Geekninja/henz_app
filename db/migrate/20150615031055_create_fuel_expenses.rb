@@ -10,6 +10,7 @@ class CreateFuelExpenses < ActiveRecord::Migration
       t.date :date
       t.boolean :status
       t.text :observations
+      t.referneces :supplier, index: true
 
       t.timestamps null: false
     end

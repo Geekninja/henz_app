@@ -22,4 +22,5 @@ pt-BR:
      born: 'nascimento'
      salary: 'salário'
      status: 'ativo?'
+     driver: 'utiliza veículos?'
     

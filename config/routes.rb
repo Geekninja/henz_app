@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :project_categories
 
     resources :projects, path: 'projetos' do 
-      resources :project_funds
+      resources :project_finances
       resources :vehicles
       resources :archives
       resources :fuel_expenses
@@ -26,20 +26,20 @@ Rails.application.routes.draw do
         end
       end
       resources :bill_categories
-      resources :bills
+      resources :pays
+      resources :receipts
+      resources :offices
+      resources :suppliers
     end
     
-    resources :suppliers
+    resources :supplier_categories
+    resources :staffs
     resources :vehicle_services
     resources :vehicle_categories
-    resources :staffs
     resources :sectors
     resources :jobs
     resources :beneficts
     resources :office_supports
     resources :offices
-    resources :staffs
-    resources :suppliers
-    resources :supplier_contacts
   end
 end

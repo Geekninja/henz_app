@@ -5,8 +5,11 @@ class CreateStaffs < ActiveRecord::Migration
       t.string :code
       t.string :cpf
       t.string :job_function
+    
       t.references :job, index: true#, foreign_key: true
+    
       t.boolean :status
+    
       t.references :sector, index: true#, foreign_key: true
       t.string :city
       t.string :state
@@ -14,11 +17,10 @@ class CreateStaffs < ActiveRecord::Migration
       t.string :telphone
       t.string :telphone_optional
       t.string :celphone
-      t.references :project, index: true#, foreign_key: true
-      t.references :office, index: true#, foreign_key: true
-      t.references :office_support, index: true#, foreign_key: true
       t.date :born
       t.decimal :salary
+
+      t.boolean :driver
 
       t.timestamps null: false
     end

@@ -32,21 +32,18 @@
       = f.input :celphone
   %hr/
   .row
-    .col-md-4
-      = f.association :project, prompt: 'selecione o projeto...'
-    .col-md-4
-      = f.association :office, prompt: 'selecione o escritório...'
-    .col-md-4
-      = f.association :office_support, prompt: 'selecione o ponto de apoio...'
-  .row
     .col-md-2
       = f.input :born, as: 'string', input_html: { class: 'date', value: (f.object.born.present?) ? localize(f.object.born) : nil }
     .col-md-2
       = f.input :salary
-    .col-md-4
+    .col-md-3
       %br/
       = f.input :status
-  %br/
+    .col-md-3
+      %br/
+      = f.input :driver
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
+      = link_to "Voltar", staffs_path, class: 'btn btn-default'

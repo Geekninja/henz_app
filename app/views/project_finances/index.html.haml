@@ -1,0 +1,27 @@
+.row
+  .col-md-12
+    .panel
+      .panel-body
+        %b.title
+          %h1= "<b>Caixa</b> - #{@project_base.name}".html_safe 
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Repasses 
+        = link_to '<b>Adicionar caixa</b>'.html_safe, new_project_project_finance_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table
+          %thead
+            %tr
+              %th Tipo
+              %th Título
+              %th Descrição
+              %th Valor
+              %th Mes/Ano
+              %th Data
+              %th Ações
+
+          %tbody
+            

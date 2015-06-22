@@ -4,9 +4,32 @@ body {
 }
 
 .title {
-  color: gray
+  color: rgb(211, 169, 121);
+  font-size: 50px;
 }
 
 input[type= 'text'], input[type= 'email'],input[type= 'tel'], input[type='number'], select option, textarea:focus {
   color: black;
+}
+ul.sidebar-menu li a {
+  color: #FFFFFF !important;
+}
+
+#sidebar {
+  background: #198A3C !important;
+}
+ul.sidebar-menu li ul.sub li {
+  background: #105C28 !important;
+}
+
+ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus {
+  background: #444385 !important;
+}
+
+ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:focus i {
+  color: white !important;
+}
+
+ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:hover i {
+  color: white !important;
 }

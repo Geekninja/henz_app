@@ -1,6 +1,6 @@
 class StaffsController < ApplicationController
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_project
   # GET /staffs
   def index
     @staffs = Staff.all
@@ -58,5 +58,9 @@ class StaffsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def staff_params
       params.require(:staff).permit(:name, :code, :cpf, :job_function, :job_id, :status, :sector_id, :city, :state, :address, :telphone, :telphone_optional, :celphone, :project_id, :office_id, :office_support_id, :born, :salary)
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 end
