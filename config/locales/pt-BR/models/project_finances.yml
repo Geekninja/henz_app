@@ -1,0 +1,16 @@
+pt-BR:
+ activerecord:
+  models:
+   project_finance: 'Caixa'
+  attributes:
+   project_finance:
+    finance_type: "tipo"
+    title: 'localização'
+    month: 'mês'
+    year: 'ano'
+    status: 'status'
+    title: 'título'
+    description: 'descrição'
+    value: 'valor'
+    quantity: 'quantidade'
+
