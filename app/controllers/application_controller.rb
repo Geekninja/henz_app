@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_projects
 
+  include Pundit
+  
   def set_projects
     @nav_projects = Project.all.order(:name)
   end

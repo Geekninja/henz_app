@@ -1,18 +1,21 @@
 = simple_form_for @user do |f|
   .row
-    .col-md-6
+    .col-md-4
       = f.input :name
-    .col-md-6
+    .col-md-4
       = f.input :email
+    .col-md-4
+      = f.input :privilege, as: 'select', collection: User.privileges.keys.to_a, prompt: 'selecione...'
   - if @user.new_record?
     .row
       .col-md-6
         = f.input :password
       .col-md-6
         = f.input :password_confirmation
+  %hr/
   .row
     .col-md-3
-      = f.input :status
+      = f.input :status, as: 'select', prompt: 'selecione...'
   %hr/
   .row
     .col-md-12

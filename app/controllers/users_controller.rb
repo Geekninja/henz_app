@@ -26,6 +26,10 @@ class UsersController < ApplicationController
   end
 
   def update
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+    end
     if @user.update(set_params_update)
       flash[:success] =  t :success
       redirect_to action: 'index'
@@ -44,11 +48,11 @@ class UsersController < ApplicationController
   private
 
   def set_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :status, :administrator)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :status, :privilege)
   end
 
   def set_params_update
-    params.require(:user).permit(:email, :name, :status, :administrator)
+    params.require(:user).permit(:email, :name, :status, :privilege)
   end
 
   def set_user

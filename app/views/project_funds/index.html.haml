@@ -2,6 +2,26 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
+        Filtro
+      .panel-body
+        = form_tag project_project_funds_path, :method => 'get' do
+          .row
+            .col-md-2
+              = label_tag "Data inicial"
+              = text_field_tag :start_date, params[:start_date], { class: 'date form-control'}
+            .col-md-2
+              = label_tag "Data final"
+              = text_field_tag :end_date, params[:end_date], { class: 'date form-control'}
+          %hr/
+          .row
+            .col-md-2
+              = submit_tag "Filtrar Resultados", class: 'btn btn-success btn-sm'
+
+
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
         Gestão de Caixa 
         = link_to '<b>Adicionar caixa</b>'.html_safe, new_project_project_fund_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body

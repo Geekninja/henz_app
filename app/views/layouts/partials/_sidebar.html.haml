@@ -6,15 +6,16 @@
         %li
           %b
             = link_to "<i class='fa fa-dashboard'></i><span>Dashboard</span>".html_safe, project_path(@project)
-        %li.sub-menu.dcjq-parent-li
-          %a.dcjq-parent{:href => "javascript:;"}
-            %i.fa.fa-book
-            %span
-              %b Caixa
-            %span.dcjq-icon
-          %ul.sub{:style => "display: none;"}
-            %li= link_to "Novo Gasto", new_project_project_fund_path(@project)
-            %li= link_to "Caixa da obra", project_project_funds_path(@project)
+        - if policy(:application).administrador? || policy(:application).gerente?
+          %li.sub-menu.dcjq-parent-li
+            %a.dcjq-parent{:href => "javascript:;"}
+              %i.fa.fa-book
+              %span
+                %b Caixa
+              %span.dcjq-icon
+            %ul.sub{:style => "display: none;"}
+              %li= link_to "Novo Gasto", new_project_project_fund_path(@project)
+              %li= link_to "Caixa da obra", project_project_funds_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-laptop
@@ -23,17 +24,20 @@
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
             %li= link_to "Contas à Pagar", project_pays_path(@project)
-            %li= link_to "Contas à Receber", project_receipts_path(@project)
-            %li= link_to "Categorias", project_bill_categories_path(@project)
-        %li.sub-menu.dcjq-parent-li
-          %a.dcjq-parent{:href => "javascript:;"}
-            %i.fa.fa-briefcase
-            %span
-              %b Fornecedores
-            %span.dcjq-icon
-          %ul.sub{:style => "display: none;"}
-            %li= link_to "Novo fornecedor", new_project_supplier_path(@project)
-            %li= link_to "Gerenciar", project_suppliers_path(@project)
+            - if policy(:application).administrador? || policy(:application).gerente?
+              %li= link_to "Contas à Receber", project_receipts_path(@project)
+            - if policy(:application).administrador?
+              %li= link_to "Categorias", project_bill_categories_path(@project)
+        - if policy(:application).administrador? || policy(:application).gerente?
+          %li.sub-menu.dcjq-parent-li
+            %a.dcjq-parent{:href => "javascript:;"}
+              %i.fa.fa-briefcase
+              %span
+                %b Fornecedores
+              %span.dcjq-icon
+            %ul.sub{:style => "display: none;"}
+              %li= link_to "Novo fornecedor", new_project_supplier_path(@project)
+              %li= link_to "Gerenciar", project_suppliers_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-book
@@ -43,15 +47,16 @@
           %ul.sub{:style => "display: none;"}
             %li= link_to "Nova cotação", new_project_quotation_path(@project)
             %li= link_to "Gerenciar", project_quotations_path(@project)
-        %li.sub-menu.dcjq-parent-li
-          %a.dcjq-parent{:href => "javascript:;"}
-            %i.fa.fa-th
-            %span
-              %b Veículos
-            %span.dcjq-icon
-          %ul.sub{:style => "display: none;"}
-            %li= link_to "Gerenciar", project_vehicles_path(@project)
-            %li= link_to "Consumo", project_fuel_expenses_path(@project)
+          %li.sub-menu.dcjq-parent-li
+            %a.dcjq-parent{:href => "javascript:;"}
+              %i.fa.fa-th
+              %span
+                %b Veículos
+              %span.dcjq-icon
+            %ul.sub{:style => "display: none;"}
+              - if policy(:application).administrador? || policy(:application).gerente?
+                %li= link_to "Gerenciar", project_vehicles_path(@project)
+              %li= link_to "Consumo", project_fuel_expenses_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-envelope
@@ -59,5 +64,6 @@
               %b Arquivos
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "Novo upload", project_archives_path(@project)
+            - if policy(:application).administrador? || policy(:application).gerente?
+              %li= link_to "Novo upload", project_archives_path(@project)
             %li= link_to "Gerenciar", project_archives_path(@project)

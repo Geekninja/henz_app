@@ -8,6 +8,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
+    params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
+
+    @project_funds   = @project.project_funds.where(created_at: params[:start_date]..params[:end_date])
+    @project_finance = @project.project_finances.where(created_at: params[:start_date]..params[:end_date])
+    @pays            = @project.pays
   end
 
   # GET /projects/new

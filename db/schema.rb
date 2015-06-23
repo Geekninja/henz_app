@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150622160329) do
+ActiveRecord::Schema.define(version: 20150623162441) do
 
   create_table "archives", force: :cascade do |t|
     t.integer  "project_id"
@@ -201,6 +201,16 @@ ActiveRecord::Schema.define(version: 20150622160329) do
   add_index "project_funds", ["project_id"], name: "index_project_funds_on_project_id"
   add_index "project_funds", ["supplier_id"], name: "index_project_funds_on_supplier_id"
 
+  create_table "project_users", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id"
+  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id"
+
   create_table "projects", force: :cascade do |t|
     t.integer  "project_category_id"
     t.string   "name"
@@ -242,6 +252,16 @@ ActiveRecord::Schema.define(version: 20150622160329) do
   end
 
   add_index "sectors", ["responsible_id"], name: "index_sectors_on_responsible_id"
+
+  create_table "staff_projects", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "staff_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "staff_projects", ["project_id"], name: "index_staff_projects_on_project_id"
+  add_index "staff_projects", ["staff_id"], name: "index_staff_projects_on_staff_id"
 
   create_table "staffs", force: :cascade do |t|
     t.string   "name"

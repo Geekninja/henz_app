@@ -6,6 +6,18 @@ class ApplicationPolicy
     @record = record
   end
 
+  def administrador?
+    user.administrador?
+  end
+
+  def financeiro?
+    user.financeiro?
+  end
+
+  def gerente?
+    user.gerente?
+  end
+
   def index?
     false
   end

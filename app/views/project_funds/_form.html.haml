@@ -2,23 +2,20 @@
   = f.error_notification
 
   .row
-    .col-md-12
+    .col-md-6
       = f.input :name
-  .row
     .col-md-2
       = f.input :value
+    .col-md-2
+      = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@project_fund.date_payment.present?) ? localize(@project_fund.date_payment) : nil }
+    .col-md-2
+      = f.input :note_payment, as: 'file'
+  .row
   .row
     .col-md-6
       = f.input :description
     .col-md-6
       = f.input :observation
-  .row
-    .col-md-2
-      = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@project_fund.date_payment.present?) ? localize(@project_fund.date_payment) : nil }
-    .col-md-2
-      = f.input :note_payment, as: 'file'
-    .col-md-6
-      = f.input :observation_payment
   %hr/
   .row
     .col-md-12

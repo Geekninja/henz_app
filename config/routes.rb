@@ -7,40 +7,37 @@ Rails.application.routes.draw do
     sessions: 'sessions'
   }
 
-  resources :users
+  resources :users, path: 'usuarios'
   
   authenticate :user do
     root 'dashboard#index'
 
-    resources :project_categories
+    resources :project_categories, path: 'categorias_obra'
 
-    resources :projects, path: 'projetos' do 
-      resources :project_finances
-      resources :project_funds
-      resources :vehicles
-      resources :archives
-      resources :fuel_expenses
-      resources :gas_stations
-      resources :quotations do 
-        resources :budgets do 
-          resources :budget_products
-        end
+    resources :projects, path: 'obras' do 
+      resources :project_finances, path: 'caixa'
+      resources :project_funds, path: 'gastos'
+      resources :vehicles, path: 'veículos'
+      resources :archives, path: 'arquivos'
+      resources :fuel_expenses, path: 'consumo'
+      resources :quotations, path: 'cotacoes' do 
+        resources :budgets, path: 'orcamentos'
       end
-      resources :bill_categories
-      resources :pays
-      resources :receipts
-      resources :offices
-      resources :suppliers
+      resources :bill_categories, path: 'categorias_conta'
+      resources :pays, path: 'contas_pagar'
+      resources :receipts, path: 'contas_receber'
+      resources :suppliers, path: 'fornecedores'
     end
     
-    resources :supplier_categories
-    resources :staffs
-    resources :vehicle_services
-    resources :vehicle_categories
-    resources :sectors
-    resources :jobs
-    resources :beneficts
-    resources :office_supports
-    resources :offices
+    resources :offices, path: 'escritorios'
+    resources :office_supports, path: 'ponto de apoio'
+    resources :supplier_categories, path: 'categorias_fornecedor'
+    resources :staffs, path: 'funcionarios'
+    resources :vehicle_services, path: 'servicos_veiculo'
+    resources :vehicle_categories, path: 'categoria_veiculo'
+    resources :sectors, path: 'setores'
+    resources :jobs, path: 'cargos'
+    resources :beneficts, path: 'beneficios'
+
   end
 end

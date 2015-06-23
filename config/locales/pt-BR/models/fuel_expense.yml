@@ -11,5 +11,6 @@ pt-BR:
     fuel_price_lt: 'preço combustível lt'
     date: 'data'
     observations: 'observações'
-    status: 'efetivado'
+    status: 'efetivado?'
+    note: "nota fiscal"
 
