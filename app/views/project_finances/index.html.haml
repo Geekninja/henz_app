@@ -21,7 +21,17 @@
               %th Valor
               %th Mes/Ano
               %th Data
-              %th Ações
+              %th Status
 
           %tbody
-            
+            - @project_finances.each do |p|
+              %tr
+                %td
+                  %span.label.label-success
+                    = p.finance_type
+                %td= p.title
+                %td= p.description
+                %td= "R$ #{p.value}"
+                %td= "#{p.month}/#{p.year}"
+                %td= p.date.strftime('%d/%m/%Y')
+                %td= (p.status) ? "efetivado" : "pendente"

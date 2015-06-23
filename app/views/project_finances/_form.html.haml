@@ -9,7 +9,10 @@
     .col-md-2
       = f.input :year
     .col-md-2
-      = f.input :status
+      = f.input :status, as: 'select', prompt: 'selecione...'
+    .col-md-2
+      = f.input :date, as: 'string', input_html: { class: 'date', value: (@project_finance.date.present?) ? localize(@project_finance.date) : nil }
+     
   .row
     .col-md-6
       = f.input :title
@@ -19,8 +22,6 @@
   .row
     .col-md-2
       = f.input :value
-    .col-md-2
-      = f.input :quantity
 
   %hr/
   .row

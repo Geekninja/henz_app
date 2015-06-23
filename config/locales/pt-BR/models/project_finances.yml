@@ -8,7 +8,7 @@ pt-BR:
     title: 'localização'
     month: 'mês'
     year: 'ano'
-    status: 'status'
+    status: 'efetivado?'
     title: 'título'
     description: 'descrição'
     value: 'valor'
