@@ -25,7 +25,6 @@
             %li= link_to "Contas à Pagar", project_pays_path(@project)
             %li= link_to "Contas à Receber", project_receipts_path(@project)
             %li= link_to "Categorias", project_bill_categories_path(@project)
-            %li= link_to "Relatórios (definir)"
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-briefcase
@@ -44,7 +43,6 @@
           %ul.sub{:style => "display: none;"}
             %li= link_to "Nova cotação", new_project_quotation_path(@project)
             %li= link_to "Gerenciar", project_quotations_path(@project)
-            %li= link_to "Relatórios (definir)"
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-th
