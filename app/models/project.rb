@@ -11,6 +11,7 @@ class Project < ActiveRecord::Base
   has_many :archives
   has_many :project_finances
   has_many :suppliers
+  has_many :project_funds
 
   validates_presence_of :name, :local, :priority
 

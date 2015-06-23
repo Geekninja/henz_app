@@ -1,0 +1,28 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Gestão de Caixa 
+        = link_to '<b>Adicionar caixa</b>'.html_safe, new_project_project_fund_path, class: 'btn btn-success btn-xs pull-right'
+      .panel-body
+
+        %table.table.table-hover.general-table
+          %thead
+            %tr
+              %th Título
+              %th Descrição
+              %th Valor
+              %th Pagamento
+              %th Nota
+              %th Ações
+          %tbody
+            - @project_funds.each do |f|
+              %tr
+                %td= f.name
+                %td= f.description
+                %td= "R$ #{f.value}"
+                %td= f.date_payment.strftime('%d/%m/%Y') if f.date_payment.present?
+                %td= link_to "<b>BAIXAR</b>".html_safe, f.note_payment.url
+                %td 
+                  = link_to 'Editar', edit_project_project_fund_path(project_id: @project, id: f), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_project_fund_path(project_id: @project, id:f), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

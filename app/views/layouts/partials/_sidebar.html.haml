@@ -13,8 +13,8 @@
               %b Caixa
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "Novo Gasto", project_quotations_path(@project)
-            %li= link_to "Caixa da obra", new_project_quotation_path(@project)
+            %li= link_to "Novo Gasto", new_project_project_fund_path(@project)
+            %li= link_to "Caixa da obra", project_project_funds_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-laptop

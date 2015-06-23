@@ -1,0 +1,25 @@
+= simple_form_for([@project, @project_fund]) do |f|
+  = f.error_notification
+
+  .row
+    .col-md-12
+      = f.input :name
+  .row
+    .col-md-2
+      = f.input :value
+  .row
+    .col-md-6
+      = f.input :description
+    .col-md-6
+      = f.input :observation
+  .row
+    .col-md-2
+      = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@project_fund.date_payment.present?) ? localize(@project_fund.date_payment) : nil }
+    .col-md-2
+      = f.input :note_payment, as: 'file'
+    .col-md-6
+      = f.input :observation_payment
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

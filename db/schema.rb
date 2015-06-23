@@ -185,19 +185,21 @@ ActiveRecord::Schema.define(version: 20150622160329) do
 
   create_table "project_funds", force: :cascade do |t|
     t.integer  "project_id"
-    t.float    "value"
-    t.date     "date"
-    t.integer  "month"
-    t.integer  "year"
-    t.string   "title"
+    t.string   "name"
     t.text     "description"
-    t.text     "observations"
-    t.boolean  "status"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.boolean  "status",              default: false
+    t.string   "value"
+    t.integer  "supplier_id"
+    t.text     "observation"
+    t.string   "note_payment"
+    t.date     "date_payment"
+    t.text     "observation_payment"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "project_funds", ["project_id"], name: "index_project_funds_on_project_id"
+  add_index "project_funds", ["supplier_id"], name: "index_project_funds_on_supplier_id"
 
   create_table "projects", force: :cascade do |t|
     t.integer  "project_category_id"

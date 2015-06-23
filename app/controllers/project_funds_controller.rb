@@ -1,9 +1,9 @@
 class ProjectFundsController < ApplicationController
   before_action :set_project_fund, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_project
   # GET /project_funds
   def index
-    @project_funds = ProjectFund.all
+    @project_funds = @project.project_funds
   end
 
   # GET /project_funds/1
@@ -12,7 +12,7 @@ class ProjectFundsController < ApplicationController
 
   # GET /project_funds/new
   def new
-    @project_fund = ProjectFund.new
+    @project_fund = @project.project_funds.new
   end
 
   # GET /project_funds/1/edit
@@ -21,10 +21,10 @@ class ProjectFundsController < ApplicationController
 
   # POST /project_funds
   def create
-    @project_fund = ProjectFund.new(project_fund_params)
+    @project_fund = @project.project_funds.new(project_fund_params)
 
     if @project_fund.save
-      redirect_to @project_fund, notice: 'Project fund was successfully created.'
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +33,7 @@ class ProjectFundsController < ApplicationController
   # PATCH/PUT /project_funds/1
   def update
     if @project_fund.update(project_fund_params)
-      redirect_to @project_fund, notice: 'Project fund was successfully updated.'
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class ProjectFundsController < ApplicationController
   # DELETE /project_funds/1
   def destroy
     @project_fund.destroy
-    redirect_to project_funds_url, notice: 'Project fund was successfully destroyed.'
+    redirect_to action: 'index'
   end
 
   private
@@ -53,6 +53,10 @@ class ProjectFundsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_fund_params
-      params.require(:project_fund).permit(:project_id, :value, :date, :month, :year, :title, :description, :observations, :status)
+      params.require(:project_fund).permit(:project_id, :value, :date, :date_payment, :note_payment, :name, :description, :observations, :status)
+    end
+
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 end

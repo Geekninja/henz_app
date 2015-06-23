@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
     resources :projects, path: 'projetos' do 
       resources :project_finances
+      resources :project_funds
       resources :vehicles
       resources :archives
       resources :fuel_expenses
