@@ -66,6 +66,6 @@
           %b.fa.fa-angle-down
         %ul.dropdown-menu
           %li
-            = link_to "Trocar Senha", destroy_user_session_path, method: :delete
+            = link_to "Trocar Senha", edit_password_path(current_user)
           %li
             = link_to "Sair", destroy_user_session_path, method: :delete

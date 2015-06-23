@@ -10,8 +10,10 @@ Rails.application.routes.draw do
   resources :users, path: 'usuarios'
   
   authenticate :user do
+
     root 'dashboard#index'
 
+    resources :passwords, path: 'trocar_senha', only: [:edit, :update]
     resources :project_categories, path: 'categorias_obra'
 
     resources :projects, path: 'obras' do 

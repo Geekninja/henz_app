@@ -1,0 +1,12 @@
+= simple_form_for current_user, url: password_path(current_user), method: :patch do |f|
+  = f.error_notification
+
+  .row
+    .col-md-6
+      = f.input :password
+    .col-md-6
+      = f.input :password_confirmation
+  %hr/
+  .row
+    .col-md-12
+      = f.button :submit, class: 'btn btn-success'

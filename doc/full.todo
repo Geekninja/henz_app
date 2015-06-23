@@ -1,7 +1,7 @@
 Usuários:
   ✔ permissões de usuário (administrador, gerente, financeiro) @done (15-06-23 12:17)
- ☐ trocar a senha
- ☐ aplicar permissões em todo o sistema
+ ✔ trocar a senha @done (15-06-23 14:44)
+ ✔ aplicar permissões em todo o sistema @done (15-06-23 15:01)
  ☐ default scope usuarios ativos
  ☐ obras que o usuário pode acessar
 
@@ -13,11 +13,11 @@ Gastos do caixa:
   ☐ filtros
 
 Gasto de combustivel:
-  ☐  tradução
-  ☐  correção de layout de formulário
+  ✔  tradução @done (15-06-23 14:59)
+  ✔  correção de layout de formulário @done (15-06-23 14:59)
   ☐  filtros
 Cotações:
-  ☐  crud cotação
+  ✔  crud cotação @done (15-06-23 15:01)
   ☐  crud orçamentos
   ☐  filtros
   ☐  orçamento se tornar conta a pagar
