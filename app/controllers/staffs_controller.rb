@@ -1,6 +1,6 @@
 class StaffsController < ApplicationController
   before_action :set_staff, only: [:show, :edit, :update, :destroy]
-  before_action :set_project
+  #before_action :set_project
   # GET /staffs
   def index
     @staffs = Staff.all

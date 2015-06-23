@@ -55,11 +55,40 @@ ActiveRecord::Schema.define(version: 20150622160329) do
 
   add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id"
 
+  create_table "bills", force: :cascade do |t|
+    t.integer  "bill_type"
+    t.integer  "bill_category_id"
+    t.integer  "project_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "status"
+    t.string   "value"
+    t.integer  "supplier_id"
+    t.text     "observation"
+    t.date     "deadline"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "bills", ["bill_category_id"], name: "index_bills_on_bill_category_id"
+  add_index "bills", ["project_id"], name: "index_bills_on_project_id"
+  add_index "bills", ["supplier_id"], name: "index_bills_on_supplier_id"
+
+  create_table "budget_products", force: :cascade do |t|
+    t.integer  "budget_id"
+    t.string   "name"
+    t.integer  "quantity"
+    t.string   "value"
+    t.text     "observation"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "budget_products", ["budget_id"], name: "index_budget_products_on_budget_id"
+
   create_table "budgets", force: :cascade do |t|
     t.integer  "quotation_id"
     t.integer  "supplier_id"
-    t.string   "note"
-    t.decimal  "value"
     t.date     "date"
     t.integer  "status"
     t.datetime "created_at",   null: false
@@ -72,21 +101,34 @@ ActiveRecord::Schema.define(version: 20150622160329) do
   create_table "fuel_expenses", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "vehicle_id"
+    t.integer  "gas_station_id"
     t.integer  "km_start"
     t.integer  "km_end"
     t.float    "fuel_price_lt"
     t.date     "date"
     t.boolean  "status"
-    t.string   "note"
     t.text     "observations"
-    t.integer  "supplier_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
+  add_index "fuel_expenses", ["gas_station_id"], name: "index_fuel_expenses_on_gas_station_id"
   add_index "fuel_expenses", ["project_id"], name: "index_fuel_expenses_on_project_id"
-  add_index "fuel_expenses", ["supplier_id"], name: "index_fuel_expenses_on_supplier_id"
   add_index "fuel_expenses", ["vehicle_id"], name: "index_fuel_expenses_on_vehicle_id"
+
+  create_table "gas_stations", force: :cascade do |t|
+    t.string   "name"
+    t.string   "location"
+    t.string   "city"
+    t.string   "state"
+    t.string   "geolocation"
+    t.text     "observation"
+    t.integer  "project_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "gas_stations", ["project_id"], name: "index_gas_stations_on_project_id"
 
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
@@ -136,28 +178,6 @@ ActiveRecord::Schema.define(version: 20150622160329) do
 
   add_index "offices", ["project_id"], name: "index_offices_on_project_id"
   add_index "offices", ["responsible_id"], name: "index_offices_on_responsible_id"
-
-  create_table "pays", force: :cascade do |t|
-    t.integer  "bill_category_id"
-    t.integer  "project_id"
-    t.string   "name"
-    t.text     "description"
-    t.boolean  "status",              default: false
-    t.string   "value"
-    t.integer  "supplier_id"
-    t.text     "observation"
-    t.date     "deadline"
-    t.string   "archive"
-    t.string   "note_payment"
-    t.date     "date_payment"
-    t.text     "observation_payment"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "pays", ["bill_category_id"], name: "index_pays_on_bill_category_id"
-  add_index "pays", ["project_id"], name: "index_pays_on_project_id"
-  add_index "pays", ["supplier_id"], name: "index_pays_on_supplier_id"
 
   create_table "project_categories", force: :cascade do |t|
     t.string   "name"
@@ -255,14 +275,19 @@ ActiveRecord::Schema.define(version: 20150622160329) do
     t.string   "telphone"
     t.string   "telphone_optional"
     t.string   "celphone"
+    t.integer  "project_id"
+    t.integer  "office_id"
+    t.integer  "office_support_id"
     t.date     "born"
     t.decimal  "salary"
-    t.boolean  "driver"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
 
   add_index "staffs", ["job_id"], name: "index_staffs_on_job_id"
+  add_index "staffs", ["office_id"], name: "index_staffs_on_office_id"
+  add_index "staffs", ["office_support_id"], name: "index_staffs_on_office_support_id"
+  add_index "staffs", ["project_id"], name: "index_staffs_on_project_id"
   add_index "staffs", ["sector_id"], name: "index_staffs_on_sector_id"
 
   create_table "supplier_categories", force: :cascade do |t|
@@ -282,41 +307,39 @@ ActiveRecord::Schema.define(version: 20150622160329) do
     t.string   "city"
     t.string   "state"
     t.string   "cep"
-    t.string   "contact_name"
-    t.string   "contact_telphone"
-    t.string   "contact_email"
+    t.string   "contact_name_1"
+    t.string   "contact_name_2"
+    t.string   "contact_name_3"
+    t.string   "contact_telphone_2"
+    t.string   "contact_telphone_3"
+    t.string   "contact_email_1"
+    t.string   "contact_email_2"
+    t.string   "contact_email_3"
     t.string   "telphone"
     t.string   "telphone_optional"
     t.string   "email"
     t.string   "email_optional"
-    t.text     "observations"
-    t.integer  "supplier_category_id"
-    t.integer  "supplier_importance"
-    t.integer  "project_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.string   "observations"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
-  add_index "suppliers", ["project_id"], name: "index_suppliers_on_project_id"
-  add_index "suppliers", ["supplier_category_id"], name: "index_suppliers_on_supplier_category_id"
-
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
-    t.string   "function"
     t.boolean  "status",                 default: true
-    t.integer  "privilege"
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.boolean  "administrator",          default: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
