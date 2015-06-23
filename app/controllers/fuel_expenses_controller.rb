@@ -4,14 +4,8 @@ class FuelExpensesController < ApplicationController
 
   # GET /fuel_expenses
   def index
-    params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
-    params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
+    @fuel_expenses = @project.fuel_expenses
     
-    if params[:supplier].present? || params[:vehicle].present?
-      @fuel_expenses = @project.fuel_expenses.filter_full(params[:start_date], params[:end_date], params[:supplier], params[:vehicle])
-    else
-      @fuel_expenses = @project.fuel_expenses.filter_date(params[:start_date], params[:end_date])
-    end
   end
 
   # GET /fuel_expenses/1

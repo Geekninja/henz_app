@@ -16,7 +16,7 @@
 //= require custom
 
 $(document).ready(function() {
-  $('.datatable').DataTable({
+  /*$('.datatable').DataTable({
     'oLanguage': {
         "sEmptyTable": "Nenhum registro encontrado",
         "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -40,5 +40,5 @@ $(document).ready(function() {
             "sSortDescending": ": Ordenar colunas de forma descendente"
         }
     }
-  })
+  })*/
 })
