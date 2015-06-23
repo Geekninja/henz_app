@@ -1,3 +1,4 @@
+
 .row
   .col-sm-12
     %section.panel
@@ -27,10 +28,10 @@
             %tr
               - @fuel_expenses.each do |fuel_expense|
 
-                %td.col-md-1
-                  =fuel_expense.vehicle.name if fuel_expense.vehicle.present?
                 %td.col-md-2
-                  =fuel_expense.gas_station.name if fuel_expense.gas_station.present?
+                  =fuel_expense.vehicle.name if fuel_expense.vehicle.present?
+                %td.col-md-4
+                  =fuel_expense.supplier.name if fuel_expense.supplier.present?
                 %td.col-md-1
                   .span.label.label-info
                     = "#{fuel_expense.km_start} km - #{fuel_expense.km_end} km"

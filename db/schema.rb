@@ -55,21 +55,11 @@ ActiveRecord::Schema.define(version: 20150622160329) do
 
   add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id"
 
-  create_table "budget_products", force: :cascade do |t|
-    t.integer  "budget_id"
-    t.string   "name"
-    t.integer  "quantity"
-    t.string   "value"
-    t.text     "observation"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "budget_products", ["budget_id"], name: "index_budget_products_on_budget_id"
-
   create_table "budgets", force: :cascade do |t|
     t.integer  "quotation_id"
     t.integer  "supplier_id"
+    t.string   "note"
+    t.decimal  "value"
     t.date     "date"
     t.integer  "status"
     t.datetime "created_at",   null: false
@@ -82,34 +72,21 @@ ActiveRecord::Schema.define(version: 20150622160329) do
   create_table "fuel_expenses", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "vehicle_id"
-    t.integer  "gas_station_id"
     t.integer  "km_start"
     t.integer  "km_end"
     t.float    "fuel_price_lt"
     t.date     "date"
     t.boolean  "status"
+    t.string   "note"
     t.text     "observations"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.integer  "supplier_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
-  add_index "fuel_expenses", ["gas_station_id"], name: "index_fuel_expenses_on_gas_station_id"
   add_index "fuel_expenses", ["project_id"], name: "index_fuel_expenses_on_project_id"
+  add_index "fuel_expenses", ["supplier_id"], name: "index_fuel_expenses_on_supplier_id"
   add_index "fuel_expenses", ["vehicle_id"], name: "index_fuel_expenses_on_vehicle_id"
-
-  create_table "gas_stations", force: :cascade do |t|
-    t.string   "name"
-    t.string   "location"
-    t.string   "city"
-    t.string   "state"
-    t.string   "geolocation"
-    t.text     "observation"
-    t.integer  "project_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "gas_stations", ["project_id"], name: "index_gas_stations_on_project_id"
 
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
@@ -165,14 +142,17 @@ ActiveRecord::Schema.define(version: 20150622160329) do
     t.integer  "project_id"
     t.string   "name"
     t.text     "description"
-    t.boolean  "status"
+    t.boolean  "status",              default: false
     t.string   "value"
     t.integer  "supplier_id"
     t.text     "observation"
     t.date     "deadline"
     t.string   "archive"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.string   "note_payment"
+    t.date     "date_payment"
+    t.text     "observation_payment"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "pays", ["bill_category_id"], name: "index_pays_on_bill_category_id"
@@ -288,6 +268,8 @@ ActiveRecord::Schema.define(version: 20150622160329) do
   create_table "supplier_categories", force: :cascade do |t|
     t.string   "name"
     t.boolean  "status"
+    t.boolean  "protected"
+    t.string   "code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -319,21 +301,22 @@ ActiveRecord::Schema.define(version: 20150622160329) do
   add_index "suppliers", ["supplier_category_id"], name: "index_suppliers_on_supplier_category_id"
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "",    null: false
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "",   null: false
+    t.string   "encrypted_password",     default: "",   null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,    null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "name"
+    t.string   "function"
     t.boolean  "status",                 default: true
-    t.boolean  "administrator",          default: false
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "privilege"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

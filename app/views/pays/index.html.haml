@@ -2,47 +2,79 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
+        Filtro
+      .panel-body
+        = form_tag project_pays_path, :method => 'get' do
+          .row
+            .col-md-2
+              = label_tag "Data inicial"
+              = text_field_tag :start_date, params[:start_date], { class: 'date form-control'}
+            .col-md-2
+              = label_tag "Data final"
+              = text_field_tag :end_date, params[:end_date], { class: 'date form-control'}
+          %hr/
+          .row
+            .col-md-2
+              = submit_tag "Filtrar Resultados", class: 'btn btn-success btn-sm'
+
+
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
         %b
           Contas
         = link_to '<b>Nova conta</b>'.html_safe, new_project_pay_path(@project), class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.table-striped.general-table.datatable.table-condensed
+        %table.table.table-hover.table-striped.general-table.datatable.table-condensed.datatable
           %thead
             %tr
               %th
-                Categoria
+                Status
               %th
                 Nome
               %th
                 Vencimento
               %th
+                Pagamento
+              %th
                 Valor
               %th
-                Status
+                Nota Comp.
               %th
-                Nota
+                Nota Pag.
               %th
                 Ações
           %tbody
             - @pays.each do |bill|
               %tr
-
-                %td.col-md-2
-                  = bill.bill_category.name if bill.bill_category.present?
+                %td.col-md-1
+                  - if bill.status
+                    %span.label.label-success
+                      Pago
+                  - else
+                    %span.label.label-danger
+                      Não Pago
                 %td.col-md-3
                   = bill.name
                 %td.col-md-1
                   %span.label.label-info
                     = bill.deadline.strftime('%d/%m/%Y')
                 %td.col-md-1
+                  - if bill.date_payment.present?
+                    %span.label.label-success
+                      = bill.date_payment.strftime('%d/%m/%Y')
+                %td.col-md-1
                   %span.label.label-warning
                     = "R$ #{bill.value}"
-                %td.col-md-2
-                  =bill.status
+               
                 %td.col-md-2
                   - if bill.archive.present?
-                    = link_to "<b>ARQUIVO</b>".html_safe, bill.archive.url, { target: '_blank'}
+                    = link_to "<b>BAIXAR</b>".html_safe, bill.archive.url, { target: '_blank'}
+                %td.col-md-1
+                  - if bill.note_payment.present?
+                    = link_to "<b>BAIXAR</b>".html_safe, bill.note_payment.url, { target: '_blank'}
                 %td.col-md-3
                   = link_to '', edit_project_pay_path(project_id: @project, id: bill), class: 'btn btn-info btn-sm fa-edit fa'
                   = link_to '', project_pay_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'

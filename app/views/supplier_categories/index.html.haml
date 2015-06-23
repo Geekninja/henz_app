@@ -19,6 +19,7 @@
                 %td= s.name
                 %td= status_helper s.status
                 %td
-                  = link_to 'Editar', edit_supplier_category_path(s), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', s, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                  - if !s.protected
+                    = link_to 'Editar', edit_supplier_category_path(s), class: 'btn btn-info btn-xs'
+                    = link_to 'Remover', s, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
             

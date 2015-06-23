@@ -4,3 +4,22 @@
  *= require bucket/css/style
  *= require bucket/css/style-responsive
  */
+
+body, html{
+  height: 100%;
+}
+.login-body {
+  background-image: url('/henz_fundo.jpg') !important;
+  background-repeat: repeat-x !important;
+  background-size: contain !important;
+}
+.form-signin h2.form-signin-heading {
+    background: #198A3C !important;
+    font-weight: bold !important;
+    border-bottom: 10px solid #454486 !important;
+}
+
+.form-signin .btn-login {
+  background: #454486 !important;
+  font-weight: bold !important;
+}

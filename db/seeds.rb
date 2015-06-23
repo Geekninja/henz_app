@@ -10,4 +10,11 @@ User.create({
     password: '123456789',
     password_confirmation: '123456789',
     name: 'dev'
-  })
+})
+
+SupplierCategory.create({
+  name: "Posto de abastecimento",
+  status: true,
+  protected: true,
+  code: "posto_abastecimento"
+})

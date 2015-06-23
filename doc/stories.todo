@@ -7,7 +7,7 @@ todo:
   contas a receber:
     ☐ contas a receber deverão ser genericas e simples, o acesso a elas só poderão ser dado a um escalão de gerência, tais contas não são fechadas pela gestão da obra e sim pela sede.
   gestão de veículos:
-    ☐ O gasto com combustivel deve ser vinculado a um fornecedor, este fornecedor deverá ser um da categoria 'postos de gasolina'
+    ✔ O gasto com combustivel deve ser vinculado a um fornecedor, este fornecedor deverá ser um da categoria 'postos de gasolina' @done (15-06-22 23:03)
     ☐ O relatório de gastos com gasolina deve filtar por fornecedor, veículo, obra, motorista e por período
     ☐ ﻿O relatório poderá emitir um faturamento, o mesmo deverá detalhar e salvar no banco de dados que um relatório/fatura foi emitida
   gestão de caixa:
@@ -25,6 +25,6 @@ todo:
     ☐ orçamentos geral e por obra
   visual:
     ☐ icones
-    ☐ cores
-    ☐ texto e inputs (login e geral)
+    ✔ cores @done (15-06-22 23:03)
+    ✔ texto e inputs (login e geral) @done (15-06-22 23:03)
 

@@ -3,7 +3,10 @@ class PaysController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pays = @project.pays
+    params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
+    params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
+
+    @pays = @project.pays.filter(params[:start_date], params[:end_date])
   end
 
   # GET /bills/1
@@ -57,7 +60,8 @@ class PaysController < ApplicationController
     def pay_params
       params.require(:pay).permit( :deadline, :bill_category_id, 
                                    :project_id, :name, :description,
-                                   :status, :value, :supplier_id, :observation, :archive)
+                                   :status, :value, :supplier_id, :observation, :archive,
+                                   :date_payment, :note_payment, :observation_payment)
     end
     def set_project
       @project = Project.find(params[:project_id])

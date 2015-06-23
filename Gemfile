@@ -12,7 +12,7 @@ gem 'pundit'
 gem 'carrierwave'
 gem 'simple_form'
 gem 'haml-rails'
-
+gem 'jquery-datatables-rails', '~> 3.3.0'
 
 gem 'validates_cpf_cnpj'
 gem 'validates_timeliness', '~> 3.0'

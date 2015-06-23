@@ -57,7 +57,7 @@ class SuppliersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def supplier_params
-      params.require(:supplier).permit(:name, :cnpj, :state_number, :supplier_importance, :city_number, :city, :state, :cep, :contact_name, :contact_telphone, :contact_email,:telphone, :telphone_optional, :email, :email_optional, :observations)
+      params.require(:supplier).permit(:name, :cnpj, :state_number, :supplier_importance, :supplier_category_id, :city_number, :city, :state, :cep, :contact_name, :contact_telphone, :contact_email,:telphone, :telphone_optional, :email, :email_optional, :observations)
     end
 
     def set_project

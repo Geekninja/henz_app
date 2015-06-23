@@ -3,6 +3,8 @@ class CreateBudgets < ActiveRecord::Migration
     create_table :budgets do |t|
       t.references :quotation, index: true, foreign_key: true
       t.references :supplier, index: true, foreign_key: true
+      t.string  :note
+      t.decimal :value
       t.date :date
       t.integer :status
 

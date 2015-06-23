@@ -4,7 +4,14 @@ class FuelExpensesController < ApplicationController
 
   # GET /fuel_expenses
   def index
-    @fuel_expenses = @project.fuel_expenses.all
+    params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
+    params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
+    
+    if params[:supplier].present? || params[:vehicle].present?
+      @fuel_expenses = @project.fuel_expenses.filter_full(params[:start_date], params[:end_date], params[:supplier], params[:vehicle])
+    else
+      @fuel_expenses = @project.fuel_expenses.filter_date(params[:start_date], params[:end_date])
+    end
   end
 
   # GET /fuel_expenses/1
@@ -63,6 +70,6 @@ class FuelExpensesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def fuel_expense_params
-      params.require(:fuel_expense).permit(:project_id, :vehicle_id, :gas_station_id, :km_start, :km_end, :fuel_price_lt, :date, :status, :observations)
+      params.require(:fuel_expense).permit(:project_id, :supplier_id, :note, :vehicle_id, :gas_station_id, :km_start, :km_end, :fuel_price_lt, :date, :status, :observations)
     end
 end

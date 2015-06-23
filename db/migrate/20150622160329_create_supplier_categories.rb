@@ -3,6 +3,8 @@ class CreateSupplierCategories < ActiveRecord::Migration
     create_table :supplier_categories do |t|
       t.string :name
       t.boolean :status
+      t.boolean :protected
+      t.string :code
 
       t.timestamps null: false
     end

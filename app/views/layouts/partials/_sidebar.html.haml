@@ -22,8 +22,8 @@
               %b Contas
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
-            %li= link_to "Contas à Pagar", new_project_pay_path(@project)
-            %li= link_to "Contas à Receber", new_project_receipt_path(@project)
+            %li= link_to "Contas à Pagar", project_pays_path(@project)
+            %li= link_to "Contas à Receber", project_receipts_path(@project)
             %li= link_to "Categorias", project_bill_categories_path(@project)
             %li= link_to "Relatórios (definir)"
         %li.sub-menu.dcjq-parent-li

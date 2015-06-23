@@ -12,4 +12,14 @@ pt-BR:
     supplier: 'fornecedor'
     observation: 'observação'
     deadline: 'vencimento'
-    archive: "Arquivo para upload"  
+    archive: "upload da nota"
+    date_payment: "Data de pagamento"
+    note_payment: "upload do comprovante"
+    observation_payment: "observações do pagamento"
+    status: "Esta conta foi paga?"
+  errors:
+   models:
+    pay:
+     attributes:
+      date_payment:
+       invalid_date: "data inválida"

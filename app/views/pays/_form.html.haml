@@ -24,6 +24,30 @@
       = f.input :archive, as: 'file'
   %hr/
   .row
+    .col-md-2
+      = f.input :status, as: 'select', prompt: 'selecione...'
+    .info_payment{style: (@pay.status) ? "display:block;" : "display:none;"}
+      .col-md-2
+        = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@pay.date_payment.present?) ? localize(@pay.date_payment) : nil }
+      .col-md-2
+        = f.input :note_payment, as: 'file'
+      .col-md-6
+        = f.input :observation_payment
+  %hr/
+  .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
 
+
+:javascript
+
+  $(document).ready(function() {
+    $("#pay_status").on('change', function() {
+      if($(this).val() == 'true') {
+        $('.info_payment').show()
+      } else {
+        $('.info_payment').hide()
+      }
+
+    })
+  })
