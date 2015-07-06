@@ -25,12 +25,12 @@ Rails.application.routes.draw do
       resources :quotations, path: 'cotacoes' do 
         resources :budgets, path: 'orcamentos'
       end
-      resources :bill_categories, path: 'categorias_conta'
       resources :pays, path: 'contas_pagar'
       resources :receipts, path: 'contas_receber'
       resources :suppliers, path: 'fornecedores'
     end
     
+    resources :bill_categories, path: 'categorias_conta'
     resources :offices, path: 'escritorios'
     resources :office_supports, path: 'ponto de apoio'
     resources :supplier_categories, path: 'categorias_fornecedor'

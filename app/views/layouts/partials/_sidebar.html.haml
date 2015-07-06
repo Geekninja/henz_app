@@ -26,8 +26,6 @@
             %li= link_to "Contas à Pagar", project_pays_path(@project)
             - if policy(:application).administrador? || policy(:application).gerente?
               %li= link_to "Contas à Receber", project_receipts_path(@project)
-            - if policy(:application).administrador?
-              %li= link_to "Categorias", project_bill_categories_path(@project)
         - if policy(:application).administrador? || policy(:application).gerente?
           %li.sub-menu.dcjq-parent-li
             %a.dcjq-parent{:href => "javascript:;"}

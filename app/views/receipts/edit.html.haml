@@ -1,0 +1,9 @@
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        %b
+          Editar conta a receber
+        = link_to 'Voltar', project_receipts_path(@project), class: 'btn btn-default btn-xs pull-right'
+      .panel-body
+        = render 'form'

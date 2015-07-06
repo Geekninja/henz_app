@@ -3,7 +3,7 @@
     %section.panel
       %header.panel-heading
         Categorias de conta
-        = link_to 'Nova Categoria de Conta', new_project_bill_category_path, class: 'btn btn-success btn-xs pull-right'
+        = link_to 'Nova Categoria de Conta', new_bill_category_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
         %table.table.table-hover.general-table.datatable
@@ -23,5 +23,5 @@
                 %td.col-md-4
                   = status_helper bill_category.status
                 %td.col-md-3
-                  = link_to 'Editar', edit_project_bill_category_path(project_id: @project, id: bill_category), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', project_bill_category_path(project_id: @project, id: bill_category), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                  = link_to 'Editar', edit_bill_category_path(bill_category), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', bill_category_path(bill_category), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

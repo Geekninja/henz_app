@@ -1,0 +1,22 @@
+pt-BR:
+ activerecord:
+  models:
+   receipt: 'Conta à receber'
+  attributes:
+   receipt:
+    bill_category: 'categoria'
+    name: 'nome'
+    description: 'descrição'
+    value: 'valor'
+    observation: 'observação'
+    deadline: 'vencimento'
+    archive: "upload da nota"
+    date_payment: "Data de pagamento"
+    observation_receipt: "observações do pagamento"
+    status: "Esta conta foi paga?"
+  errors:
+   models:
+    receipt:
+     attributes:
+      date_payment:
+       invalid_date: "data inválida"

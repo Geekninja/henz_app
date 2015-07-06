@@ -1,30 +1,55 @@
 class ReceiptsController < ApplicationController
   before_action :set_project
-  
+  before_action :set_receipt, only: [:edit, :update, :destroy]
+
   def index
+    @receipts = Receipt.all
   end
 
   def new
+    @receipt = Receipt.new
   end
 
   def create
+    @receipt = Receipt.new(set_receipt_params)
+
+    if @receipt.save
+      flash[:success] =  t :success
+      redirect_to action: 'index'
+    else
+      render action: 'new'
+    end
   end
 
   def edit
   end
 
   def update
+    if @receipt.update(set_receipt_params)
+      flash[:success] =  t :success
+      redirect_to action: 'index'
+    else
+      render action: 'new'
+    end
   end
 
   def destroy
+    if @receipt.destroy
+      flash[:success] =  t :success
+      redirect_to action: 'index'
+    end
   end
 
   private
 
-  def set_receipts_params
+  def set_receipt_params
+    params.require(:receipt).permit(:name, :description, :value, :deadline, 
+                                    :archive, :date_paymnet, :observation_receipt,
+                                    :bill_category_id, :status )
   end
 
-  def set_receipts
+  def set_receipt
+    @receipt = Receipt.find(params[:id])
   end
 
   def set_project

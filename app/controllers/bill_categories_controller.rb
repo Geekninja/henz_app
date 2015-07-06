@@ -1,6 +1,6 @@
 class BillCategoriesController < ApplicationController
   before_action :set_bill_category, only: [:show, :edit, :update, :destroy]
-  before_action :set_project
+  #before_action :set_project
   # GET /bill_categories
   def index
     @bill_categories = BillCategory.unscoped.all

@@ -10,39 +10,36 @@
         %table.table.table-hover.general-table.datatable
           %thead
             %tr
-              %th.col-md-2
-                Veículo
-              %th.col-md-2
-                Posto
-              %th.col-md-2
-                Km
-              %th.col-md-2
-                Preço Lt
-              %th.col-md-2
-                Data
-              %th.col-md-2
-                Total
-              %th.col-md-2
-                Ações
+              %th Veículo
+              %th Posto
+              %th Km Início/Fim
+              %th Km Total
+              %th Preço Lt
+              %th Data
+              %th Total
+              %th Ações
           %tbody
             %tr
               - @fuel_expenses.each do |fuel_expense|
 
                 %td.col-md-2
-                  =fuel_expense.vehicle.name if fuel_expense.vehicle.present?
-                %td.col-md-4
-                  =fuel_expense.supplier.name if fuel_expense.supplier.present?
+                  = fuel_expense.vehicle.name if fuel_expense.vehicle.present?
+                %td.col-md-3
+                  = fuel_expense.supplier.name if fuel_expense.supplier.present?
                 %td.col-md-1
                   .span.label.label-info
-                    = "#{fuel_expense.km_start} km - #{fuel_expense.km_end} km"
+                    = "#{fuel_expense.km_start} km - #{fuel_expense.km_end} km" 
+                %td.col-md-1
+                  .span.label.label-info
+                    = "#{fuel_expense.km_end - fuel_expense.km_start} km"
                 %td.col-md-1
                   .span.label.label-warning
-                    = "R$ #{fuel_expense.fuel_price_lt}"
+                    = number_to_currency(fuel_expense.fuel_price_lt)
                 %td.col-md-1
-                  =fuel_expense.date.strftime("%d/%m/%Y")
+                  = fuel_expense.date.strftime("%d/%m/%Y")
                 %td.col-md-1
                   .span.label.label-success
-                    = "R$ #{(fuel_expense.km_end- fuel_expense.km_start) * fuel_expense.fuel_price_lt}"
+                    = number_to_currency((fuel_expense.km_end - fuel_expense.km_start) * fuel_expense.fuel_price_lt)
                 %td.col-md-3
                   = link_to 'Editar', edit_project_fuel_expense_path(project_id: @project, id: fuel_expense), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', project_fuel_expense_path(project_id: @project, id: fuel_expense), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

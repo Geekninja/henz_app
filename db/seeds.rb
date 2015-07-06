@@ -9,7 +9,8 @@ User.create({
     email: 'dev@dev.com',
     password: '123456789',
     password_confirmation: '123456789',
-    name: 'dev'
+    name: 'dev',
+    privilege: 0
 })
 
 SupplierCategory.create({
