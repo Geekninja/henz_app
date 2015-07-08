@@ -6,6 +6,8 @@ class FuelExpense < ActiveRecord::Base
   validates_presence_of :vehicle, :km_start, :km_end, :date
   
   validates :fuel_price_lt, numericality: {only_float: true}, presence: true
+  validates :fuel_lt, numericality: {only_float: true}, presence: true
+  
   validates_numericality_of :km_start, :km_end, presence: true
   
   validate :correct_km?

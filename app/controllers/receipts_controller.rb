@@ -7,11 +7,11 @@ class ReceiptsController < ApplicationController
   end
 
   def new
-    @receipt = Receipt.new
+    @receipt = @project.receipts.new
   end
 
   def create
-    @receipt = Receipt.new(set_receipt_params)
+    @receipt = @project.receipts.new(set_receipt_params)
 
     if @receipt.save
       flash[:success] =  t :success
@@ -49,7 +49,7 @@ class ReceiptsController < ApplicationController
   end
 
   def set_receipt
-    @receipt = Receipt.find(params[:id])
+    @receipt = @project.receipts.find(params[:id])
   end
 
   def set_project

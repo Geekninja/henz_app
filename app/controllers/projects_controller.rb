@@ -13,7 +13,11 @@ class ProjectsController < ApplicationController
 
     @project_funds   = @project.project_funds.where(created_at: params[:start_date]..params[:end_date])
     @project_finance = @project.project_finances.where(created_at: params[:start_date]..params[:end_date])
-    @pays            = @project.pays
+    @pays            = @project.pays.where(status: false)
+    @receipts        = @project.receipts.where(status: false)
+    @fuels           = @project.fuel_expenses.where(status: true)
+    @uploads         = @project.archives
+            
   end
 
   # GET /projects/new

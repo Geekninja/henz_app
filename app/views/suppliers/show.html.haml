@@ -1,69 +1,53 @@
-%p#notice= notice
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        FORNECEDOR
+        = link_to '<b>Voltar</b>'.html_safe, project_path(@project), class: 'btn btn-success btn-xs pull-right'
+      .panel-body
 
-%p
-  %b Name:
-  = @supplier.name
-%p
-  %b Cnpj:
-  = @supplier.cnpj
-%p
-  %b State number:
-  = @supplier.state_number
-%p
-  %b City number:
-  = @supplier.city_number
-%p
-  %b City:
-  = @supplier.city
-%p
-  %b State:
-  = @supplier.state
-%p
-  %b Cep:
-  = @supplier.cep
-%p
-  %b Contact name 1:
-  = @supplier.contact_name_1
-%p
-  %b Contact name 2:
-  = @supplier.contact_name_2
-%p
-  %b Contact name 3:
-  = @supplier.contact_name_3
-%p
-  %b Contact telphone 2:
-  = @supplier.contact_telphone_2
-%p
-  %b Contact telphone 2:
-  = @supplier.contact_telphone_2
-%p
-  %b Contact telphone 3:
-  = @supplier.contact_telphone_3
-%p
-  %b Contact email 1:
-  = @supplier.contact_email_1
-%p
-  %b Contact email 2:
-  = @supplier.contact_email_2
-%p
-  %b Contact email 3:
-  = @supplier.contact_email_3
-%p
-  %b Telphone:
-  = @supplier.telphone
-%p
-  %b Telphone optional:
-  = @supplier.telphone_optional
-%p
-  %b Email:
-  = @supplier.email
-%p
-  %b Email optional:
-  = @supplier.email_optional
-%p
-  %b Observations:
-  = @supplier.observations
-
-= link_to 'Edit', edit_supplier_path(@supplier)
-\|
-= link_to 'Back', suppliers_path
+        = simple_form_for([@project, @supplier]) do |f|
+          = f.error_notification
+        
+          .row
+            .col-md-6
+              = f.association :supplier_category,  input_html: {disabled: 'disabled'}
+          %hr/
+          .row
+            .col-md-6
+              = f.input :name, input_html: {disabled: 'disabled'}
+            .col-md-2
+              = f.input :cnpj, input_html: {disabled: 'disabled'}
+            .col-md-2
+              = f.input :state_number, input_html: {disabled: 'disabled'}
+            .col-md-2
+              = f.input :city_number, input_html: {disabled: 'disabled'}
+          .row
+            .col-md-4
+              = f.input :city, input_html: {disabled: 'disabled'}
+            .col-md-2
+              = f.input :state, input_html: {disabled: 'disabled'}
+            .col-md-2
+              = f.input :cep, input_html: {disabled: 'disabled'}
+            .col-md-4
+              = f.input :supplier_importance, as: 'select', collection: Supplier.supplier_importances.keys.to_a, prompt: 'selecione...', input_html: {disabled: 'disabled'}
+          %hr/
+          .row
+            .col-md-3
+              = f.input :telphone, input_html: {disabled: 'disabled'}
+            .col-md-3
+              = f.input :telphone_optional, input_html: {disabled: 'disabled'}
+            .col-md-3
+              = f.input :email, input_html: {disabled: 'disabled'}
+            .col-md-3
+              = f.input :email_optional, input_html: {disabled: 'disabled'}
+          .row
+            .col-md-3
+              = f.input :contact_name, input_html: {disabled: 'disabled'}
+            .col-md-3
+              = f.input :contact_telphone, input_html: {disabled: 'disabled'}
+            .col-md-3
+              = f.input :contact_email, input_html: {disabled: 'disabled'}
+          .row
+            .col-md-12
+              = f.input :observations, input_html: {disabled: 'disabled'}

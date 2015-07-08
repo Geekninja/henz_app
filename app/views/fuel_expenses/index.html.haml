@@ -15,6 +15,8 @@
               %th Km Início/Fim
               %th Km Total
               %th Preço Lt
+              %th Total abastecido
+              %th Média
               %th Data
               %th Total
               %th Ações
@@ -24,7 +26,7 @@
 
                 %td.col-md-2
                   = fuel_expense.vehicle.name if fuel_expense.vehicle.present?
-                %td.col-md-3
+                %td.col-md-2
                   = fuel_expense.supplier.name if fuel_expense.supplier.present?
                 %td.col-md-1
                   .span.label.label-info
@@ -33,13 +35,19 @@
                   .span.label.label-info
                     = "#{fuel_expense.km_end - fuel_expense.km_start} km"
                 %td.col-md-1
-                  .span.label.label-warning
+                  .span.label.label-info
                     = number_to_currency(fuel_expense.fuel_price_lt)
+                %td.col-md-1
+                  .span.label.label-info
+                    = "#{fuel_expense.fuel_lt} lt"
+                %td.col-md-1
+                  .span.label.label-warning
+                    = "#{((fuel_expense.km_end - fuel_expense.km_start) / fuel_expense.fuel_lt).round(2)} km"
                 %td.col-md-1
                   = fuel_expense.date.strftime("%d/%m/%Y")
                 %td.col-md-1
                   .span.label.label-success
-                    = number_to_currency((fuel_expense.km_end - fuel_expense.km_start) * fuel_expense.fuel_price_lt)
+                    = number_to_currency(fuel_expense.fuel_lt * fuel_expense.fuel_price_lt)
                 %td.col-md-3
-                  = link_to 'Editar', edit_project_fuel_expense_path(project_id: @project, id: fuel_expense), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', project_fuel_expense_path(project_id: @project, id: fuel_expense), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                  = link_to '', edit_project_fuel_expense_path(project_id: @project, id: fuel_expense), class: 'btn btn-info btn-sm fa-edit fa'
+                  = link_to '', project_fuel_expense_path(project_id: @project, id: fuel_expense), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'

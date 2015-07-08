@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.integer  "km_start"
     t.integer  "km_end"
     t.float    "fuel_price_lt"
+    t.float    "fuel_lt"
     t.date     "date"
     t.boolean  "status"
     t.string   "note"

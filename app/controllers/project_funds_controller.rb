@@ -53,7 +53,7 @@ class ProjectFundsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_fund_params
-      params.require(:project_fund).permit(:project_id, :value, :date, :date_payment, :note_payment, :name, :description, :observations, :status)
+      params.require(:project_fund).permit(:project_id, :value, :date, :date_payment, :supplier_id, :note_payment, :name, :description, :observations, :status)
     end
 
     def set_project

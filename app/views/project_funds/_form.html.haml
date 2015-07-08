@@ -3,6 +3,9 @@
 
   .row
     .col-md-6
+      = f.association :supplier, prompt: 'selecione...'
+  .row
+    .col-md-6
       = f.input :name
     .col-md-2
       = f.input :value
@@ -10,7 +13,6 @@
       = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@project_fund.date_payment.present?) ? localize(@project_fund.date_payment) : nil }
     .col-md-2
       = f.input :note_payment, as: 'file'
-  .row
   .row
     .col-md-6
       = f.input :description

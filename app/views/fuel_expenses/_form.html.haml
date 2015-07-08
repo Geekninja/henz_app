@@ -14,6 +14,8 @@
     .col-md-2
       = f.input :fuel_price_lt
     .col-md-2
+      = f.input :fuel_lt
+    .col-md-2
       = f.input :date, as: 'string', input_html: { class: 'date', value: (f.object.date.present?) ? localize(f.object.date) : nil }
     .col-md-2
       = f.input :status, as: 'select', prompt: 'selecione...'

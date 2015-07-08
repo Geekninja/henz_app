@@ -11,7 +11,7 @@
       %span.mini-stat-icon.tar
         %i.fa.fa-tag
       .mini-stat-info
-        %span= number_to_currency(@pays.sum(:value), unit: "R$", separator: ",", delimiter: "")
+        %span= number_to_currency(@receipts.sum(:value), unit: "R$", separator: ",", delimiter: "")
         Contas à receber
   .col-md-3
     .mini-stat.clearfix
@@ -40,6 +40,7 @@
             %tr
               %th #
               %th Título
+              %th Fornecedor
               %th Vencimento
               %th valor
               %th Status
@@ -48,6 +49,7 @@
               %tr
                 %td.col-md-1= i + 1
                 %td.col-md-4= p.name
+                %td.col-md-4= link_to p.supplier.name, project_supplier_path(project_id: p.project, id: p.supplier) if p.supplier.present?
                 %td.col-md-2= p.deadline.strftime('%d/%m/%Y')
                 %td.col-md-2
                   %span.label.label-info
@@ -74,6 +76,7 @@
             %tr
               %th #
               %th Título
+              %th Fornecedor
               %th Data de lançamento
               %th Valor
           %tbody
@@ -81,6 +84,7 @@
               %tr
                 %td.col-md-1= i + 1
                 %td.col-md-3= f.name
+                %td.col-md-3= link_to f.supplier.name, project_supplier_path(project_id: f.project, id: f.supplier) if f.supplier.present?
                 %td.col-md-2= f.created_at.strftime('%d/%m/%Y')
                 %td.col-md-1
                   %span.label.label-info
@@ -103,7 +107,13 @@
               %th Posto de abastecimento
               %th Valor Total
           %tbody
-          
+            - @fuels.each_with_index do |f, i|
+              %tr
+                %td= i + 1
+                %td= f.vehicle.name
+                %td= link_to f.supplier.name, project_supplier_path(project_id: f.project, id: f.supplier) if f.supplier.present?
+                %td= number_to_currency(f.fuel_lt * f.fuel_price_lt)
+
   .col-sm-6
     %section.panel
       %header.panel-heading
@@ -121,4 +131,10 @@
               %th Data
               %th Arquivo
           %tbody
+          - @uploads.each_with_index do |u, i|
+            %tr
+              %td= i + 1 
+              %td= u.name
+              %td= u.created_at.strftime('%d/%m/%Y')
+              %td= link_to "Baixar", u.file_path.url
   

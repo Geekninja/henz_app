@@ -32,6 +32,7 @@
               %th Título
               %th Descrição
               %th Valor
+              %th Fornecedor
               %th Pagamento
               %th Nota
               %th Ações
@@ -40,7 +41,8 @@
               %tr
                 %td= f.name
                 %td= f.description
-                %td= "R$ #{f.value}"
+                %td= number_to_currency(f.value)
+                %td= f.supplier.name if f.supplier.present?
                 %td= f.date_payment.strftime('%d/%m/%Y') if f.date_payment.present?
                 %td= link_to "<b>BAIXAR</b>".html_safe, f.note_payment.url
                 %td 

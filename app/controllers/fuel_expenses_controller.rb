@@ -64,6 +64,6 @@ class FuelExpensesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def fuel_expense_params
-      params.require(:fuel_expense).permit(:project_id, :supplier_id, :note, :vehicle_id, :gas_station_id, :km_start, :km_end, :fuel_price_lt, :date, :status, :observations)
+      params.require(:fuel_expense).permit(:project_id, :supplier_id, :note, :vehicle_id, :gas_station_id, :km_start, :km_end, :fuel_price_lt, :fuel_lt, :date, :status, :observations)
     end
 end
