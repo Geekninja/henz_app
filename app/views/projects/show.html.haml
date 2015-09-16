@@ -18,7 +18,7 @@
       %span.mini-stat-icon.pink
         %i.fa.fa-money
       .mini-stat-info
-        %span= number_to_currency((@project_finance.sum(:value).to_f - @project_funds.sum(:value).to_f), unit: "R$", separator: ",", delimiter: "") if @project_finance.present?
+        %span= number_to_currency((@project_finance.sum(:value).to_f - @project_funds.sum(:value).to_f), unit: "R$", separator: ",", delimiter: "") if @project_finance.present? &&  @project_funds.present?
         Saldo em Caixa 
   .col-md-3
     .mini-stat.clearfix
