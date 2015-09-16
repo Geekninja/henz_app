@@ -4,28 +4,28 @@
       %span.mini-stat-icon.orange
         %i.fa.fa-gavel
       .mini-stat-info
-        %span= number_to_currency(@pays.sum(:value), unit: "R$", separator: ",", delimiter: "")
+        %span= number_to_currency(@pays.sum(:value), unit: "R$", separator: ",", delimiter: "") if @pays.present?
         Contas à pagar
   .col-md-3
     .mini-stat.clearfix
       %span.mini-stat-icon.tar
         %i.fa.fa-tag
       .mini-stat-info
-        %span= number_to_currency(@receipts.sum(:value), unit: "R$", separator: ",", delimiter: "")
+        %span= number_to_currency(@receipts.sum(:value), unit: "R$", separator: ",", delimiter: "") if @receipts.present?
         Contas à receber
   .col-md-3
     .mini-stat.clearfix
       %span.mini-stat-icon.pink
         %i.fa.fa-money
       .mini-stat-info
-        %span= number_to_currency((@project_finance.sum(:value).to_f - @project_funds.sum(:value).to_f), unit: "R$", separator: ",", delimiter: "")
+        %span= number_to_currency((@project_finance.sum(:value).to_f - @project_funds.sum(:value).to_f), unit: "R$", separator: ",", delimiter: "") if @project_finance.present?
         Saldo em Caixa 
   .col-md-3
     .mini-stat.clearfix
       %span.mini-stat-icon.green
         %i.fa.fa-eye
       .mini-stat-info
-        %span= number_to_currency(@project_funds.sum(:value), unit: "R$", separator: ",", delimiter: "")
+        %span= number_to_currency(@project_funds.sum(:value), unit: "R$", separator: ",", delimiter: "") if @project_funds.present?
         Gastos do Caixa
 .row
   .col-sm-6

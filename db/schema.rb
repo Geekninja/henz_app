@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150706160933) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "archives", force: :cascade do |t|
     t.integer  "project_id"
     t.string   "name"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "archives", ["project_id"], name: "index_archives_on_project_id"
+  add_index "archives", ["project_id"], name: "index_archives_on_project_id", using: :btree
 
   create_table "beneficts", force: :cascade do |t|
     t.string   "name"
@@ -53,7 +56,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id"
+  add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id", using: :btree
 
   create_table "budgets", force: :cascade do |t|
     t.integer  "quotation_id"
@@ -66,8 +69,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "budgets", ["quotation_id"], name: "index_budgets_on_quotation_id"
-  add_index "budgets", ["supplier_id"], name: "index_budgets_on_supplier_id"
+  add_index "budgets", ["quotation_id"], name: "index_budgets_on_quotation_id", using: :btree
+  add_index "budgets", ["supplier_id"], name: "index_budgets_on_supplier_id", using: :btree
 
   create_table "fuel_expenses", force: :cascade do |t|
     t.integer  "project_id"
@@ -85,9 +88,9 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",    null: false
   end
 
-  add_index "fuel_expenses", ["project_id"], name: "index_fuel_expenses_on_project_id"
-  add_index "fuel_expenses", ["supplier_id"], name: "index_fuel_expenses_on_supplier_id"
-  add_index "fuel_expenses", ["vehicle_id"], name: "index_fuel_expenses_on_vehicle_id"
+  add_index "fuel_expenses", ["project_id"], name: "index_fuel_expenses_on_project_id", using: :btree
+  add_index "fuel_expenses", ["supplier_id"], name: "index_fuel_expenses_on_supplier_id", using: :btree
+  add_index "fuel_expenses", ["vehicle_id"], name: "index_fuel_expenses_on_vehicle_id", using: :btree
 
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
@@ -115,9 +118,9 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "office_supports", ["office_id"], name: "index_office_supports_on_office_id"
-  add_index "office_supports", ["project_id"], name: "index_office_supports_on_project_id"
-  add_index "office_supports", ["responsible_id"], name: "index_office_supports_on_responsible_id"
+  add_index "office_supports", ["office_id"], name: "index_office_supports_on_office_id", using: :btree
+  add_index "office_supports", ["project_id"], name: "index_office_supports_on_project_id", using: :btree
+  add_index "office_supports", ["responsible_id"], name: "index_office_supports_on_responsible_id", using: :btree
 
   create_table "offices", force: :cascade do |t|
     t.string   "name"
@@ -135,8 +138,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "offices", ["project_id"], name: "index_offices_on_project_id"
-  add_index "offices", ["responsible_id"], name: "index_offices_on_responsible_id"
+  add_index "offices", ["project_id"], name: "index_offices_on_project_id", using: :btree
+  add_index "offices", ["responsible_id"], name: "index_offices_on_responsible_id", using: :btree
 
   create_table "pays", force: :cascade do |t|
     t.integer  "bill_category_id"
@@ -156,9 +159,9 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "pays", ["bill_category_id"], name: "index_pays_on_bill_category_id"
-  add_index "pays", ["project_id"], name: "index_pays_on_project_id"
-  add_index "pays", ["supplier_id"], name: "index_pays_on_supplier_id"
+  add_index "pays", ["bill_category_id"], name: "index_pays_on_bill_category_id", using: :btree
+  add_index "pays", ["project_id"], name: "index_pays_on_project_id", using: :btree
+  add_index "pays", ["supplier_id"], name: "index_pays_on_supplier_id", using: :btree
 
   create_table "project_categories", force: :cascade do |t|
     t.string   "name"
@@ -182,7 +185,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "project_finances", ["project_id"], name: "index_project_finances_on_project_id"
+  add_index "project_finances", ["project_id"], name: "index_project_finances_on_project_id", using: :btree
 
   create_table "project_funds", force: :cascade do |t|
     t.integer  "project_id"
@@ -199,8 +202,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "project_funds", ["project_id"], name: "index_project_funds_on_project_id"
-  add_index "project_funds", ["supplier_id"], name: "index_project_funds_on_supplier_id"
+  add_index "project_funds", ["project_id"], name: "index_project_funds_on_project_id", using: :btree
+  add_index "project_funds", ["supplier_id"], name: "index_project_funds_on_supplier_id", using: :btree
 
   create_table "project_users", force: :cascade do |t|
     t.integer  "project_id"
@@ -209,8 +212,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id"
-  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id"
+  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id", using: :btree
+  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.integer  "project_category_id"
@@ -225,8 +228,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "projects", ["project_category_id"], name: "index_projects_on_project_category_id"
-  add_index "projects", ["responsible_id"], name: "index_projects_on_responsible_id"
+  add_index "projects", ["project_category_id"], name: "index_projects_on_project_category_id", using: :btree
+  add_index "projects", ["responsible_id"], name: "index_projects_on_responsible_id", using: :btree
 
   create_table "quotations", force: :cascade do |t|
     t.string   "name"
@@ -239,8 +242,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "quotations", ["project_id"], name: "index_quotations_on_project_id"
-  add_index "quotations", ["responsible_id"], name: "index_quotations_on_responsible_id"
+  add_index "quotations", ["project_id"], name: "index_quotations_on_project_id", using: :btree
+  add_index "quotations", ["responsible_id"], name: "index_quotations_on_responsible_id", using: :btree
 
   create_table "receipts", force: :cascade do |t|
     t.integer  "bill_category_id"
@@ -258,8 +261,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "receipts", ["bill_category_id"], name: "index_receipts_on_bill_category_id"
-  add_index "receipts", ["project_id"], name: "index_receipts_on_project_id"
+  add_index "receipts", ["bill_category_id"], name: "index_receipts_on_bill_category_id", using: :btree
+  add_index "receipts", ["project_id"], name: "index_receipts_on_project_id", using: :btree
 
   create_table "sectors", force: :cascade do |t|
     t.string   "name"
@@ -271,7 +274,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "sectors", ["responsible_id"], name: "index_sectors_on_responsible_id"
+  add_index "sectors", ["responsible_id"], name: "index_sectors_on_responsible_id", using: :btree
 
   create_table "staff_projects", force: :cascade do |t|
     t.integer  "project_id"
@@ -280,8 +283,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "staff_projects", ["project_id"], name: "index_staff_projects_on_project_id"
-  add_index "staff_projects", ["staff_id"], name: "index_staff_projects_on_staff_id"
+  add_index "staff_projects", ["project_id"], name: "index_staff_projects_on_project_id", using: :btree
+  add_index "staff_projects", ["staff_id"], name: "index_staff_projects_on_staff_id", using: :btree
 
   create_table "staffs", force: :cascade do |t|
     t.string   "name"
@@ -304,8 +307,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",        null: false
   end
 
-  add_index "staffs", ["job_id"], name: "index_staffs_on_job_id"
-  add_index "staffs", ["sector_id"], name: "index_staffs_on_sector_id"
+  add_index "staffs", ["job_id"], name: "index_staffs_on_job_id", using: :btree
+  add_index "staffs", ["sector_id"], name: "index_staffs_on_sector_id", using: :btree
 
   create_table "supplier_categories", force: :cascade do |t|
     t.string   "name"
@@ -339,8 +342,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "suppliers", ["project_id"], name: "index_suppliers_on_project_id"
-  add_index "suppliers", ["supplier_category_id"], name: "index_suppliers_on_supplier_category_id"
+  add_index "suppliers", ["project_id"], name: "index_suppliers_on_project_id", using: :btree
+  add_index "suppliers", ["supplier_category_id"], name: "index_suppliers_on_supplier_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -361,8 +364,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",                            null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "vehicle_categories", force: :cascade do |t|
     t.string   "name"
@@ -393,8 +396,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "vehicles", ["project_id"], name: "index_vehicles_on_project_id"
-  add_index "vehicles", ["vehicle_category_id"], name: "index_vehicles_on_vehicle_category_id"
-  add_index "vehicles", ["vehicle_service_id"], name: "index_vehicles_on_vehicle_service_id"
+  add_index "vehicles", ["project_id"], name: "index_vehicles_on_project_id", using: :btree
+  add_index "vehicles", ["vehicle_category_id"], name: "index_vehicles_on_vehicle_category_id", using: :btree
+  add_index "vehicles", ["vehicle_service_id"], name: "index_vehicles_on_vehicle_service_id", using: :btree
 
 end
