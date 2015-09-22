@@ -6,7 +6,7 @@ class PaysController < ApplicationController
     params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
     params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
 
-    @pays = @project.pays.filter(params[:start_date], params[:end_date])
+    @pays = @project.pays.filter(Date.parse(params[:start_date]), Date.parse(params[:end_date]))
   end
 
   # GET /bills/1
