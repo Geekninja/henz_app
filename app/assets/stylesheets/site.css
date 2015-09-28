@@ -1,0 +1,30 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require site/bxslider/jquery.bxslider
+ *= require site/animate
+ *= require site/radial-progress/style
+ *= require site/jqueryui/jquery-ui
+ *= require site/jqueryui/jquery-ui.structure
+ *= require site/fancybox/jquery.fancybox
+ *= require site/bootstrap.min
+ *= require site/bootstrap-progressbar/bootstrap-progressbar-3.2.0.min
+ *= require site/fancybox/jquery.fancybox
+ *= require site/main-green
+ *= require site/rs-plugin/css/settings
+ *= require site/rs-plugin/css/settings-custom
+ *= require site/rs-plugin/videojs/video-js
+ *= require site/hover-effect-base
+ *= require site/hover-effect-up
+ *= require site/hover-effect-down
+ *= require site/font-awesome.min
+ */

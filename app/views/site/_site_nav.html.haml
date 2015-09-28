@@ -1,0 +1,27 @@
+%body
+  #home.home{"data-scroll-index" => "0"}
+  %header
+    .container.b-header__box.b-relative
+      %a.b-left.b-logo{:href => "/"}
+        %img.color-theme{:alt => "Logo", "data-retina" => "", :src => "/img/logo-header-default.png"}/
+      .b-header-r.b-right.b-header-r--icon
+        .b-top-nav-show-slide.f-top-nav-show-slide.b-right.j-top-nav-show-slide
+          %i.fa.fa-align-justify
+        %nav#myNavbar.b-top-nav.f-top-nav.b-right.j-top-nav.navbar-example
+          %ul.b-top-nav__1level_wrap
+            %li.b-top-nav__1level.f-top-nav__1level.f-primary-b{"data-scroll-nav" => "0"}
+              = link_to 'Home', root_path()
+            %li.b-top-nav__1level.f-top-nav__1level.f-primary-b{"data-scroll-nav" => "6"}
+              = link_to 'Obras', obras_path()
+            %li.b-top-nav__1level.f-top-nav__1level.f-primary-b{"data-scroll-nav" => "6"}
+              = link_to 'Trabalhe Conosco', trabalhe_conosco_path()
+            /
+              <li class="b-top-nav__1level f-top-nav__1level f-primary-b" data-scroll-nav="6">
+              <haml_loud> link_to &#39;Trajetoria&#39;, trajetoria_path() </haml_loud>
+              </li>
+            /
+              <li class="b-top-nav__1level f-top-nav__1level f-primary-b" data-scroll-nav="6">
+              <haml_loud> link_to &#39;Áreas de Atuação&#39;, areas_atuacao_path() </haml_loud>
+              </li>
+            %li.b-top-nav__1level.f-top-nav__1level.f-primary-b{"data-scroll-nav" => "6"}
+              = link_to 'Carreiras', carreiras_path()
