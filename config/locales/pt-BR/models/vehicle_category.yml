@@ -5,4 +5,4 @@ pt-BR:
   attributes:
    vehicle_category:
     name: "nome"
-
+    status: "ativo?"

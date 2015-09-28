@@ -8,7 +8,7 @@
     .col-md-6
       = f.input :name
     .col-md-2
-      = f.input :value
+      = f.input :value, as: :string, input_html: { class: 'coin_mask'}
     .col-md-2
       = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@project_fund.date_payment.present?) ? localize(@project_fund.date_payment) : nil }
     .col-md-2

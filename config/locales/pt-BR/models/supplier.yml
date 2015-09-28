@@ -22,3 +22,4 @@ pt-BR:
      cep: "CEP"
      supplier_importance: 'importância'
      supplier_category: 'categoria'
+     city_number: "Incrição municipal"

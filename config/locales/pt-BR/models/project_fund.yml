@@ -4,13 +4,14 @@ pt-BR:
    project_fund: 'Caixa'
   attributes:
    project_fund:
-    name: 'nome'
-    description: 'descrição'
-    value: 'valor'
-    observation: 'observação'
+    name: 'Nome'
+    description: 'Descrição'
+    value: 'Valor'
+    observation: 'Observação'
     date_payment: "Data de pagamento"
-    note_payment: "upload do comprovante"
-    observation_payment: "observações do pagamento"
+    note_payment: "Upload do comprovante"
+    observation_payment: "Observações do pagamento"
+    supplier: "Fornecedor"
   errors:
    models:
     pay:

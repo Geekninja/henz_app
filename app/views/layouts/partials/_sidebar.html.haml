@@ -63,5 +63,5 @@
             %span.dcjq-icon
           %ul.sub{:style => "display: none;"}
             - if policy(:application).administrador? || policy(:application).gerente?
-              %li= link_to "Novo upload", project_archives_path(@project)
+              %li= link_to "Novo upload", new_project_archive_path(@project)
             %li= link_to "Gerenciar", project_archives_path(@project)

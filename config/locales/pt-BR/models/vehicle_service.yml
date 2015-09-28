@@ -5,4 +5,5 @@ pt-BR:
   attributes:
    vehicle_service:
     name: "nome"
+    status: "ativo?"
 

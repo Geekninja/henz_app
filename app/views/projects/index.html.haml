@@ -1,7 +1,6 @@
 .row
   - @projects.each do |project|
     .col-md-3
-      / progress bar start
       %section.panel
         %header.panel-heading
           %b= project.project_category.name if project.project_category.present?

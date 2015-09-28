@@ -5,8 +5,8 @@ class CreateFuelExpenses < ActiveRecord::Migration
       t.references :vehicle, index: true#, foreign_key: true
       t.integer :km_start
       t.integer :km_end
-      t.float :fuel_price_lt
-      t.float :fuel_lt
+      t.float :fuel_price_lt, default: 0.00
+      t.float :fuel_lt, default: 0.00
       t.date :date
       t.boolean :status
       t.string :note

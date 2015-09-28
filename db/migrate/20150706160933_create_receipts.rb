@@ -9,7 +9,7 @@ class CreateReceipts < ActiveRecord::Migration
       
       t.boolean :status, default: false
       
-      t.string :value
+      t.float :value, default: 0.00
       t.text :observation
       t.date :deadline
       

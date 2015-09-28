@@ -4,7 +4,7 @@ class CreateBudgets < ActiveRecord::Migration
       t.references :quotation, index: true#, foreign_key: true
       t.references :supplier, index: true#, foreign_key: true
       t.string  :note
-      t.decimal :value
+      t.float :value
       t.date :date
       t.integer :status
 

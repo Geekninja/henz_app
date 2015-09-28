@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.integer  "quotation_id"
     t.integer  "supplier_id"
     t.string   "note"
-    t.decimal  "value"
+    t.float    "value"
     t.date     "date"
     t.integer  "status"
     t.datetime "created_at",   null: false
@@ -77,15 +77,15 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.integer  "vehicle_id"
     t.integer  "km_start"
     t.integer  "km_end"
-    t.float    "fuel_price_lt"
-    t.float    "fuel_lt"
+    t.float    "fuel_price_lt", default: 0.0
+    t.float    "fuel_lt",       default: 0.0
     t.date     "date"
     t.boolean  "status"
     t.string   "note"
     t.text     "observations"
     t.integer  "supplier_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_index "fuel_expenses", ["project_id"], name: "index_fuel_expenses_on_project_id", using: :btree
@@ -147,7 +147,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "name"
     t.text     "description"
     t.boolean  "status",              default: false
-    t.string   "value"
+    t.float    "value",               default: 0.0
     t.integer  "supplier_id"
     t.text     "observation"
     t.date     "deadline"
@@ -192,7 +192,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "name"
     t.text     "description"
     t.boolean  "status",              default: false
-    t.string   "value"
+    t.float    "value",               default: 0.0
     t.integer  "supplier_id"
     t.text     "observation"
     t.string   "note_payment"
@@ -251,7 +251,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "name"
     t.text     "description"
     t.boolean  "status",              default: false
-    t.string   "value"
+    t.float    "value",               default: 0.0
     t.text     "observation"
     t.date     "deadline"
     t.string   "archive"
