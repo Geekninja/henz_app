@@ -4,13 +4,13 @@ pt-BR:
    project_finance: 'Caixa'
   attributes:
    project_finance:
-    finance_type: "tipo"
-    title: 'localização'
-    month: 'mês'
-    year: 'ano'
-    status: 'efetivado?'
-    title: 'título'
-    description: 'descrição'
-    value: 'valor'
-    quantity: 'quantidade'
+    finance_type: "Tipo"
+    title: 'Localização'
+    date: 'Caixa para a data'
+    status: 'Efetivado?'
+    title: 'Título'
+    description: 'Descrição'
+    value: 'Valor'
+    quantity: 'Quantidade'
+    note_payment: "Comprovante"
 

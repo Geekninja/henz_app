@@ -4,5 +4,5 @@ pt-BR:
    vehicle_category: 'Categorias de Veículo'
   attributes:
    vehicle_category:
-    name: "nome"
-    status: "ativo?"
+    name: "Nome"
+    status: "Ativo?"

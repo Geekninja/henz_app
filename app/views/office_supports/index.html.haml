@@ -22,9 +22,8 @@
               %th.col-md-2
                 Ações
           %tbody
-            %tr
-              - @office_supports.each do |office_support|
-
+            - @office_supports.each do |office_support|
+              %tr
                 %td.col-md-2
                   =office_support.name
                 %td.col-md-2

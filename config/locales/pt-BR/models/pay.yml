@@ -4,18 +4,18 @@ pt-BR:
    pay: 'Conta à pagar'
   attributes:
    pay:
-    bill_category: 'categoria'
-    project: 'projeto'
-    name: 'nome'
-    description: 'descrição'
-    value: 'valor'
-    supplier: 'fornecedor'
-    observation: 'observação'
-    deadline: 'vencimento'
-    archive: "upload da nota"
+    bill_category: 'Categoria'
+    project: 'Projeto'
+    name: 'Nome'
+    description: 'Descrição'
+    value: 'Valor'
+    supplier: 'Fornecedor'
+    observation: 'Observação'
+    deadline: 'Vencimento'
+    archive: "Upload da nota"
     date_payment: "Data de pagamento"
-    note_payment: "upload do comprovante"
-    observation_payment: "observações do pagamento"
+    note_payment: "Upload do comprovante"
+    observation_payment: "Observações do pagamento"
     status: "Esta conta foi paga?"
   errors:
    models:

@@ -4,8 +4,8 @@ pt-BR:
    archive: 'Arquivo'
   attributes:
    archive:
-    name: "nome"
-    description: 'descrição'
-    observation: 'observação'
-    file_path: 'arquivo'
+    name: "Nome"
+    description: 'Descrição'
+    observation: 'Observação'
+    file_path: 'Arquivo'
   

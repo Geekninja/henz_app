@@ -8,15 +8,21 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
-    params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
-    params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
 
-    @project_funds   = @project.project_funds.where(created_at: Date.parse(params[:start_date])..Date.parse(params[:end_date]))
-    @project_finance = @project.project_finances.where(created_at: Date.parse(params[:start_date])..Date.parse(params[:end_date]))
-    @pays            = @project.pays.where(status: false)
-    @receipts        = @project.receipts.where(status: false)
-    @fuels           = @project.fuel_expenses.where(status: true)
-    @uploads         = @project.archives
+    if params[:search].present?
+      @begin_month  = Date.parse(params[:search][:start_date].to_s)
+      @end_month    = Date.parse(params[:search][:end_date].to_s)
+    else
+      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
+      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+    end
+
+    @project_funds   = @project.project_funds.where(date_payment: @begin_month..@end_month)
+    @project_finance = @project.project_finances.where(date: @begin_month..@end_month)
+    @pays            = @project.pays.where(deadline: @begin_month..@end_month, status: false)
+    @receipts        = @project.receipts.where(deadline: @begin_month..@end_month, status: false)
+    @fuels           = @project.fuel_expenses.where(date: @begin_month..@end_month)
+    @uploads         = @project.archives.limit(10).order('created_at DESC')
             
   end
 

@@ -4,8 +4,18 @@ class FuelExpensesController < ApplicationController
 
   # GET /fuel_expenses
   def index
-    @fuel_expenses = @project.fuel_expenses
     
+    if params[:search].present?
+      @begin_month  = Date.parse(params[:search][:start_date].to_s)
+      @end_month    = Date.parse(params[:search][:end_date].to_s)
+      
+      @fuel_expenses = @project.fuel_expenses.where(date: @begin_month..@end_month)
+    else
+      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
+      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+
+      @fuel_expenses = @project.fuel_expenses.where(date: @begin_month..@end_month)
+    end    
   end
 
   # GET /fuel_expenses/1

@@ -4,5 +4,6 @@ pt-BR:
    project_category: 'Categorias de Projeto'
   attributes:
    project_category:
-    name: "nome"
+    name: "Nome"
+    status: "Ativo?"
 

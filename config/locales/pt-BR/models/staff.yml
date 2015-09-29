@@ -4,23 +4,23 @@ pt-BR:
    staff: 'Funcionário'
   attributes:
    staff:
-     name: "nome"
-     code: "matrícula"
+     name: "Nome"
+     code: "Matrícula"
      cpf: "CPF"
-     job: "cargo"
-     job_function: "função"
-     sector: 'setor'
-     city: 'cidade'
-     state: 'estado'
-     address: 'endereço'
-     telphone: 'telefone'
-     telphone_optional: 'telefone secundário'
-     celphone: 'celular'
-     project: 'projeto'
-     office: 'escritório'
-     office_support: 'escritório de apoio'
-     born: 'nascimento'
-     salary: 'salário'
-     status: 'ativo?'
-     driver: 'utiliza veículos?'
+     job: "Cargo"
+     job_function: "Função"
+     sector: 'Setor'
+     city: 'Cidade'
+     state: 'Estado'
+     address: 'Endereço'
+     telphone: 'Telefone'
+     telphone_optional: 'Telefone secundário'
+     celphone: 'Celular'
+     project: 'Projeto'
+     office: 'Escritório'
+     office_support: 'Escritório de apoio'
+     born: 'Nascimento'
+     salary: 'Salário'
+     status: 'Ativo?'
+     driver: 'Utiliza veículos?'
     

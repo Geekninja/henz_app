@@ -23,9 +23,8 @@
                 Ações
               
           %tbody
-            %tr
-              - @vehicles.each do |vehicle|
-
+            - @vehicles.each do |vehicle|
+              %tr
                 %td.col-md-2
                   =vehicle.name
                 %td.col-md-2

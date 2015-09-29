@@ -18,7 +18,7 @@ class CreateStaffs < ActiveRecord::Migration
       t.string :telphone_optional
       t.string :celphone
       t.date :born
-      t.decimal :salary
+      t.float :salary
 
       t.boolean :driver
 

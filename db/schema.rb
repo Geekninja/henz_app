@@ -180,6 +180,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "quantity"
     t.integer  "month"
     t.integer  "year"
+    t.string   "note_payment"
     t.date     "date"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false

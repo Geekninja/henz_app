@@ -5,22 +5,17 @@
         Categorias de veículo
         = link_to 'Nova Categoria de Veículo', new_vehicle_category_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
-
-        %table.table.table-hover.general-table.datatable
+        %table.table.table-hover.datatable
           %thead
             %tr
-              %th.col-md-2
-                Nome
-              %th.col-md-2
-                Status
+              %th.col-md-2  Nome
+              %th.col-md-2  Status
+              %th Ações
           %tbody
-            %tr
-              - @vehicle_categories.each do |vehicle_category|
-
-                %td.col-md-3
-                  =vehicle_category.name
-                %td.col-md-3
-                  = status_helper vehicle_category.status
-                %td.col-md-3
+            - @vehicle_categories.each do |vehicle_category|
+              %tr
+                %td.col-md-8= vehicle_category.name
+                %td.col-md-1= status_helper vehicle_category.status
+                %td.col-md-2
                   = link_to 'Editar', edit_vehicle_category_path(vehicle_category), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', vehicle_category, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

@@ -19,6 +19,7 @@ gem 'validates_cpf_cnpj'
 gem 'validates_timeliness', '~> 3.0'
 gem 'email_validator'
 
+
 group :development, :test do
   gem 'sqlite3'
   gem 'byebug'

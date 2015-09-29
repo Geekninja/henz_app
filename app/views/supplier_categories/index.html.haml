@@ -6,12 +6,12 @@
         = link_to '<b>Nova categoria</b>'.html_safe, new_supplier_category_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.general-table
+        %table.table.table-hover.general-table.datatable
           %thead
             %tr
-              %th.col-md-8 nome
-              %th.col-md-2 status
-              %th.col-md-2 ações
+              %th.col-md-8 Nome
+              %th.col-md-2 Status
+              %th.col-md-2 Ações
 
           %tbody
             - @supplier_categories.each do |s|
@@ -19,7 +19,6 @@
                 %td= s.name
                 %td= status_helper s.status
                 %td
-                  - if !s.protected
-                    = link_to 'Editar', edit_supplier_category_path(s), class: 'btn btn-info btn-xs'
-                    = link_to 'Remover', s, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+                  = link_to 'Editar', edit_supplier_category_path(s), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', s, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
             

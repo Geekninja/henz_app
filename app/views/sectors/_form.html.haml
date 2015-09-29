@@ -4,11 +4,17 @@
   .row
     .col-md-12
       = f.input :name
+  .row
+    .col-md-12
       = f.input :description
+  .row
+    .col-md-2
       = f.input :acron
+    .col-md-4
       = f.association :responsible, prompt: 'selecione o responsável...'
-      = f.input :status
-  %br/
+    .col-md-4
+      = f.input :status, as: :select, include_blank: false
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

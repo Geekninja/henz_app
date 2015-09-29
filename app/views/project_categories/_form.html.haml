@@ -5,10 +5,10 @@
     .col-md-12
       = f.input :name
   .row
-    .col-md-12
-      = f.input :status
+    .col-md-2
+      = f.input :status, as: :select, include_blank: false
 
-  %br/
+  %hr/
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'

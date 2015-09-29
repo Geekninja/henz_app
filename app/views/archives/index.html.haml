@@ -21,8 +21,8 @@
                 Ações
 
           %tbody
-            %tr
-              - @archives.each do |archive|
+            - @archives.each do |archive|
+              %tr
 
                 %td.col-md-2
                   =archive.name

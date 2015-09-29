@@ -4,20 +4,17 @@
       %header.panel-heading
         Filtro
       .panel-body
-        = form_tag project_pays_path, :method => 'get' do
-          .row
-            .col-md-2
-              = label_tag "Data inicial"
-              = text_field_tag :start_date, params[:start_date], { class: 'date form-control'}
-            .col-md-2
-              = label_tag "Data final"
-              = text_field_tag :end_date, params[:end_date], { class: 'date form-control'}
-          %hr/
-          .row
-            .col-md-2
-              = submit_tag "Filtrar Resultados", class: 'btn btn-success btn-sm'
-
-
+        .row
+          .col-md-12
+            = simple_form_for :search, url: project_pays_path, :method => 'get' do |f|
+              .col-md-2
+                = f.label "Data inicial"
+                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : @begin_month}
+              .col-md-2
+                = f.label "Data final"
+                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : @end_month}
+              .col-md-2{style: 'margin-top: 23px'}
+                = f.submit "Filtrar Resultados", class: 'btn btn-success btn-sm'
 .row
   .col-sm-12
     %section.panel
@@ -50,12 +47,15 @@
             - @pays.each do |bill|
               %tr
                 %td.col-md-1
-                  - if bill.status
+                  - if bill.deadline < Date.today && !bill.status
+                    %span.label.label-danger
+                      Vencida
+                  - elsif bill.status
                     %span.label.label-success
                       Pago
                   - else
-                    %span.label.label-danger
-                      Não Pago
+                    %span.label.label-success
+                      À vencer
                 %td.col-md-3
                   = bill.name
                 %td.col-md-1
@@ -67,7 +67,7 @@
                       = bill.date_payment.strftime('%d/%m/%Y')
                 %td.col-md-1
                   %span.label.label-warning
-                    = "R$ #{bill.value}"
+                    = number_to_currency bill.value
                
                 %td.col-md-2
                   - if bill.archive.present?
@@ -76,5 +76,5 @@
                   - if bill.note_payment.present?
                     = link_to "<b>BAIXAR</b>".html_safe, bill.note_payment.url, { target: '_blank'}
                 %td.col-md-3
-                  = link_to '', edit_project_pay_path(project_id: @project, id: bill), class: 'btn btn-info btn-sm fa-edit fa'
-                  = link_to '', project_pay_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'
+                  = link_to 'editar', edit_project_pay_path(project_id: @project, id: bill), class: 'btn btn-info btn-sm'
+                  = link_to 'remover', project_pay_path(project_id: @project, id: bill), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm'

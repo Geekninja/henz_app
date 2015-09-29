@@ -8,7 +8,7 @@ body {
   font-size: 50px;
 }
 
-input[type= 'text'], input[type= 'email'],input[type= 'tel'], input[type='number'], select option, textarea:focus {
+input[type= 'text'], input[type= 'email'],input[type= 'tel'], input[type='number'], input[type='search'], select option, textarea:focus {
   color: black;
 }
 ul.sidebar-menu li a {
@@ -33,5 +33,6 @@ ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:fo
 ul.sidebar-menu li a.active, ul.sidebar-menu li a:hover, ul.sidebar-menu li a:hover i {
   color: white !important;
 }
+
 
 

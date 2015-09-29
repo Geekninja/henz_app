@@ -19,10 +19,10 @@
             %tr
               - @vehicle_services.each do |vehicle_service|
 
-                %td.col-md-3
+                %td.col-md-9
                   =vehicle_service.name
-                %td.col-md-3
+                %td.col-md-1
                   = status_helper vehicle_service.status
-                %td.col-md-5
+                %td.col-md-2
                   = link_to 'Editar', edit_vehicle_service_path(vehicle_service), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', vehicle_service, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

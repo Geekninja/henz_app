@@ -4,13 +4,13 @@ pt-BR:
    vehicle: 'Veículo'
   attributes:
    vehicle:
-    name: "nome"
-    vehicle_service: 'serviço'
-    vehicle_type: 'tipo'
-    vehicle_category: 'categoria'
-    acquired: 'adquirido em'
-    state: 'estado'
-    fuel: 'tipo de combustível'
-    description: 'descrição'
-    observation: 'observação'
+    name: "Nome"
+    vehicle_service: 'Serviço'
+    vehicle_type: 'Tipo'
+    vehicle_category: 'Categoria'
+    acquired: 'Adquirido em'
+    state: 'Estado'
+    fuel: 'Tipo de combustível'
+    description: 'Descrição'
+    observations: 'Observação'
 

@@ -2,11 +2,27 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
+        Filtro
+      .panel-body
+        .row
+          .col-md-12
+            = simple_form_for :search, url: project_receipts_path, :method => 'get' do |f|
+              .col-md-2
+                = f.label "Data inicial"
+                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : @begin_month}
+              .col-md-2
+                = f.label "Data final"
+                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : @end_month}
+              .col-md-2{style: 'margin-top: 23px'}
+                = f.submit "Filtrar Resultados", class: 'btn btn-success btn-sm'
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
         %b
           Contas à receber
         = link_to '<b>Nova conta</b>'.html_safe, new_project_receipt_path(@project), class: 'btn btn-success btn-xs pull-right'
       .panel-body
-
         %table.table.table-hover.table-striped.general-table.datatable.table-condensed
           %thead
             %tr
@@ -14,7 +30,8 @@
               %th Nome
               %th Vencimento
               %th Valor
-              %th Status
+              %th Recebido?
+              %th Criado em
               %th Ações
           %tbody
             - @receipts.each do |r| 
@@ -23,7 +40,8 @@
                 %td= r.name
                 %td= r.deadline.strftime('%d/%m/%Y')
                 %td= number_to_currency(r.value)
-                %td= status_helper r.status
+                %td= r.status ? 'recebido' : 'não recebido'
+                %td= r.created_at.strftime('%d/%m/%Y')
                 %td
                   = link_to "", edit_project_receipt_path(project_id: @project, id: r), class: 'btn btn-info btn-sm fa-edit fa'
                   = link_to "", project_receipt_path(project_id: @project, id: r), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-sm fa fa-times'

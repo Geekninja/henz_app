@@ -4,6 +4,6 @@ pt-BR:
    bill_category: 'Categorias de Conta'
   attributes:
    bill_category:
-    name: "nome"
-    status: 'ativo?'
+    name: "Nome"
+    status: 'Ativo?'
 

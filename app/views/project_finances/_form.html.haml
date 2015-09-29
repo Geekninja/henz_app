@@ -5,13 +5,11 @@
     .col-md-2
       = f.input :finance_type, as: 'select', collection: ProjectFinance.finance_types.keys.to_a, prompt: 'selecione...'
     .col-md-2
-      = f.input :month
-    .col-md-2
-      = f.input :year
-    .col-md-2
       = f.input :status, as: 'select', prompt: 'selecione...'
     .col-md-2
       = f.input :date, as: 'string', input_html: { class: 'date', value: (@project_finance.date.present?) ? localize(@project_finance.date) : nil }
+    .col-md-2
+      = f.input :note_payment, as: :file
      
   .row
     .col-md-6
@@ -21,7 +19,7 @@
   %hr/
   .row
     .col-md-2
-      = f.input :value
+      = f.input :value, as: :string, input_html: { class: 'coin_mask'}
 
   %hr/
   .row

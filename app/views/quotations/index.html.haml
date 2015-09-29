@@ -20,9 +20,8 @@
               %th.col-md-2
                 Ações
           %tbody
-            %tr
-              - @quotations.each do |quotation|
-
+            - @quotations.each do |quotation|
+              %tr
                 %td.col-md-3
                   = link_to quotation.name
                 %td.col-md-3

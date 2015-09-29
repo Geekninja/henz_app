@@ -1,4 +1,20 @@
-
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Filtro
+      .panel-body
+        .row
+          .col-md-12
+            = simple_form_for :search, url: project_fuel_expenses_path, :method => 'get' do |f|
+              .col-md-2
+                = f.label "Data inicial"
+                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : @begin_month}
+              .col-md-2
+                = f.label "Data final"
+                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : @end_month}
+              .col-md-2{style: 'margin-top: 23px'}
+                = f.submit "Filtrar Resultados", class: 'btn btn-success btn-sm'
 .row
   .col-sm-12
     %section.panel
@@ -21,8 +37,8 @@
               %th Total
               %th Ações
           %tbody
-            %tr
-              - @fuel_expenses.each do |fuel_expense|
+            - @fuel_expenses.each do |fuel_expense|
+              %tr
 
                 %td.col-md-2
                   = fuel_expense.vehicle.name if fuel_expense.vehicle.present?

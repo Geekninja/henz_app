@@ -8,6 +8,7 @@ class Staff < ActiveRecord::Base
 
   validates_presence_of :name, :code, :cpf, :job, :city, :state, :telphone, :born
   validates :telphone, numericality: true
+  validates :salary, allow_blank: true, numericality: { only_float: true }
   validates_numericality_of :telphone_optional, :celphone, allow_blank: true
   validates :cpf, cpf: true
   validates_date :born

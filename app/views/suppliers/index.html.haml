@@ -22,14 +22,13 @@
               %th.col-md-2
                 Ações
           %tbody
-            %tr
-              - @suppliers.each do |supplier|
-                %tr
-                  %td= supplier.name
-                  %td= supplier.cnpj
-                  %td= "#{supplier.city}/#{supplier.state}"
-                  %td= supplier.contact_name
-                  %td= "#{supplier.telphone} / #{supplier.telphone_optional}"
-                  %td.col-md-3
-                    = link_to 'Editar', edit_project_supplier_path(project_id: @project, id: supplier), class: '  btn btn-info btn-xs'
-                    = link_to 'Remover', project_supplier_path(project_id: @project, id: supplier), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+            - @suppliers.each do |supplier|
+              %tr
+                %td= supplier.name
+                %td= supplier.cnpj
+                %td= "#{supplier.city}/#{supplier.state}"
+                %td= supplier.contact_name
+                %td= "#{supplier.telphone} / #{supplier.telphone_optional}"
+                %td.col-md-2
+                  = link_to 'Editar', edit_project_supplier_path(project_id: @project, id: supplier), class: '  btn btn-info btn-xs'
+                  = link_to 'Remover', project_supplier_path(project_id: @project, id: supplier), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

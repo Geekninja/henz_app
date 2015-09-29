@@ -15,6 +15,14 @@
       = f.input :job_function
     .col-md-2
       = f.association :sector, prompt: 'selecione o setor...'
+    .col-md-2
+      = f.input :telphone
+    .col-md-2
+      = f.input :telphone_optional
+    .col-md-2
+      = f.input :celphone
+  %hr/
+  .row
     .col-md-4
       = f.input :city
     .col-md-2
@@ -25,23 +33,13 @@
   %hr/
   .row
     .col-md-2
-      = f.input :telphone
-    .col-md-2
-      = f.input :telphone_optional
-    .col-md-2
-      = f.input :celphone
-  %hr/
-  .row
-    .col-md-2
       = f.input :born, as: 'string', input_html: { class: 'date', value: (f.object.born.present?) ? localize(f.object.born) : nil }
     .col-md-2
-      = f.input :salary
+      = f.input :salary, as: :string, input_html: { class: "coin_mask"}
     .col-md-3
-      %br/
-      = f.input :status
+      = f.input :status, as: :select, include_blank: false
     .col-md-3
-      %br/
-      = f.input :driver
+      = f.input :driver, as: :select, include_blank: false
   %hr/
   .row
     .col-md-12

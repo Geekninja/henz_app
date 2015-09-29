@@ -4,15 +4,15 @@ pt-BR:
    receipt: 'Conta à receber'
   attributes:
    receipt:
-    bill_category: 'categoria'
-    name: 'nome'
-    description: 'descrição'
-    value: 'valor'
-    observation: 'observação'
-    deadline: 'vencimento'
-    archive: "upload da nota"
+    bill_category: 'Categoria'
+    name: 'Nome'
+    description: 'Descrição'
+    value: 'Valor'
+    observation: 'Observação'
+    deadline: 'Vencimento'
+    archive: "Upload da nota"
     date_payment: "Data de pagamento"
-    observation_receipt: "observações do pagamento"
+    observation_receipt: "Observações do pagamento"
     status: "Esta conta foi paga?"
   errors:
    models:

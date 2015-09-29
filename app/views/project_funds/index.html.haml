@@ -1,21 +1,20 @@
 .row
-  .col-sm-12
+  .col-md-12
     %section.panel
       %header.panel-heading
         Filtro
       .panel-body
-        = form_tag project_project_funds_path, :method => 'get' do
-          .row
-            .col-md-2
-              = label_tag "Data inicial"
-              = text_field_tag :start_date, params[:start_date], { class: 'date form-control'}
-            .col-md-2
-              = label_tag "Data final"
-              = text_field_tag :end_date, params[:end_date], { class: 'date form-control'}
-          %hr/
-          .row
-            .col-md-2
-              = submit_tag "Filtrar Resultados", class: 'btn btn-success btn-sm'
+        .row
+          .col-md-12
+            = simple_form_for :search, url: project_project_funds_path, :method => 'get' do |f|
+              .col-md-2
+                = f.label "Data inicial"
+                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : @begin_month}
+              .col-md-2
+                = f.label "Data final"
+                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : @end_month}
+              .col-md-2{style: 'margin-top: 23px'}
+                = f.submit "Filtrar Resultados", class: 'btn btn-success btn-sm'
 
 
 .row
@@ -26,7 +25,7 @@
         = link_to '<b>Adicionar caixa</b>'.html_safe, new_project_project_fund_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.general-table
+        %table.table.table-hover.general-table.datatable.table-bordered
           %thead
             %tr
               %th Título
@@ -35,6 +34,7 @@
               %th Fornecedor
               %th Pagamento
               %th Nota
+              %th Data de criação
               %th Ações
           %tbody
             - @project_funds.each do |f|
@@ -44,7 +44,8 @@
                 %td= number_to_currency(f.value)
                 %td= f.supplier.name if f.supplier.present?
                 %td= f.date_payment.strftime('%d/%m/%Y') if f.date_payment.present?
-                %td= link_to "<b>BAIXAR</b>".html_safe, f.note_payment.url, target: '_blank'
+                %td= link_to "<b>BAIXAR</b>".html_safe, f.note_payment.url, target: '_blank' if f.note_payment.present?
+                %td= f.created_at.strftime('%d/%m/%Y')
                 %td 
                   = link_to 'Editar', edit_project_project_fund_path(project_id: @project, id: f), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', project_project_fund_path(project_id: @project, id:f), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

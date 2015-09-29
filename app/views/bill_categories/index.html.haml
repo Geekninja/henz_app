@@ -18,10 +18,10 @@
           %tbody
             - @bill_categories.each do |bill_category|
               %tr
-                %td.col-md-4
+                %td.col-md-9
                   =bill_category.name
-                %td.col-md-4
+                %td.col-md-1
                   = status_helper bill_category.status
-                %td.col-md-3
+                %td.col-md-2
                   = link_to 'Editar', edit_bill_category_path(bill_category), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', bill_category_path(bill_category), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

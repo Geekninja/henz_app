@@ -8,8 +8,7 @@ class CreateProjectFinances < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :quantity
-      t.integer :month
-      t.integer :year
+      t.string :note_payment
       t.date :date
 
       t.timestamps null: false

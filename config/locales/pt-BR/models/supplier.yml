@@ -4,22 +4,22 @@ pt-BR:
    supplier: 'Fornecedor'
   attributes:
    supplier:
-     name: "nome"
+     name: "Nome"
      cnpj: "CNPJ"
-     state_number: "inscrição estadual"
-     municipal_number: "inscriçaõ municipal"
-     city: 'cidade'
-     state: 'estado'
-     address: 'endereço'
-     telphone: 'telefone'
-     telphone_optional: 'telefone secundário'
-     email: 'e-mail'
-     email_optional: 'e-mail opcional'
-     contact_name: 'contato nome'
-     contact_telphone: 'contato telefone'
-     contact_email: 'contato e-mail'
-     observations: 'observações'
+     state_number: "Inscrição estadual"
+     municipal_number: "Inscriçaõ municipal"
+     city: 'Cidade'
+     state: 'Estado'
+     address: 'Endereço'
+     telphone: 'Telefone'
+     telphone_optional: 'Telefone secundário'
+     email: 'E-mail'
+     email_optional: 'E-mail opcional'
+     contact_name: 'Contato nome'
+     contact_telphone: 'Contato telefone'
+     contact_email: 'Contato e-mail'
+     observations: 'Observações'
      cep: "CEP"
-     supplier_importance: 'importância'
-     supplier_category: 'categoria'
+     supplier_importance: 'Importância'
+     supplier_category: 'Categoria'
      city_number: "Incrição municipal"

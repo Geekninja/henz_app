@@ -7,6 +7,5 @@
  *= require bucket/css/style
  *= require bucket/css/style-responsive
  *= require custom
- *= require dataTables/jquery.dataTables
  *= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
  */

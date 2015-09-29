@@ -1,5 +1,6 @@
 class ProjectFinancesController < ApplicationController
   before_action :set_project
+  before_action :set_finance, only: [:edit, :update]
 
   def index
     @project_finances = @project_base.project_finances.all
@@ -7,6 +8,17 @@ class ProjectFinancesController < ApplicationController
 
   def new
     @project_finance = @project_base.project_finances.new
+  end
+
+  def edit
+  end
+
+  def update
+    if @project_finance.update(project_finance_params)
+      redirect_to action: 'index'
+    else
+      render action: 'new'
+    end
   end
 
   def create
@@ -28,5 +40,9 @@ class ProjectFinancesController < ApplicationController
 
   def set_project
     @project_base = Project.find(params[:project_id])
+  end
+
+  def set_finance
+    @project_finance = @project_base.project_finances.find(params[:id])
   end
 end

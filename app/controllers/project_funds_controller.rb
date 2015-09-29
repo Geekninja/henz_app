@@ -3,7 +3,17 @@ class ProjectFundsController < ApplicationController
   before_action :set_project
   # GET /project_funds
   def index
-    @project_funds = @project.project_funds
+    if params[:search].present?
+      @begin_month  = Date.parse(params[:search][:start_date].to_s)
+      @end_month    = Date.parse(params[:search][:end_date].to_s)
+      
+      @project_funds = @project.project_funds.where(date_payment: @begin_month..@end_month)
+    else
+      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
+      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+
+      @project_funds = @project.project_funds.where(date_payment: @begin_month..@end_month)
+    end
   end
 
   # GET /project_funds/1

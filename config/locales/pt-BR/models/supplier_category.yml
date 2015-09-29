@@ -1,9 +1,8 @@
 pt-BR:
  activerecord:
   models:
-   vehicle_service: 'Serviço de Veículo'
+   supplier_category: 'Categorias de Veículo'
   attributes:
-   vehicle_service:
+   supplier_category:
     name: "Nome"
     status: "Ativo?"
-

@@ -12,7 +12,7 @@
         = link_to '<b>Adicionar caixa</b>'.html_safe, new_project_project_finance_path, class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.general-table
+        %table.table.table-hover.general-table.datatable
           %thead
             %tr
               %th Tipo
@@ -22,6 +22,7 @@
               %th Mes/Ano
               %th Data
               %th Status
+              %th Ações
 
           %tbody
             - @project_finances.each do |p|
@@ -35,3 +36,6 @@
                 %td= "#{p.month}/#{p.year}"
                 %td= p.date.strftime('%d/%m/%Y')
                 %td= (p.status) ? "efetivado" : "pendente"
+                %td 
+                  = link_to 'Editar', edit_project_project_finance_path(project_id: @project_base, id: p), class: 'btn btn-info btn-xs'
+                  = link_to 'Remover', project_project_finance_path(project_id: @project_base, id: p), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

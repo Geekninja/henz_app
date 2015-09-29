@@ -9,32 +9,20 @@
         %table.table.table-hover.general-table.datatable
           %thead
             %tr
-              %th
-                nome
-              %th
-                descrição
-              %th
-                sigla
-              %th
-                responsável
-              %th
-                status
-              %th
-                ações
+              %th Nome
+              %th Descrição
+              %th Sigla
+              %th Responsável
+              %th Status
+              %th Ações
           %tbody
-            %tr
-              - @sectors.each do |sector|
-
-                %td.col-md-4
-                  =sector.name
-                %td
-                  =sector.description
-                %td
-                  =sector.acron
-                %td
-                  =sector.responsible.name if sector.responsible.present?
-                %td
-                  = status_helper sector.status
+            - @sectors.each do |sector|
+              %tr
+                %td= sector.name
+                %td= sector.description
+                %td= sector.acron
+                %td= sector.responsible.name if sector.responsible.present?
+                %td= status_helper sector.status
                 %td.col-md-2
                   = link_to 'Editar', edit_sector_path(sector), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', sector, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

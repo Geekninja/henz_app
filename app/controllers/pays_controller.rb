@@ -3,10 +3,17 @@ class PaysController < ApplicationController
   before_action :set_bill, only: [:show, :edit, :update, :destroy]
 
   def index
-    params[:start_date] = Date.today.beginning_of_month.strftime('%d/%m/%Y') if !params[:start_date].present?
-    params[:end_date] = Date.today.end_of_month.strftime('%d/%m/%Y') if !params[:end_date].present?
+    if params[:search].present?
+      @begin_month  = Date.parse(params[:search][:start_date].to_s)
+      @end_month    = Date.parse(params[:search][:end_date].to_s)
+      
+      @pays = @project.pays.where(deadline: @begin_month..@end_month)
+    else
+      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
+      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
 
-    @pays = @project.pays.filter(Date.parse(params[:start_date]), Date.parse(params[:end_date]))
+      @pays = @project.pays.where(deadline: @begin_month..@end_month)
+    end
   end
 
   # GET /bills/1

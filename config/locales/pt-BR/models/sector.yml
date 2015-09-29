@@ -4,9 +4,9 @@ pt-BR:
    sector: 'Setor'
   attributes:
    sector:
-    name: "nome"
-    description: 'descrição'
-    acron: 'sigla'
-    status: 'ativo?'
-    responsible: 'responsável'
+    name: "Nome"
+    description: 'Descrição'
+    acron: 'Sigla'
+    status: 'Ativo?'
+    responsible: 'Responsável'
 

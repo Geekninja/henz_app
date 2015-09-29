@@ -10,14 +10,14 @@
     .col-md-3
       = f.input :local
     .col-md-3
-      = f.association :responsible
+      = f.association :responsible, prompt: "selecione..."
     .col-md-2
       = f.input :geolocation
     .col-md-4
-      = f.association :project
+      = f.association :project, prompt: "selecione..."
   .row
     .col-md-4
-      = f.association :office
+      = f.association :office, prompt: "selecione..."
     .col-md-2
       = f.input :telphone
     .col-md-2

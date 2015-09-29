@@ -4,11 +4,12 @@ pt-BR:
    project: 'Obra'
   attributes:
    project:
-    project_category: "categoria de projeto"
-    priority: 'prioridade'
-    description: 'descrição'
-    local: 'local'
-    geolocation: 'geolocalização'
-    responsible: 'responsável'
-    observation: 'observação'
+    name: "Nome"
+    project_category: "Categoria de projeto"
+    priority: 'Prioridade'
+    description: 'Descrição'
+    local: 'Local'
+    geolocation: 'Geolocalização'
+    responsible: 'Responsável'
+    observation: 'Observação'
 

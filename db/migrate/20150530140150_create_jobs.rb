@@ -3,7 +3,7 @@ class CreateJobs < ActiveRecord::Migration
     create_table :jobs do |t|
       t.string :name
       t.string :description
-      t.decimal :salary
+      t.float :salary
       t.boolean :status
 
       t.timestamps null: false

@@ -20,9 +20,8 @@
               %th.col-md-2
                 Ações
           %tbody
-            %tr
-              - @offices.each do |office|
-
+            - @offices.each do |office|
+              %tr
                 %td.col-md-3
                   =office.name
                 %td.col-md-3

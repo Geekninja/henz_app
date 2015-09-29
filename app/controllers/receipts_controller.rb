@@ -3,7 +3,19 @@ class ReceiptsController < ApplicationController
   before_action :set_receipt, only: [:edit, :update, :destroy]
 
   def index
-    @receipts = Receipt.all
+    
+    if params[:search].present?
+      @begin_month  = Date.parse(params[:search][:start_date].to_s)
+      @end_month    = Date.parse(params[:search][:end_date].to_s)
+      
+      @receipts = @project.receipts.where(deadline: @begin_month..@end_month)
+    else
+      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
+      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+
+      @receipts = @project.receipts.where(deadline: @begin_month..@end_month)
+    end
+
   end
 
   def new
