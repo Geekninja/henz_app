@@ -13,8 +13,8 @@ class ProjectsController < ApplicationController
       @begin_month  = Date.parse(params[:search][:start_date].to_s)
       @end_month    = Date.parse(params[:search][:end_date].to_s)
     else
-      @begin_month  = Date.today.beginning_of_month.strftime('%Y-%m-%d')
-      @end_month    = Date.today.end_of_month.strftime('%Y-%m-%d')
+      @begin_month  = Date.today.beginning_of_month
+      @end_month    = Date.today.end_of_month
     end
 
     @project_funds   = @project.project_funds.where(date_payment: @begin_month..@end_month)
