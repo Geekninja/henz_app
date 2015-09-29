@@ -9,8 +9,8 @@ class ProjectFundsController < ApplicationController
       
       @project_funds = @project.project_funds.where(date_payment: @begin_month..@end_month)
     else
-      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
-      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+      @begin_month  = Date.today.beginning_of_month
+      @end_month    = Date.today.end_of_month
 
       @project_funds = @project.project_funds.where(date_payment: @begin_month..@end_month)
     end

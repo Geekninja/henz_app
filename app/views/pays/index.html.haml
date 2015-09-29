@@ -9,10 +9,10 @@
             = simple_form_for :search, url: project_pays_path, :method => 'get' do |f|
               .col-md-2
                 = f.label "Data inicial"
-                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : @begin_month}
+                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : @begin_month.strftime('%d/%m/%Y')}
               .col-md-2
                 = f.label "Data final"
-                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : @end_month}
+                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : @end_month.strftime('%d/%m/%Y')}
               .col-md-2{style: 'margin-top: 23px'}
                 = f.submit "Filtrar Resultados", class: 'btn btn-success btn-sm'
 .row

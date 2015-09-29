@@ -10,8 +10,8 @@ class ReceiptsController < ApplicationController
       
       @receipts = @project.receipts.where(deadline: @begin_month..@end_month)
     else
-      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
-      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+      @begin_month  = Date.today.beginning_of_month
+      @end_month    = Date.today.end_of_month
 
       @receipts = @project.receipts.where(deadline: @begin_month..@end_month)
     end
