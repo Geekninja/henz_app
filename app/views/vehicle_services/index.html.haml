@@ -16,9 +16,8 @@
               %th.col-md-2
                 Ações
           %tbody
-            %tr
-              - @vehicle_services.each do |vehicle_service|
-
+            - @vehicle_services.each do |vehicle_service|
+              %tr
                 %td.col-md-9
                   =vehicle_service.name
                 %td.col-md-1
