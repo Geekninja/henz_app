@@ -19,7 +19,6 @@
               %th Título
               %th Descrição
               %th Valor
-              %th Mes/Ano
               %th Data
               %th Status
               %th Ações
@@ -32,8 +31,7 @@
                     = p.finance_type
                 %td= p.title
                 %td= p.description
-                %td= "R$ #{p.value}"
-                %td= "#{p.month}/#{p.year}"
+                %td= number_to_currency p.value
                 %td= p.date.strftime('%d/%m/%Y')
                 %td= (p.status) ? "efetivado" : "pendente"
                 %td 
