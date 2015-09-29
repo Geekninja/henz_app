@@ -13,15 +13,15 @@ class ProjectsController < ApplicationController
       @begin_month  = Date.parse(params[:search][:start_date].to_s)
       @end_month    = Date.parse(params[:search][:end_date].to_s)
     else
-      @begin_month  = Date.today.beginning_of_month.strftime('%d/%m/%Y')
-      @end_month    = Date.today.end_of_month.strftime('%d/%m/%Y')
+      @begin_month  = Date.today.beginning_of_month.strftime('%Y-%m-%d')
+      @end_month    = Date.today.end_of_month.strftime('%Y-%m-%d')
     end
 
-    @project_funds   = @project.project_funds.where(date_payment: @begin_month.strftime('%Y-%m-%d')..@end_month.strftime('%Y-%m-%d'))
-    @project_finance = @project.project_finances.where(date: @begin_month.strftime('%Y-%m-%d')..@end_month.strftime('%Y-%m-%d'))
-    @pays            = @project.pays.where(deadline: @begin_month.strftime('%Y-%m-%d')..@end_month.strftime('%Y-%m-%d'), status: false)
-    @receipts        = @project.receipts.where(deadline: @begin_month.strftime('%Y-%m-%d')..@end_month.strftime('%Y-%m-%d'), status: false)
-    @fuels           = @project.fuel_expenses.where(date: @begin_month.strftime('%Y-%m-%d')..@end_month.strftime('%Y-%m-%d'))
+    @project_funds   = @project.project_funds.where(date_payment: @begin_month..@end_month)
+    @project_finance = @project.project_finances.where(date: @begin_month..@end_month)
+    @pays            = @project.pays.where(deadline: @begin_month..@end_month, status: false)
+    @receipts        = @project.receipts.where(deadline: @begin_month..@end_month, status: false)
+    @fuels           = @project.fuel_expenses.where(date: @begin_month..@end_month)
     @uploads         = @project.archives.limit(10).order('created_at DESC')
             
   end
