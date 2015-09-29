@@ -18,7 +18,7 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'validates_cpf_cnpj'
 gem 'validates_timeliness', '~> 3.0'
 gem 'email_validator'
-
+gem 'fog-aws'
 
 group :development, :test do
   gem 'sqlite3'
