@@ -56,10 +56,10 @@ jQuery(function ($) {
                 };
             }
             locations = [
-                // {title: 'Henz 040', lat: -16.057101, long: -47.983844, icon: markerIcon},
-                {title: 'Henz Rio de Janeiro', lat: -22.6209208, long: -43.2853867, icon: markerIcon}
-                // {title: 'Henz Alexania', lat: -16.092368, long: -48.493963, icon: markerIcon},
-                // {title: 'Henz Ourinhos', lat: -22.9692739, long: -49.8656059, icon: markerIcon}
+                {title: 'Henz Rio de Janeiro', lat: -22.6209208, long: -43.2853867, icon: markerIcon, locationID: 1},
+                {title: 'Henz 040', lat: -16.057101, long: -47.983844, icon: markerIcon, locationID: 2},
+                {title: 'Henz Alexania', lat: -16.092368, long: -48.493963, icon: markerIcon, locationID: 3},
+                {title: 'Henz Ourinhos', lat: -22.9692739, long: -49.8656059, icon: markerIcon, locationID: 4}
             ];
 
             function showHiddenLabel() {
@@ -70,7 +70,7 @@ jQuery(function ($) {
             }
 
 
-            function openInfoWindow(map, marker) {
+			function openInfoWindow(map, marker) {
                 infoWindow.close();
                 showHiddenLabel();
 //                infoWindow.setContent(locations[i][0]);
@@ -79,6 +79,8 @@ jQuery(function ($) {
                     marker.markerLabel.draw();
                 }
                 currentMark = marker;
+	            var $desitnationTemplate = $('#info-window-' + marker.locationID);
+				infoWindow.setContent($desitnationTemplate.html());
                 infoWindow.open(map, marker);
             }
 
@@ -91,7 +93,8 @@ jQuery(function ($) {
                     position: new google.maps.LatLng(locations[i]['lat'], locations[i]['long']),
                     title: locations[i]['title'],
                     map: map,
-                    icon: locations[i]['icon']
+                    icon: locations[i]['icon'],
+						locationID: locations[i]['locationID']
                 });
 
                 var markerLabel = markerTemplate.data('label');

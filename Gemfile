@@ -31,9 +31,8 @@ group :development, :test do
   gem 'thin'
 end
 
-group :production do 
+group :production do
   gem 'unicorn'
   gem 'pg'
   gem 'rails_12factor'
 end
-

@@ -53,7 +53,7 @@
           .b-some-examples__item.b-bg-transparent.f-some-examples__item
             .b-some-examples__item_img.view.view-sixth
               / <a href="#">
-              %img.j-data-element{:alt => "", "data-animate" => "fadeInDown", "data-retina" => "", :src => "/img/homepage/example_1.jpg"}/
+              %img.j-data-element{:alt => "", "data-animate" => "fadeInDown", "data-retina" => "", :src => "http://henz.s3-website-sa-east-1.amazonaws.com/images/example_1.jpg"}/
               / </a>
             .b-some-examples__item_info
               .b-some-examples__item_info_level.b-some-examples__item_name.f-some-examples__item_name.f-primary-b
@@ -66,7 +66,7 @@
         .col-sm-4.col-xs-12
           .b-some-examples__item.b-bg-transparent.f-some-examples__item
             .b-some-examples__item_img.view.view-sixth
-              %img.j-data-element{:alt => "", "data-animate" => "fadeInDown", "data-retina" => "", :src => "/img/homepage/example_2.jpg"}/
+              %img.j-data-element{:alt => "", "data-animate" => "fadeInDown", "data-retina" => "", :src => "http://henz.s3-website-sa-east-1.amazonaws.com/images/example_2.jpg"}/
             .b-some-examples__item_info
               .b-some-examples__item_info_level.b-some-examples__item_name.f-some-examples__item_name.f-primary-b
                 %a{:href => "#"} O que fazemos?
@@ -75,7 +75,7 @@
         .col-sm-4.col-xs-12
           .b-some-examples__item.b-bg-transparent.f-some-examples__item
             .b-some-examples__item_img.view.view-sixth
-              %img.j-data-element{:alt => "", "data-animate" => "fadeInDown", "data-retina" => "", :src => "/img/homepage/example_3.jpg"}/
+              %img.j-data-element{:alt => "", "data-animate" => "fadeInDown", "data-retina" => "", :src => "http://henz.s3-website-sa-east-1.amazonaws.com/images/example_3.jpg"}/
             .b-some-examples__item_info
               .b-some-examples__item_info_level.b-some-examples__item_name.f-some-examples__item_name.f-primary-b
                 %a{:href => "#"} Nossas Metas?
@@ -416,7 +416,7 @@
   </div>
   </div>
   </div>
-  
+
   </div>
   </div>
   </section>
@@ -425,8 +425,8 @@
   %section.b-google-map.b-google-map--fix-height.map-theme{"data-fixed_top" => ""}
     .b-google-map__map-view.b-google-map__map-height
       / Google map load
-    %img.marker-template.hidden{"data-label" => "", "data-retina" => "", :src => "/img/google-map-marker-default.png"}/
-    .b-google-map__info-window-template.hidden{"data-selected-marker" => "0", "data-width" => "526"}
+    %img.marker-template.hidden{"data-label" => "", "data-retina" => "", :src => "/img/google-map-marker-green.png"}/
+    #info-window-1.b-google-map__info-window-template.hidden{"data-width" => "526"}
       .b-google-map__info-window.col-xs-12
         .col-lg-7.col-xs-12.b-google-map__info-window-address
           %ul.list-unstyled
@@ -452,4 +452,86 @@
                   E-mail
                 .desc jasen.mengali@construtorahenz.com.br
         .col-lg-5.b-google-map__info-window-image.hidden-xs.hidden-sm.hidden-md
-          %img{:alt => "", "data-retina" => "", :src => "/img/google-map-skyscrapper.png", :style => "width: 218px; height: 243px;"}/
+          %img{:alt => "", "data-retina" => "", :src => "img/google-map-sskyscrapper.png", :style => "width: 218px; height: 243px;"}/
+      #info-window-2.b-google-map__info-window-template.hidden{"data-width" => "526"}
+        .b-google-map__info-window.col-xs-12
+          .col-lg-7.col-xs-12.b-google-map__info-window-address
+            %ul.list-unstyled
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-home
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    Escritório VALPARAISO GO
+                  .desc VIA 040: Qd 22, Lt H, Ap 2, - Parque São Bernardo, CEP: 72870-428 Valparaíso de Goiás – GO
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-phone
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    Telefone de Contato
+                  .desc (61) 3025-2005
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-envelope
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    E-mail
+                  .desc rafael.pereira@construtorahenz.com.br
+          .col-lg-5.b-google-map__info-window-image.hidden-xs.hidden-sm.hidden-md
+            %img{:alt => "", "data-retina" => "", :src => "img/google-map-sskyscrapper.png", :style => "width: 218px; height: 243px;"}/
+      #info-window-3.b-google-map__info-window-template.hidden{"data-width" => "526"}
+        .b-google-map__info-window.col-xs-12
+          .col-lg-7.col-xs-12.b-google-map__info-window-address
+            %ul.list-unstyled
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-home
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    Escritório ALEXÂNIA GO
+                  .desc Rua 57, qd 40, lote 9, Setor nova Flórida, CEP: 72930-000 - Alexânia - GO
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-phone
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    Telefone de Contato
+                  .desc (61) 8525-7444
+                  (38) 9948-7444
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-envelope
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    E-mail
+                  .desc maikel.couto@construtorahenz.com.br
+          .col-lg-5.b-google-map__info-window-image.hidden-xs.hidden-sm.hidden-md
+            %img{:alt => "", "data-retina" => "", :src => "img/google-map-sskyscrapper.png", :style => "width: 218px; height: 243px;"}/
+      #info-window-4.b-google-map__info-window-template.hidden{"data-width" => "526"}
+        .b-google-map__info-window.col-xs-12
+          .col-lg-7.col-xs-12.b-google-map__info-window-address
+            %ul.list-unstyled
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-home
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    Escritório SÃO PAULO
+                  .desc Avenida domingos Terino Nº 1084, vila recreio, CEP 19.911-781 - Ourinhos - SP
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-phone
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    Telefone de Contato
+                  .desc (14) 99719-1183
+              %li.col-xs-12
+                .b-google-map__info-window-address-icon.f-center.pull-left
+                  %i.fa.fa-envelope
+                %div
+                  .b-google-map__info-window-address-title.f-google-map__info-window-address-title
+                    E-mail
+                  .desc renata.ramos@construtorahenz.com.br
+          .col-lg-5.b-google-map__info-window-image.hidden-xs.hidden-sm.hidden-md
+            %img{:alt => "", "data-retina" => "", :src => "img/google-map-sskyscrapper.png", :style => "width: 218px; height: 243px;"}/

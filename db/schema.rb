@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
   create_table "jobs", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
-    t.decimal  "salary"
+    t.float    "salary"
     t.boolean  "status"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
@@ -178,8 +178,6 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "title"
     t.string   "description"
     t.string   "quantity"
-    t.integer  "month"
-    t.integer  "year"
     t.string   "note_payment"
     t.date     "date"
     t.datetime "created_at",   null: false
@@ -302,7 +300,7 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "telphone_optional"
     t.string   "celphone"
     t.date     "born"
-    t.decimal  "salary"
+    t.float    "salary"
     t.boolean  "driver"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
