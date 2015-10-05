@@ -8,9 +8,9 @@ layout 'layouts/site.html.haml'
     @curriculum = Curriculum.new(params[:curriculum])
     @curriculum.request = request
     if @curriculum.deliver
-      flash.now[:notice] = 'Thank you for your message. We will contact you soon!'
+      flash.now[:notice] = 'Obrigado por enviar seu curriculum, retornaremos o contato em breve.'
     else
-      flash.now[:error] = 'Cannot send message.'
+      flash.now[:error] = 'A mensagem não pode ser enviada, tente mais tarde novamente.'
       render :new
     end
   end
