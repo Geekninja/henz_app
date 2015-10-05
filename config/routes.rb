@@ -1,23 +1,24 @@
 Rails.application.routes.draw do
 
   root "site#index"
- 
-  scope '/' do 
-    get '/trabalhe-conosco',  to: 'site#trabalhe'
+
+  scope '/' do
+    get '/trabalhe-conosco',  to: 'curriculums#new'
     get '/trajetoria',        to: 'site#trajetoria'
     get '/areas-atuacao',     to: 'site#areas-atuacao'
     get '/carreiras',         to: 'site#carreiras'
     get '/obras',             to: 'site#obras'
+    resources :curriculums, path: 'trabalhe-conosco', only: [:new, :create]
   end
 
   scope '/gestao' do
-    
+
     devise_for :users, controllers: {
       sessions: 'sessions'
     }
 
     resources :users, path: 'usuarios'
-    
+
     authenticate :user do
 
       get '/', to: 'dashboard#index'
@@ -25,20 +26,20 @@ Rails.application.routes.draw do
       resources :passwords, path: 'trocar_senha', only: [:edit, :update]
       resources :project_categories, path: 'categorias_obra'
 
-      resources :projects, path: 'obras' do 
+      resources :projects, path: 'obras' do
         resources :project_finances, path: 'caixa'
         resources :project_funds, path: 'gastos'
         resources :vehicles, path: 'veículos'
         resources :archives, path: 'arquivos'
         resources :fuel_expenses, path: 'consumo'
-        resources :quotations, path: 'cotacoes' do 
+        resources :quotations, path: 'cotacoes' do
           resources :budgets, path: 'orcamentos'
         end
         resources :pays, path: 'contas_pagar'
         resources :receipts, path: 'contas_receber'
         resources :suppliers, path: 'fornecedores'
       end
-      
+
       resources :bill_categories, path: 'categorias_conta'
       resources :offices, path: 'escritorios'
       resources :office_supports, path: 'ponto de apoio'

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.1'
+#ruby '2.2.1'
 
 gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
@@ -12,6 +12,7 @@ gem 'devise', '~> 3.5.1'
 gem 'pundit'
 gem 'carrierwave'
 gem 'simple_form'
+gem 'mail_form'
 gem 'haml-rails'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'guard-rails'
   gem 'guard-livereload'
   gem 'thin'
+  gem 'foreman'
 end
 
 group :production do
