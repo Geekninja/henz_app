@@ -4,8 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable,# :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :project_privilege, class_name: "Project"
   validates_presence_of :name, :privilege
 
-  enum :privilege => [:administrador, :gerente, :financeiro]
+  enum :privilege => [:administrador, :gerente, :financeiro, :matriz]
 
 end

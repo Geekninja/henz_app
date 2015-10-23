@@ -7,6 +7,11 @@
       = f.input :email
     .col-md-4
       = f.input :privilege, as: 'select', collection: User.privileges.keys.to_a, prompt: 'selecione...'
+  %hr/
+  .row
+    .col-md-4
+      = f.association :project_privilege, as: :check_boxes, collection: Project.all, prompt: 'selecione...'
+  %hr/
   - if @user.new_record?
     .row
       .col-md-4

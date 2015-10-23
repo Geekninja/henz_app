@@ -34,7 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :function
       t.boolean :status, default: true
       t.integer :privilege #suporte, #gerente, #financeiro, #administrador
-
+      t.references :project_privilege, array: true, index: true
       t.timestamps null: false
     end
 

@@ -1,7 +1,10 @@
 @nível_acesso
- ☐ inserir campo em contas de privilegio de visualização
- ☐ inserir campo array em usuário de obras que pode visualizar
+ ✔ inserir campo em contas de privilegio de visualização @done (15-10-22 21:04)
+
+ ✔ inserir campo array em usuário de obras que pode visualizar @done (15-10-22 21:04)
+
  ☐ corrigir visualização e a acessos dessas features a apartir desses privilégios
+
  ☐ privilegios pundit [matriz, financeiro, gerênte]
 
 @contas

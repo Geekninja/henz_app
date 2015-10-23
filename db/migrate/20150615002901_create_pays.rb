@@ -14,6 +14,7 @@ class CreatePays < ActiveRecord::Migration
       t.string :note_payment
       t.date  :date_payment
       t.text  :observation_payment
+      t.references :privilege, array: true, index: true
 
       t.timestamps null: false
     end
