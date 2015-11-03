@@ -35,7 +35,10 @@ class ProjectFinancesController < ApplicationController
   private
 
   def project_finance_params
-    params.require(:project_finance).permit(:finance_type, :value, :status, :title, :description, :quantity, :month, :year, :date, :project_id)
+    params.require(:project_finance).permit(:finance_type, :value, :status, 
+                                            :title, :description, :quantity,
+                                            :month, :year, :date, :project_id,
+                                            :finance_target, :staff_id)
   end
 
   def set_project

@@ -11,6 +11,8 @@ class CreateProjectFunds < ActiveRecord::Migration
       t.string :note_payment
       t.date  :date_payment
       t.text  :observation_payment
+      t.integer :pay_target, default: 0
+      t.references :staff, index: true
 
       t.timestamps null: false
     end

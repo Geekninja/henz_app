@@ -17,8 +17,11 @@ class CreateReceipts < ActiveRecord::Migration
       
       t.date  :date_payment
       t.text  :observation_receipt
+      t.string :number_note
 
       t.timestamps null: false
     end
+
+    add_index :receipts, :number_note, unique: true
   end
 end

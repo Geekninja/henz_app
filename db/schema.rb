@@ -155,14 +155,19 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "note_payment"
     t.date     "date_payment"
     t.text     "observation_payment"
+    t.string   "number_note"
     t.integer  "privilege_id",                                     array: true
+    t.integer  "pay_target",          default: 0
+    t.integer  "staff_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
   add_index "pays", ["bill_category_id"], name: "index_pays_on_bill_category_id", using: :btree
+  add_index "pays", ["number_note"], name: "index_pays_on_number_note", unique: true, using: :btree
   add_index "pays", ["privilege_id"], name: "index_pays_on_privilege_id", using: :btree
   add_index "pays", ["project_id"], name: "index_pays_on_project_id", using: :btree
+  add_index "pays", ["staff_id"], name: "index_pays_on_staff_id", using: :btree
   add_index "pays", ["supplier_id"], name: "index_pays_on_supplier_id", using: :btree
 
   create_table "project_categories", force: :cascade do |t|
@@ -175,6 +180,8 @@ ActiveRecord::Schema.define(version: 20150706160933) do
   create_table "project_finances", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "finance_type"
+    t.integer  "finance_target"
+    t.integer  "staff_id"
     t.float    "value"
     t.boolean  "status"
     t.string   "title"
@@ -182,11 +189,12 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "quantity"
     t.string   "note_payment"
     t.date     "date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "project_finances", ["project_id"], name: "index_project_finances_on_project_id", using: :btree
+  add_index "project_finances", ["staff_id"], name: "index_project_finances_on_staff_id", using: :btree
 
   create_table "project_funds", force: :cascade do |t|
     t.integer  "project_id"
@@ -199,12 +207,25 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "note_payment"
     t.date     "date_payment"
     t.text     "observation_payment"
+    t.integer  "pay_target",          default: 0
+    t.integer  "staff_id"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
   add_index "project_funds", ["project_id"], name: "index_project_funds_on_project_id", using: :btree
+  add_index "project_funds", ["staff_id"], name: "index_project_funds_on_staff_id", using: :btree
   add_index "project_funds", ["supplier_id"], name: "index_project_funds_on_supplier_id", using: :btree
+
+  create_table "project_users", force: :cascade do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "project_users", ["project_id"], name: "index_project_users_on_project_id", using: :btree
+  add_index "project_users", ["user_id"], name: "index_project_users_on_user_id", using: :btree
 
   create_table "projects", force: :cascade do |t|
     t.integer  "project_category_id"
@@ -248,11 +269,13 @@ ActiveRecord::Schema.define(version: 20150706160933) do
     t.string   "archive"
     t.date     "date_payment"
     t.text     "observation_receipt"
+    t.string   "number_note"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
   add_index "receipts", ["bill_category_id"], name: "index_receipts_on_bill_category_id", using: :btree
+  add_index "receipts", ["number_note"], name: "index_receipts_on_number_note", unique: true, using: :btree
   add_index "receipts", ["project_id"], name: "index_receipts_on_project_id", using: :btree
 
   create_table "sectors", force: :cascade do |t|

@@ -10,7 +10,7 @@
   %hr/
   .row
     .col-md-4
-      = f.association :project_privilege, as: :check_boxes, collection: Project.all, prompt: 'selecione...'
+      = f.input :project_privilege_id, as: :check_boxes, collection: Project.all, prompt: 'selecione...'
   %hr/
   - if @user.new_record?
     .row

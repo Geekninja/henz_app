@@ -4,6 +4,10 @@
   .row
     .col-md-6
       = f.association :supplier, prompt: 'selecione...'
+    .col-md-3
+      = f.input :pay_target, collection: ProjectFund.pay_targets.keys.to_a, include_blank: false
+    .col-md-3#staff
+      = f.association :staff, prompt: 'selecione...'
   .row
     .col-md-6
       = f.input :name
@@ -22,3 +26,21 @@
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
+      
+:javascript
+
+  $(document).ready(function() {  
+    if($("#project_fund_pay_target").val() == "funcionário") {
+      $("#staff").show();
+    } else {
+      $("#staff").hide();
+    }
+    
+    $("#project_fund_pay_target").on('change', function() {
+      if($(this).val() == "funcionário") {
+        $("#staff").fadeIn();  
+      } else {
+        $("#staff").fadeOut();  
+      }
+    });
+  });

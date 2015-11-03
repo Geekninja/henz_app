@@ -10,7 +10,13 @@
       = f.input :date, as: 'string', input_html: { class: 'date', value: (@project_finance.date.present?) ? localize(@project_finance.date) : nil }
     .col-md-2
       = f.input :note_payment, as: :file
-     
+  %hr/
+  .row
+    .col-md-2
+      = f.input :finance_target, as: :select, collection: ProjectFinance.finance_targets.keys.to_a, include_blank: false   
+    .col-md-4#staff
+      = f.association :staff, prompt: 'selecione o funcionário...'
+  %hr/
   .row
     .col-md-6
       = f.input :title
@@ -25,3 +31,21 @@
   .row
     .col-md-12
       = f.button :submit, class: 'btn btn-success'
+
+:javascript
+
+  $(document).ready(function() {  
+    if($("#project_finance_finance_target").val() == "funcionário") {
+      $("#staff").show();
+    } else {
+      $("#staff").hide();
+    }
+    
+    $("#project_finance_finance_target").on('change', function() {
+      if($(this).val() == "funcionário") {
+        $("#staff").fadeIn();  
+      } else {
+        $("#staff").fadeOut();  
+      }
+    });
+  });

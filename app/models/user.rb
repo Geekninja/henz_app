@@ -9,4 +9,8 @@ class User < ActiveRecord::Base
 
   enum :privilege => [:administrador, :gerente, :financeiro, :matriz]
 
+
+  def project_privileges(privilege)
+    self.project_privilege_id.to_a.include? privilege
+  end
 end

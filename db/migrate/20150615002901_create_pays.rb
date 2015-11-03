@@ -14,9 +14,13 @@ class CreatePays < ActiveRecord::Migration
       t.string :note_payment
       t.date  :date_payment
       t.text  :observation_payment
+      t.string :number_note
       t.references :privilege, array: true, index: true
+
 
       t.timestamps null: false
     end
+
+    add_index :pays, :number_note, unique: true
   end
 end

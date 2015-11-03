@@ -5,7 +5,7 @@ class Pay < ActiveRecord::Base
 
   validates_presence_of  :bill_category, :name, :deadline
   validates :value, numericality: {only_float: true}, allow_blank: true
-
+  validates :number_note, uniqueness: true, presence: true, if: :payment?
 
   scope :filter, -> (start_date, end_date) {where(created_at: start_date..end_date)}
 

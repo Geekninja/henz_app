@@ -13,4 +13,6 @@ pt-BR:
     value: 'Valor'
     quantity: 'Quantidade'
     note_payment: "Comprovante"
+    finance_target: "Caixa destinado à"
+    staff: "Funcionário"
 

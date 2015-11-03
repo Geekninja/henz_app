@@ -3,6 +3,8 @@ class CreateProjectFinances < ActiveRecord::Migration
     create_table :project_finances do |t|
       t.references :project, index: true#, foreign_key: true
       t.integer :finance_type
+      t.integer :finance_target
+      t.references :staff, index: true
       t.float :value
       t.boolean :status
       t.string :title

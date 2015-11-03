@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def administrador?
-    user.administrador?
+    user.administrador? || user.matriz?
   end
 
   def financeiro?
@@ -16,6 +16,10 @@ class ApplicationPolicy
 
   def gerente?
     user.gerente?
+  end
+
+  def acess_project?(project_id)
+    user.project_privilege_id.includes? project_id
   end
 
   def index?

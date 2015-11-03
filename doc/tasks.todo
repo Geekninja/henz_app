@@ -1,31 +1,13 @@
-@nível_acesso
- ✔ inserir campo em contas de privilegio de visualização @done (15-10-22 21:04)
+@permissões
+ ✔ criação de privilégio matriz @done (15-11-03 08:42)
+ ✔ criação de campo array para privilégios que podem visualizar o dado @done (15-11-03 08:42)
+ ✔ modificação de todos os models para utilizaremum default_scope que utilizeos privlégios para paremtro de busca @done (15-11-03 08:57)
+ ✔ criação de array para obras que o usuário tem acesso e pode visualiar e ou trabalhar  @done (15-11-03 08:42)
+ ✔ modificação dos formulários usando chosen-jquery para criar vínculo com campos array tanto para o form de cadastro de usuário, quanto para o campo de obras que o usuário acessa. @done (15-11-03 08:42)
+ ✔ víncular o pundir em hernaça para utilizar a regra de privilegios em obras que o usuário pode acessar @done (15-11-03 08:57)
 
- ✔ inserir campo array em usuário de obras que pode visualizar @done (15-10-22 21:04)
-
- ☐ corrigir visualização e a acessos dessas features a apartir desses privilégios
-
- ☐ privilegios pundit [matriz, financeiro, gerênte]
-
-@contas
- ☐ inserir campo número da nota e colocado como único
+@duplicidade
+ ✔ colocar campo :unique para número da nota @done (15-11-03 09:06)
 
 @dashboard
- ☐ mais interação e usabilidade
- ☐ filtros datatables
- ☐ links para ver show dos dados auxiliares
-
-@caixa_pessoal
- ☐ crud de caixa pessoal
- ☐ tela de visualização de meu caixa
- ☐ crud de saída do meu caixa
-
-@relatorios
- - por obra
-   ☐ contas a receber e pagar
-   ☐ funcionarios
-   ☐ carros
-   ☐ fornecedores
-   ☐ filtro por período
-   ☐ exportação para csv
-   ☐ impressão em pdf
+ ++

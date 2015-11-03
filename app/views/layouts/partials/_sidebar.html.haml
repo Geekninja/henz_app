@@ -16,6 +16,8 @@
             %ul.sub{:style => "display: none;"}
               %li= link_to "Novo Gasto", new_project_project_fund_path(@project)
               %li= link_to "Caixa da obra", project_project_funds_path(@project)
+              %li= link_to "Entradas meu caixa", project_staff_funds_path(@project)
+              %li= link_to "Saídas meu caixa", project_staff_pays_path(@project)
         %li.sub-menu.dcjq-parent-li
           %a.dcjq-parent{:href => "javascript:;"}
             %i.fa.fa-laptop

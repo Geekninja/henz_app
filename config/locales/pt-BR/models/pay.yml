@@ -17,6 +17,8 @@ pt-BR:
     note_payment: "Upload do comprovante"
     observation_payment: "Observações do pagamento"
     status: "Esta conta foi paga?"
+    number_note: "Número da nota"
+    privilege_id: "Quem pode visualizar esta conta?"
   errors:
    models:
     pay:

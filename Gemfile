@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'mail_form'
 gem 'haml-rails'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+gem 'has_scope'
 
 gem 'validates_cpf_cnpj'
 gem 'validates_timeliness', '~> 3.0'

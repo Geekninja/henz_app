@@ -1,0 +1,40 @@
+.row
+  .col-md-12
+    %section.panel
+      %header.panel-heading
+        Filtro
+      .panel-body
+        .row
+          .col-md-12
+            = simple_form_for :search, url: project_staff_funds_path, :method => 'get' do |f|
+              .col-md-2
+                = f.label "Data inicial"
+                = f.input :start_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:start_date] : Date.today.beginning_of_month.strftime('%d/%m/%Y'), name: 'started_at'}
+              .col-md-2
+                = f.label "Data final"
+                = f.input :end_date, label:false, as: :string, input_html: { class: 'date', value: params[:search].present? ? params[:search][:end_date] : Date.today.end_of_month.strftime('%d/%m/%Y'), name: 'ended_at'}
+              .col-md-2{style: 'margin-top: 23px'}
+                = f.submit "Filtrar Resultados", name: nil, class: 'btn btn-success btn-sm'
+.row
+  .col-sm-12
+    %section.panel
+      %header.panel-heading
+        Entradas - Meu Caixa 
+      .panel-body
+
+        %table.table.table-hover.general-table.datatable.table-bordered
+          %thead
+            %tr
+              %th Título
+              %th Descrição
+              %th Valor
+              %th Data
+          %tbody
+            - @staff_funds.each do |fund|
+              %tr
+                %td= fund.title
+                %td= fund.description
+                %td= number_to_currency fund.value
+                %td= fund.created_at.strftime('%d/%m/%Y')
+                
+           

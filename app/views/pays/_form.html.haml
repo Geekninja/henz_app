@@ -24,13 +24,21 @@
       = f.input :archive, as: 'file'
   %hr/
   .row
+    .col-md-12
+      = f.input :privilege_id, as: :check_boxes, collection: User.privileges
+  %hr/
+  .row
     .col-md-2
       = f.input :status, as: 'select', prompt: 'selecione...'
-    .info_payment{style: (@pay.status) ? "display:block;" : "display:none;"}
+  .info_payment{style: (@pay.status) ? "display:block;" : "display:none;"}
+    .row
       .col-md-2
         = f.input :date_payment, as: 'string', input_html: { class: 'date', value: (@pay.date_payment.present?) ? localize(@pay.date_payment) : nil }
       .col-md-2
+        = f.input :number_note
+      .col-md-2
         = f.input :note_payment, as: 'file'
+    .row
       .col-md-6
         = f.input :observation_payment
   %hr/

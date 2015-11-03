@@ -13,13 +13,13 @@ Rails.application.routes.draw do
 
   scope '/gestao' do
 
+
     devise_for :users, controllers: {
       sessions: 'sessions'
     }
 
-    resources :users, path: 'usuarios'
-
     authenticate :user do
+      resources :users, path: 'usuarios'
 
       get '/', to: 'dashboard#index'
 
@@ -29,6 +29,8 @@ Rails.application.routes.draw do
       resources :projects, path: 'obras' do
         resources :project_finances, path: 'caixa'
         resources :project_funds, path: 'gastos'
+        resources :staff_funds, path: 'funcionario_entradas'
+        resources :staff_pays, path: 'funcionario_gastos'
         resources :vehicles, path: 'veículos'
         resources :archives, path: 'arquivos'
         resources :fuel_expenses, path: 'consumo'

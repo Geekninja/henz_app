@@ -18,6 +18,7 @@
               %th Tipo
               %th Título
               %th Descrição
+              %th Destinado à
               %th Valor
               %th Data
               %th Status
@@ -31,6 +32,7 @@
                     = p.finance_type
                 %td= p.title
                 %td= p.description
+                %td= (p.funcionário?) ? (p.staff.name if p.staff.present?) : "Obra"
                 %td= number_to_currency p.value
                 %td= p.date.strftime('%d/%m/%Y')
                 %td= (p.status) ? "efetivado" : "pendente"

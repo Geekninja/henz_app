@@ -68,7 +68,8 @@ class PaysController < ApplicationController
       params.require(:pay).permit( :deadline, :bill_category_id, 
                                    :project_id, :name, :description,
                                    :status, :value, :supplier_id, :observation, :archive,
-                                   :date_payment, :note_payment, :observation_payment)
+                                   :date_payment, :note_payment, :observation_payment,
+                                   privilege_id: [])
     end
     def set_project
       @project = Project.find(params[:project_id])

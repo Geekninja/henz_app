@@ -1,5 +1,5 @@
 .row
-  - @projects.each do |project|
+  - @projects.where(id: current_user.project_privilege_id).each do |project|
     .col-md-3
       %section.panel
         %header.panel-heading
