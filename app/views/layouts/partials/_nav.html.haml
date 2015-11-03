@@ -57,6 +57,20 @@
                 = link_to "Escritórios", offices_path
               %li
                 = link_to "Pontos de apoio", office_supports_path
+          %li.dropdown
+            %a.dropdown-toggle{"data-hover" => "dropdown", "data-toggle" => "dropdown", :href => "#"}
+              Relatórios
+              %b.fa.fa-angle-down
+            %ul.dropdown-menu
+              - if policy(:application).administrador?
+                %li
+                  = link_to "Contratos", users_path
+                %li
+                  = link_to "Funcionários", staffs_path
+                %li
+                  = link_to "Veículos", sectors_path
+                %li
+                  = link_to "Caixa & Contas", jobs_path
        
   .horizontal-menu.navbar-collapse.collapse.pull-right
     %ul.nav.navbar-nav

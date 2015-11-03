@@ -33,7 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :name
       t.string :function
       t.boolean :status, default: true
-      t.integer :privilege #suporte, #gerente, #financeiro, #administrador
+      t.integer :privilege #suporte, #gerente, #financeiro, #administrador, #matriz
 
       t.timestamps null: false
     end

@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   validates_presence_of :name, :privilege
 
-  enum :privilege => [:administrador, :gerente, :financeiro]
+  enum :privilege => [:administrador, :gerente, :financeiro, :matriz]
 
 end
