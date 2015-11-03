@@ -48,11 +48,11 @@ class UsersController < ApplicationController
   private
 
   def set_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :name, :status, :privilege)
+    params.require(:user).permit(:email, :password, :password_confirmation, :name, :status, :privilege, project_privilege_id: [])
   end
 
   def set_params_update
-    params.require(:user).permit(:email, :name, :status, :privilege)
+    params.require(:user).permit(:email, :name, :status, :privilege, project_privilege_id: [])
   end
 
   def set_user

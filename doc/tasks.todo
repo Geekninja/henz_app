@@ -1,0 +1,31 @@
+@nível_acesso
+ ✔ inserir campo em contas de privilegio de visualização @done (15-10-22 21:04)
+
+ ✔ inserir campo array em usuário de obras que pode visualizar @done (15-10-22 21:04)
+
+ ☐ corrigir visualização e a acessos dessas features a apartir desses privilégios
+
+ ☐ privilegios pundit [matriz, financeiro, gerênte]
+
+@contas
+ ☐ inserir campo número da nota e colocado como único
+
+@dashboard
+ ☐ mais interação e usabilidade
+ ☐ filtros datatables
+ ☐ links para ver show dos dados auxiliares
+
+@caixa_pessoal
+ ☐ crud de caixa pessoal
+ ☐ tela de visualização de meu caixa
+ ☐ crud de saída do meu caixa
+
+@relatorios
+ - por obra
+   ☐ contas a receber e pagar
+   ☐ funcionarios
+   ☐ carros
+   ☐ fornecedores
+   ☐ filtro por período
+   ☐ exportação para csv
+   ☐ impressão em pdf
