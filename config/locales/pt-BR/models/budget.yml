@@ -1,0 +1,8 @@
+pt-BR:
+ activerecord:
+  models:
+   budget: 'Orçamento'
+  attributes:
+   budget:
+    supplier: "fornecedor"
+    date: 'data'

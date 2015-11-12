@@ -2,33 +2,38 @@
   .col-sm-12
     %section.panel
       %header.panel-heading
-        budgets
-        = link_to 'Nova Budget', new_budget_path, class: 'btn btn-success btn-xs pull-right'
+        %b Cotação:
+        = @quotation.name
+        |
+        %b Data:
+        = @quotation.date.strftime('%d/%m/%Y')
+        %span.pull-right
+          = link_to 'Voltar para cotações', project_quotations_path(@project), class: 'btn btn-info btn-xs'
+          = link_to 'Novo Orçamento', new_project_quotation_budget_path, class: 'btn btn-success btn-xs'
       .panel-body
-
-        %table.table.table-hover.general-table.datatable
-          %thead
-            %tr
-              %th.col-md-2
-                Quotation
-              %th.col-md-2
-                Supplier
-              %th.col-md-2
-                Date
-              %th.col-md-2
-                Status
-          %tbody
-            %tr
-              - @budgets.each do |budget|
-
-                %td.col-md-8
-                  =budget.quotation
-                %td.col-md-8
-                  =budget.supplier
-                %td.col-md-8
-                  =budget.date
-                %td.col-md-8
-                  =budget.status
-                %td.col-md-1
-                  = link_to 'Editar', edit_budget_path(budget), class: 'btn btn-info btn-xs'
-                  = link_to 'Remover', budget, :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'
+        - @quotation.budgets.each_with_index do |budget, index|
+          #accordion.panel-group{"aria-multiselectable" => "true", :role => "tablist"}
+            .panel.panel-default
+              #headingOne.panel-heading{:role => "tab"}
+                %h4.panel-title
+                  %a{"aria-controls" => "collapseOne", "aria-expanded" => "true", "data-parent" => "#accordion", "data-toggle" => "collapse", :href => "##{budget.id}", :role => "button"}
+                    %b= budget.supplier.present? ? "#{index + 1} - #{budget.supplier.name} - #{budget.date.strftime('%d/%m/%Y')}" :  "#{index + 1} - Fornecedor não informado -  #{budget.date.strftime('%d/%m/%Y')}" 
+                  %br/
+                  = link_to "editar",   edit_project_quotation_budget_path(project_id: @project, quotation_id: @quotation, id: budget), class: ''
+                  = link_to "excluir",  project_quotation_budget_path(project_id: @project, quotation_id: @quotation, id: budget), method: :delete, data: { confirm: t(:confirm_remove)}
+              .panel-collapse.collapse{"aria-labelledby" => "headingOne", :role => "tabpanel", :id => "#{budget.id}"}
+                .panel-body
+                  %table.table.table-striped.table-bordered
+                    %thead
+                      %tr
+                        %th Produto
+                        %th UN
+                        %th Valor UN
+                        %th Valor Total
+                    %tbody
+                      - budget.budget_products.each do |product|
+                        %tr
+                          %td= product.product
+                          %td= product.unit
+                          %td= number_to_currency product.unit_value
+                          %td= number_to_currency product.total_value

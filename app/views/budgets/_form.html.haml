@@ -1,12 +1,19 @@
-= simple_form_for(@budget) do |f|
+= simple_form_for([@project, @quotation, @budget]) do |f|
   = f.error_notification
 
   .row
+    .col-md-5
+      = f.association :supplier, prompt: "selecione..."
+      = f.hint link_to "Gestão de Fornecedores", project_suppliers_path(@project)
+    .col-md-2
+      = f.input :date, as: :string, input_html: { class: 'date', value: (f.object.date.present?) ? localize(f.object.date) : ''}
+  %hr/
+  .row
     .col-md-12
-      = f.association :quotation
-      = f.association :supplier
-      = f.input :date
-      = f.input :status
+      = f.simple_fields_for :budget_products do |builder|
+        = render 'budget_product_fields', f: builder
+      = link_to_add_fields "Adicionar produto", f, :budget_products
+  %hr/
 
   .row
     .col-md-12

@@ -1,0 +1,12 @@
+pt-BR:
+ activerecord:
+  models:
+   budget_product: 'Produtos de orçamento'
+  attributes:
+   budget_product:
+    product: "produto"
+    unit: 'UN'
+    quantity: 'QTD'
+    unit_value: 'valor un.'
+    total_value: 'valor total'
+

@@ -9,16 +9,11 @@
         %table.table.table-hover.general-table.datatable
           %thead
             %tr
-              %th.col-md-2
-                Nome
-              %th.col-md-2
-                Descrição
-              %th.col-md-2
-                Data
-              %th.col-md-2
-                Responsável
-              %th.col-md-2
-                Ações
+              %th.col-md-2 Nome
+              %th.col-md-2 Descrição
+              %th.col-md-2 Data
+              %th.col-md-2 Responsável
+              %th.col-md-2 Ações
           %tbody
             - @quotations.each do |quotation|
               %tr
@@ -26,10 +21,11 @@
                   = link_to quotation.name
                 %td.col-md-3
                   =quotation.description
-                %td.col-md-2
+                %td.col-md-1
                   =quotation.date.strftime("%d/%m/%Y")
                 %td.col-md-2
                   =quotation.responsible if quotation.responsible.present?
                 %td.col-md-3
+                  = link_to 'Visualizar', project_quotation_budgets_path(project_id: @project, quotation_id: quotation), class: 'btn btn-success btn-xs'
                   = link_to 'Editar', edit_project_quotation_path(project_id: @project, id: quotation), class: 'btn btn-info btn-xs'
                   = link_to 'Remover', project_quotation_path(project_id: @project, id:quotation), :method => :delete, :data => { :confirm => t(:confirm_remove) }, class: 'btn btn-danger btn-xs'

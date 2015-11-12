@@ -1,9 +1,11 @@
 class BudgetsController < ApplicationController
   before_action :set_budget, only: [:show, :edit, :update, :destroy]
+  before_action :set_project
+  before_action :set_quotation
 
   # GET /budgets
   def index
-    @budgets = Budget.all
+    @budgets = @quotation.budgets
   end
 
   # GET /budgets/1
@@ -12,7 +14,8 @@ class BudgetsController < ApplicationController
 
   # GET /budgets/new
   def new
-    @budget = Budget.new
+    @budget = @quotation.budgets.new
+    @budget.budget_products.build
   end
 
   # GET /budgets/1/edit
@@ -21,10 +24,11 @@ class BudgetsController < ApplicationController
 
   # POST /budgets
   def create
-    @budget = Budget.new(budget_params)
+    @budget = @quotation.budgets.new(budget_params)
 
     if @budget.save
-      redirect_to @budget, notice: 'Budget was successfully created.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :new
     end
@@ -33,7 +37,8 @@ class BudgetsController < ApplicationController
   # PATCH/PUT /budgets/1
   def update
     if @budget.update(budget_params)
-      redirect_to @budget, notice: 'Budget was successfully updated.'
+      flash[:success] = t :success
+      redirect_to action: 'index'
     else
       render :edit
     end
@@ -42,10 +47,19 @@ class BudgetsController < ApplicationController
   # DELETE /budgets/1
   def destroy
     @budget.destroy
-    redirect_to budgets_url, notice: 'Budget was successfully destroyed.'
+    redirect_to action: 'index'
   end
 
   private
+
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
+
+    def set_quotation
+      @quotation = Quotation.find(params[:quotation_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_budget
       @budget = Budget.find(params[:id])
@@ -53,6 +67,6 @@ class BudgetsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def budget_params
-      params.require(:budget).permit(:quotation_id, :supplier_id, :date, :status)
+      params.require(:budget).permit(:quotation_id, :supplier_id, :date, :status, budget_products_attributes: [:product, :unit, :quantity, :unit_value, :total_value, :id, :_destroy])
     end
 end

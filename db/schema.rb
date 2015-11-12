@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706160933) do
+ActiveRecord::Schema.define(version: 20151112170924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,20 @@ ActiveRecord::Schema.define(version: 20150706160933) do
   end
 
   add_index "bill_products", ["bill_id"], name: "index_bill_products_on_bill_id", using: :btree
+
+  create_table "budget_products", force: :cascade do |t|
+    t.string   "product"
+    t.string   "unit"
+    t.integer  "quantity"
+    t.float    "unit_value"
+    t.float    "total_value"
+    t.integer  "budget_id"
+    t.string   "observation"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "budget_products", ["budget_id"], name: "index_budget_products_on_budget_id", using: :btree
 
   create_table "budgets", force: :cascade do |t|
     t.integer  "quotation_id"

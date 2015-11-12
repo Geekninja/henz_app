@@ -1,0 +1,33 @@
+%fieldset
+  .col-md-4
+    = f.input :product
+  .col-md-1
+    = f.input :unit, as: :select, collection: %w(UN LT KG CM), include_blank: false
+  .col-md-1
+    = f.input :quantity, input_html: { id: "quantity-#{f.options[:child_index]}" }
+  .col-md-2
+    = f.input :unit_value, as: :string, input_html: { class: 'coin_mask', id: "unit-#{f.options[:child_index]}"}
+  .col-md-2{style: 'margin-top: 23px;'}
+    = f.hidden_field :_destroy
+    = link_to "remover", '#', class: "remove_fields btn btn-sm btn-danger"
+
+:javascript 
+  $(document).ready(function() {
+    $('.coin_mask').maskMoney({prefix:'R$ ', allowNegative: true, allowZero:true, thousands:'', decimal:'.', affixesStay: false});
+    
+    $("#unit-#{f.options[:child_index]}").on('change', function() {
+      update_total_value();
+    });
+
+    $("#quantity-#{f.options[:child_index]}").on('change', function() {
+      update_total_value();
+    });
+
+
+  });
+  function update_total_value() {
+    unit_value  = $("#unit-#{f.options[:child_index]}").val();
+    quantity    = $("#quantity-#{f.options[:child_index]}").val();
+
+    $("#total-value-#{f.options[:child_index]}").val((unit_value * quantity).toFixed(2))
+  }
