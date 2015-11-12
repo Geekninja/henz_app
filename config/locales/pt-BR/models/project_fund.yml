@@ -12,6 +12,7 @@ pt-BR:
     note_payment: "Upload do comprovante"
     observation_payment: "Observações do pagamento"
     supplier: "Fornecedor"
+    pay_target: "Pagamento para"
   errors:
    models:
     pay:
