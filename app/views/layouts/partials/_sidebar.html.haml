@@ -67,3 +67,15 @@
             - if policy(:application).administrador? || policy(:application).gerente?
               %li= link_to "Novo upload", new_project_archive_path(@project)
             %li= link_to "Gerenciar", project_archives_path(@project)
+        %li.sub-menu.dcjq-parent-li
+          %a.dcjq-parent{:href => "javascript:;"}
+            %i.fa.fa-bar-chart-o
+            %span
+              %b Relatórios
+            %span.dcjq-icon
+          %ul.sub{:style => "display: none;"}
+            - if policy(:application).administrador? || policy(:application).gerente?
+              %li= link_to "Fornecedores", suppliers_reports_path(@project)
+              %li= link_to "Veículos", vehicles_reports_path(@project)
+              %li= link_to "Contas & Caixa", finances_reports_path(@project)
+            

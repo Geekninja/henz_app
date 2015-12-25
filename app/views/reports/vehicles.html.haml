@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    .panel
+      .panel-heading
+        Relatório de Funcionários
+      .panel-body
+        %table.table
+          %thead
+            %tr
+              %th Nome 
+          %tbody
+            - @project.vehicles.each do |vehicle|
+              %tr 
+                %td= vehicle

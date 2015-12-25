@@ -14,11 +14,22 @@ Rails.application.routes.draw do
   scope '/gestao' do
 
 
+
     devise_for :users, controllers: {
       sessions: 'sessions'
     }
 
     authenticate :user do
+      
+      resources :reports, path: 'relatorios' do 
+        collection do  
+          get 'fornecedores/:project_id', to: 'reports#suppliers',  as: 'suppliers'
+          get 'funcionarios/:project_id', to: 'reports#staffs',     as: 'staffs'
+          get 'veiculos/:project_id',     to: 'reports#vehicles',   as: 'vehicles'
+          get 'caixa-contas/:project_id', to: 'reports#finances',    as: 'finances'
+        end
+      end
+
       resources :users, path: 'usuarios'
 
       get '/', to: 'dashboard#index'
