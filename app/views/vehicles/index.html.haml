@@ -6,21 +6,16 @@
         = link_to 'Novo veículo', new_project_vehicle_path(@project), class: 'btn btn-success btn-xs pull-right'
       .panel-body
 
-        %table.table.table-hover.general-table.datatable
+        %table.table.table-hover.general-table.datatable.table-bordered
           %thead
             %tr
-              %th.col-md-2
-                Nome
-              %th.col-md-2
-                Descrição
-              %th.col-md-2
-                Serviço
-              %th.col-md-2
-                Tipo
-              %th.col-md-2
-                Categoria
-              %th.col-md-2
-                Ações
+              %th Nome
+              %th Placa
+              %th Descrição
+              %th Serviço
+              %th Tipo
+              %th Categoria
+              %th Ações
               
           %tbody
             - @vehicles.each do |vehicle|
@@ -28,7 +23,7 @@
                 %td.col-md-2
                   =vehicle.name
                 %td.col-md-2
-                  =vehicle.description
+                  =vehicle.board
                 %td.col-md-2
                   =vehicle.vehicle_service.name if vehicle.vehicle_service.present?
                 %td.col-md-2

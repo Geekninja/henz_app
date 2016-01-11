@@ -1,0 +1,41 @@
+.row
+  .col-md-12
+    .panel
+      .panel-heading
+        Relatório de Contas
+      .panel-body
+        = simple_form_for url_for, method: :get do |f|
+          .row
+            .col-md-2
+              = f.input :start, label: 'Início', as: :string, input_html: { class: 'date', name: 'start', value: (params[:start].present?) ? params[:start] : ''}
+            .col-md-2
+              = f.input :end, label: 'Fim', as: :string, input_html: { class: 'date', name: 'start', value: (params[:start].present?) ? params[:start] : ''}
+            .col-md-2{style: 'padding-top: 23px'}
+              = f.submit 'Filtrar Relatório', name: nil, class: 'btn btn-success' 
+        %hr/
+        .row
+          .col-md-12
+            %table.table.table-striped.table-condensed.table-bordered
+              %thead
+                %tr
+                  %th Código
+                  %th Tipo
+                  %th Fornecedor
+                  %th Valor
+                  %th Data de vencimento
+                  %th Situação
+                  %th Data de pagamento
+                  %th Ação
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+              %tfooter
+                %tr
+                  %th{colspan: 7} Total
+                  %th R$

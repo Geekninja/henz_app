@@ -2,8 +2,10 @@
   = f.error_notification
 
   .row
-    .col-md-6
+    .col-md-4
       = f.input :name
+    .col-md-2
+      = f.input :board, label: 'Placa'
     .col-md-3
       = f.association :vehicle_service, prompt: 'selecione...'
     .col-md-3

@@ -2,13 +2,40 @@
   .col-md-12
     .panel
       .panel-heading
-        Relatório de Funcionários
+        Relatório de Veículos
       .panel-body
-        %table.table
-          %thead
-            %tr
-              %th Nome 
-          %tbody
-            - @project.staffs.each do |staff|
-              %tr 
-                %td= staff.name
+        = simple_form_for url_for, method: :get do |f|
+          .row
+            .col-md-4
+              = f.input :vehicle_id, label: "Veículos", as: :select,selected: params[:vehicle_id], collection: Vehicle.all.order(:name), include_blank: 'Todos', input_html: { name: 'supplier_id'}
+            .col-md-2
+              = f.input :start, label: 'Início', as: :string, input_html: { class: 'date', name: 'start', value: (params[:start].present?) ? params[:start] : ''}
+            .col-md-2
+              = f.input :end, label: 'Fim', as: :string, input_html: { class: 'date', name: 'start', value: (params[:start].present?) ? params[:start] : ''}
+            .col-md-2{style: 'padding-top: 23px'}
+              = f.submit 'Filtrar Relatório', name: nil, class: 'btn btn-success' 
+        %hr/
+        .row
+          .col-md-12
+            %table.table.table-striped.table-condensed.table-bordered
+              %thead
+                %tr
+                  %th Código
+                  %th Fornecedor
+                  %th Valor
+                  %th Data de vencimento
+                  %th Situação
+                  %th Data de pagamento
+                  %th Ação
+              %tbody
+                %tr
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+                  %td
+              %tfooter
+                %tr
+                  %th{colspan: 6} Total
+                  %th R$
